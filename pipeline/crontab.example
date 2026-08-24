@@ -1,0 +1,27 @@
+# Oxford college visitor hours — refresh cadence
+# Rationale in CADENCE.md. Times are Europe/London.
+
+# DAILY 06:15 — the 24 tier-B colleges. Only ~8 of these actually move,
+# but same-day closure notices (Merton posts these) appear with no warning.
+15  6  *  *  *   cd /srv/oxford && python3 scrape.py           >> log/daily.log 2>&1
+
+# WEEKLY Mon 06:40 — re-audit the 19 tier-A colleges against ox.ac.uk.
+40  6  *  *  1   cd /srv/oxford && python3 scrape.py --all     >> log/weekly.log 2>&1
+
+# SEASONAL SWITCHES — full re-read the day before each known changeover.
+#   1 Aug   annual price year (Trinity + New College both date prices to 1 Aug)
+#   9 Mar / 31 Oct   New College summer<->winter
+#   30 Jun / 30 Sep  Magdalen summer close 18:30 window
+30  5  31 7  *   cd /srv/oxford && python3 scrape.py --all     >> log/season.log 2>&1
+30  5  8  3  *   cd /srv/oxford && python3 scrape.py --all     >> log/season.log 2>&1
+30  5  30 10 *   cd /srv/oxford && python3 scrape.py --all     >> log/season.log 2>&1
+30  5  29 6  *   cd /srv/oxford && python3 scrape.py --all     >> log/season.log 2>&1
+30  5  29 9  *   cd /srv/oxford && python3 scrape.py --all     >> log/season.log 2>&1
+
+# TERM BOUNDARIES — hours flip between term and vacation on 6 dates a year.
+30  5  10 10 *   cd /srv/oxford && python3 scrape.py --all     >> log/term.log 2>&1
+30  5  6  12 *   cd /srv/oxford && python3 scrape.py --all     >> log/term.log 2>&1
+30  5  16 1  *   cd /srv/oxford && python3 scrape.py --all     >> log/term.log 2>&1
+30  5  14 3  *   cd /srv/oxford && python3 scrape.py --all     >> log/term.log 2>&1
+30  5  24 4  *   cd /srv/oxford && python3 scrape.py --all     >> log/term.log 2>&1
+30  5  20 6  *   cd /srv/oxford && python3 scrape.py --all     >> log/term.log 2>&1

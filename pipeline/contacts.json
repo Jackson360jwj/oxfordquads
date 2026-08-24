@@ -1,0 +1,564 @@
+[
+ {
+  "name": "All Souls College",
+  "tier": "B",
+  "source": "https://www.asc.ox.ac.uk/visit-the-college",
+  "email": null,
+  "phones": [],
+  "advisories": [
+   {
+    "key": "short_notice",
+    "say": "The college reserves the right to close at short notice.",
+    "evidence": "reserves the right to close"
+   },
+   {
+    "key": "groups_book",
+    "say": "Groups must book ahead rather than turning up.",
+    "evidence": "groups: Larger group visits must be arrange"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Balliol College",
+  "tier": "B",
+  "source": "https://www.balliol.ox.ac.uk/visit-balliol",
+  "email": null,
+  "phones": [
+   "01865 277777"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "telephone the Lodge"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Blackfriars",
+  "tier": "A",
+  "source": "https://www.bfriars.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Brasenose College",
+  "tier": "A",
+  "source": "https://www.bnc.ox.ac.uk/about-brasenose/visiting/",
+  "email": null,
+  "phones": [
+   "01865 277510",
+   "01865 277830"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "contact the Lodge"
+   },
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "contact us in advance"
+   },
+   {
+    "key": "short_notice",
+    "say": "The college reserves the right to close at short notice.",
+    "evidence": "close at any time"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Campion Hall",
+  "tier": "A",
+  "source": "https://www.campion.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Christ Church",
+  "tier": "B",
+  "source": "https://www.chch.ox.ac.uk/visit/tickets-and-information",
+  "email": null,
+  "phones": [
+   "01865 276151"
+  ],
+  "advisories": [
+   {
+    "key": "events_close",
+    "say": "Closes for events, exams and ceremonies during the year.",
+    "evidence": "closures take place when areas are in use for private event"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Corpus Christi College",
+  "tier": "B",
+  "source": "https://www.ccc.ox.ac.uk/about-corpus/contact-us/visitor-information",
+  "email": null,
+  "phones": [
+   "01865 276700"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "contact the Porters"
+   },
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "contact the Porters on 01865 276700 prior to"
+   },
+   {
+    "key": "events_close",
+    "say": "Closes for events, exams and ceremonies during the year.",
+    "evidence": "closed for College event"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Exeter College",
+  "tier": "B",
+  "source": "https://www.exeter.ox.ac.uk/contact-us/",
+  "email": null,
+  "phones": [
+   "01865 279600"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "contact the Porters"
+   },
+   {
+    "key": "events_close",
+    "say": "Closes for events, exams and ceremonies during the year.",
+    "evidence": "closed for a special event"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Green Templeton College",
+  "tier": "A",
+  "source": "https://www.gtc.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Harris Manchester College",
+  "tier": "B",
+  "source": "https://www.hmc.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Hertford College",
+  "tier": "B",
+  "source": "https://www.hertford.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Jesus College",
+  "tier": "B",
+  "source": "https://www.jesus.ox.ac.uk/visit-us/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Keble College",
+  "tier": "A",
+  "source": "https://www.keble.ox.ac.uk/visiting-keble/",
+  "email": "porters.lodge@keble.ox.ac.uk",
+  "phones": [],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "contact the Porters"
+   },
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "contact the Porters prior to"
+   },
+   {
+    "key": "events_close",
+    "say": "Closes for events, exams and ceremonies during the year.",
+    "evidence": "closed for College event"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Kellogg College",
+  "tier": "A",
+  "source": "https://www.kellogg.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Lady Margaret Hall",
+  "tier": "A",
+  "source": "https://www.lmh.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Linacre College",
+  "tier": "A",
+  "source": "https://www.linacre.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Lincoln College",
+  "tier": "B",
+  "source": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
+  "email": "info@lincoln.ox.ac.uk",
+  "phones": [
+   "01865 279800"
+  ],
+  "advisories": [
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "contact the\u00c2 Development Office \u00c2 in advance"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Magdalen College",
+  "tier": "B",
+  "source": "https://www.magd.ox.ac.uk/visiting-magdalen-college/",
+  "email": null,
+  "phones": [
+   "01865 276000"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "telephone the Lodge"
+   },
+   {
+    "key": "groups_book",
+    "say": "Groups must book ahead rather than turning up.",
+    "evidence": "Groups should book"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Mansfield College",
+  "tier": "B",
+  "source": "https://www.mansfield.ox.ac.uk/",
+  "email": "porter@mansfield.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Merton College",
+  "tier": "B",
+  "source": "https://www.merton.ox.ac.uk/visitor-information",
+  "email": null,
+  "phones": [],
+  "advisories": [
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "contact us in advance"
+   },
+   {
+    "key": "short_notice",
+    "say": "The college reserves the right to close at short notice.",
+    "evidence": "reserves the right to close"
+   },
+   {
+    "key": "events_close",
+    "say": "Closes for events, exams and ceremonies during the year.",
+    "evidence": "closed on the following days due to internal event"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "New College",
+  "tier": "B",
+  "source": "https://www.new.ox.ac.uk/visiting-the-college",
+  "email": "tourism@new.ox.ac.uk",
+  "phones": [
+   "01865 279544"
+  ],
+  "advisories": [
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "check our Planned closures page before your visit"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Nuffield College",
+  "tier": "A",
+  "source": "https://www.nuffield.ox.ac.uk/",
+  "email": "info@nuffield.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Oriel College",
+  "tier": "B",
+  "source": "https://www.oriel.ox.ac.uk/visit-oriel/",
+  "email": "lodge@oriel.ox.ac.uk",
+  "phones": [
+   "01865 276585"
+  ],
+  "advisories": [
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "contact us in advance"
+   },
+   {
+    "key": "groups_book",
+    "say": "Groups must book ahead rather than turning up.",
+    "evidence": "groups should contact"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Pembroke College",
+  "tier": "A",
+  "source": "http://www.pmb.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "The Queen's College",
+  "tier": "A",
+  "source": "http://www.queens.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Regent's Park College",
+  "tier": "A",
+  "source": "https://www.rpc.ox.ac.uk/",
+  "email": "enquiries@regents.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Reuben College",
+  "tier": "A",
+  "source": "https://reuben.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Anne's College",
+  "tier": "A",
+  "source": "https://www.st-annes.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Antony's College",
+  "tier": "A",
+  "source": "https://www.sant.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Catherine's College",
+  "tier": "B",
+  "source": "https://www.stcatz.ox.ac.uk/",
+  "email": "lodge@stcatz.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Cross College",
+  "tier": "A",
+  "source": "https://www.stx.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Edmund Hall",
+  "tier": "B",
+  "source": "https://www.seh.ox.ac.uk/discover/explore-teddy-hall/visiting-the-college",
+  "email": "lodge@seh.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Hilda's College",
+  "tier": "B",
+  "source": "https://www.st-hildas.ox.ac.uk/",
+  "email": "enquiries@st-hildas.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Hugh's College",
+  "tier": "B",
+  "source": "https://www.st-hughs.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St John's College",
+  "tier": "B",
+  "source": "https://www.sjc.ox.ac.uk/discover/visit-us/",
+  "email": null,
+  "phones": [
+   "01865 277300"
+  ],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "St Peter's College",
+  "tier": "B",
+  "source": "https://www.spc.ox.ac.uk/connect/visit-college",
+  "email": "porters.lodge@spc.ox.ac.uk",
+  "phones": [],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "phone the Porters' Lodge"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Somerville College",
+  "tier": "B",
+  "source": "https://www.some.ox.ac.uk/about/visit-us/",
+  "email": "enquiries@some.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Trinity College",
+  "tier": "B",
+  "source": "https://www.trinity.ox.ac.uk/visiting",
+  "email": null,
+  "phones": [
+   "01865 279900"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "call the Porter"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "University College",
+  "tier": "B",
+  "source": "https://www.univ.ox.ac.uk/",
+  "email": "lodge@univ.ox.ac.uk",
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Wadham College",
+  "tier": "B",
+  "source": "https://www.wadham.ox.ac.uk/visit-us",
+  "email": "lodge@wadham.ox.ac.uk",
+  "phones": [],
+  "advisories": [
+   {
+    "key": "short_notice",
+    "say": "The college reserves the right to close at short notice.",
+    "evidence": "close to visitors without notice"
+   }
+  ],
+  "status": "ok"
+ },
+ {
+  "name": "Wolfson College",
+  "tier": "A",
+  "source": "https://www.wolfson.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Worcester College",
+  "tier": "A",
+  "source": "https://www.worc.ox.ac.uk/",
+  "email": null,
+  "phones": [],
+  "advisories": [],
+  "status": "ok"
+ },
+ {
+  "name": "Wycliffe Hall",
+  "tier": "A",
+  "source": "https://www.wycliffe.ox.ac.uk/",
+  "email": null,
+  "phones": [
+   "01865 274200"
+  ],
+  "advisories": [],
+  "status": "ok"
+ }
+]

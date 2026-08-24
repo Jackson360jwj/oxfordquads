@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamplight — visitor access to every Oxford college</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ---- primitive ---- */
+  --ink-900:#080C12; --ink-800:#0D131B; --ink-700:#141C27; --ink-600:#1D2836;
+  --ink-500:#2A3849; --ink-400:#3D4E63;
+  --lime-100:#F2EADA; --lime-300:#CFC3AC; --lime-500:#94896F;
+  --lamp-300:#F5CE85; --lamp-500:#E5A93F; --lamp-700:#A9761F;
+  --moss-500:#7FA07A; --rust-500:#C46A4E; --slate-500:#7C8A9B;
+
+  /* ---- semantic ---- */
+  --bg:var(--ink-900); --surface:var(--ink-800); --surface-2:var(--ink-700);
+  --line:var(--ink-600); --line-strong:var(--ink-500);
+  --fg:var(--lime-100); --fg-dim:var(--lime-300); --fg-mute:var(--slate-500);
+  --lit:var(--lamp-500); --lit-soft:var(--lamp-300);
+  --good:var(--moss-500); --warn:var(--rust-500);
+
+  /* ---- type ---- */
+  --display:"Fraunces","Hoefler Text",Palatino,Georgia,serif;
+  --body:"IBM Plex Sans","Segoe UI",Helvetica,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+
+  /* ---- space ---- */
+  --s1:4px; --s2:8px; --s3:12px; --s4:18px; --s5:28px; --s6:44px; --s7:68px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--body); font-size:16px; line-height:1.55;
+  background-image:
+    radial-gradient(900px 520px at 12% -6%, rgba(229,169,63,.10), transparent 62%),
+    radial-gradient(700px 460px at 96% 8%, rgba(124,138,155,.07), transparent 60%);
+  background-attachment:fixed;
+}
+/* fine grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 var(--s4) var(--s7)}
+
+/* ============ skyline ============ */
+.sky{margin:0 -6px;opacity:0;animation:rise 1.1s .1s cubic-bezier(.2,.7,.3,1) both}
+.sky svg{display:block;width:100%;height:auto;max-height:190px}
+.sky .stars circle{opacity:.4}
+.sky .wins rect{animation:flicker 7s ease-in-out infinite}
+.sky .wins rect:nth-child(2n){animation-delay:2.3s}
+.sky .wins rect:nth-child(3n){animation-delay:4.1s}
+@keyframes flicker{0%,100%{opacity:.85}12%{opacity:.4}18%{opacity:.9}55%{opacity:.6}}
+
+/* ============ masthead ============ */
+header{padding:var(--s5) 0 var(--s4);position:relative}
+.eyebrow{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--lamp-700);margin:0 0 var(--s4);
+}
+h1{
+  font-family:var(--display);font-weight:300;font-optical-sizing:auto;
+  font-size:clamp(42px,11.5vw,86px);line-height:.92;letter-spacing:-.03em;
+  margin:0 0 var(--s4);color:var(--fg);
+}
+h1 em{font-style:italic;font-weight:400;color:var(--lit-soft)}
+.standfirst{margin:0 0 var(--s5);max-width:46ch;color:var(--fg-dim);font-size:16.5px}
+.meter{
+  display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.meter div{
+  flex:1 1 auto;min-width:104px;padding:var(--s3) var(--s3) var(--s3) 0;
+}
+.meter div + div{padding-left:var(--s3);border-left:1px solid var(--line)}
+.meter b{
+  display:block;font-family:var(--display);font-size:40px;font-weight:400;
+  line-height:1;letter-spacing:-.02em;color:var(--lit);
+}
+.meter b.plain{color:var(--fg)}
+.meter span{
+  display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--fg-mute);margin-top:6px;
+}
+
+/* ============ controls ============ */
+.controls{margin:var(--s5) 0 0}
+#q{
+  width:100%;padding:14px var(--s4);font-size:16px;font-family:var(--body);
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;color:var(--fg);
+}
+#q::placeholder{color:var(--fg-mute)}
+#q:focus{outline:none;border-color:var(--lamp-700);box-shadow:0 0 0 3px rgba(229,169,63,.13)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s3)}
+.chip{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:8px 13px;border:1px solid var(--line-strong);background:transparent;
+  color:var(--fg-mute);border-radius:99px;cursor:pointer;transition:.16s;
+}
+.chip:hover{color:var(--fg-dim);border-color:var(--ink-400)}
+.chip[aria-pressed="true"]{background:var(--lit);border-color:var(--lit);color:var(--ink-900);font-weight:500}
+.chip:focus-visible{outline:2px solid var(--lit);outline-offset:2px}
+
+/* ============ section furniture ============ */
+.sec{margin:var(--s7) 0 0}
+.sec-head{display:flex;align-items:flex-start;gap:var(--s3)}
+.sec-num{
+  font-family:var(--display);font-style:italic;font-weight:300;
+  font-size:52px;line-height:.8;color:var(--lamp-700);opacity:.65;
+  min-width:44px;padding-top:2px;
+}
+.sec-h{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--lamp-700);margin:0 0 var(--s2);
+}
+.sec-t{font-family:var(--display);font-weight:300;font-size:26px;line-height:1.1;margin:0 0 6px;letter-spacing:-.02em}
+.sec-sub{margin:0 0 var(--s4);font-size:14px;color:var(--fg-mute);max-width:50ch}
+
+/* ============ ribbon ============ */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.rb-axis{display:flex;padding:var(--s3) var(--s3) 0 0;height:24px}
+.rb-axis span{position:absolute;font-family:var(--mono);font-size:9.5px;color:var(--fg-mute);transform:translateX(-50%)}
+#ribbon{max-height:330px;overflow-y:auto;padding-bottom:var(--s2)}
+.rb-row{
+  display:flex;align-items:center;padding:1px var(--s3) 1px 0;width:100%;
+  background:none;border:0;text-align:left;cursor:pointer;font:inherit;color:inherit;
+}
+.rb-row:hover .rb-name{color:var(--lit-soft)}
+.rb-row:focus-visible{outline:1px solid var(--lit);outline-offset:-1px}
+.rb-name{
+  width:112px;flex:0 0 112px;padding-left:var(--s3);font-family:var(--mono);font-size:10px;
+  letter-spacing:.02em;color:var(--fg-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.rb-track{position:relative;flex:1;height:16px}
+.rb-bar{position:absolute;top:5px;height:6px;border-radius:99px;background:var(--ink-500)}
+.rb-bar.live{background:linear-gradient(90deg,var(--lamp-700),var(--lamp-500));box-shadow:0 0 12px rgba(229,169,63,.5)}
+.rb-now{position:absolute;top:0;bottom:0;width:1px;background:var(--lit-soft);opacity:.55}
+.legend{
+  display:flex;gap:var(--s4);padding:var(--s3);border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--fg-mute);flex-wrap:wrap;
+}
+.sw{display:inline-block;width:14px;height:6px;border-radius:99px;vertical-align:middle;margin-right:6px}
+
+/* ============ map ============ */
+figure.map{margin:0;padding:0}
+figure.map svg{display:block;width:100%;height:auto}
+.m-ring{fill:none;stroke:var(--ink-600);stroke-width:.6}
+.m-ring-lab{font-family:var(--mono);font-size:6.8px;fill:var(--ink-400);letter-spacing:.09em}
+.m-lab{font-family:var(--mono);font-size:7px;fill:var(--fg-mute);letter-spacing:.02em}
+.m-lab.on{fill:var(--lit-soft)}
+.m-street{font-family:var(--body);font-size:5.4px;fill:#55667C;letter-spacing:.06em}
+.m-park{font-family:var(--display);font-size:6.4px;fill:#4C6B54;font-style:italic}
+.m-landmark{font-family:var(--mono);font-size:5.8px;fill:var(--lamp-700);letter-spacing:.04em}
+.m-dot{cursor:pointer}
+.m-halo{opacity:.5}
+.m-core{transition:r .15s ease}
+.m-dot:hover .m-core,.m-dot:focus-visible .m-core{r:5.4}
+.m-dot:focus-visible{outline:none}
+.m-dot.sel .m-core{r:5.4;stroke:var(--fg);stroke-width:1.2}
+@keyframes breathe{0%,100%{opacity:.42}50%{opacity:.78}}
+@keyframes ignite{from{opacity:0}}
+.m-dot{animation:ignite .55s cubic-bezier(.2,.7,.3,1) both}
+@keyframes grow{from{transform:scaleX(0)}}
+.rb-bar{transform-origin:left;animation:grow .6s cubic-bezier(.2,.7,.3,1) both}
+.m-halo.lit{animation:breathe 5.5s ease-in-out infinite}
+.m-cap{
+  font-family:var(--mono);font-size:10.5px;color:var(--fg-mute);
+  padding:var(--s3);border-top:1px solid var(--line);min-height:3.4em;
+}
+.m-cap b{color:var(--lit-soft);font-weight:500}
+
+/* ============ cards ============ */
+.group-h{
+  font-family:var(--display);font-size:24px;font-weight:300;letter-spacing:-.02em;
+  margin:var(--s6) 0 2px;padding-top:var(--s4);border-top:1px solid var(--line-strong);
+}
+.group-c{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--fg-mute);margin:0 0 var(--s4)}
+.card{
+  position:relative;background:var(--surface);border:1px solid var(--line);
+  border-left:2px solid var(--ink-500);border-radius:3px;
+  padding:var(--s4);margin-bottom:var(--s2);scroll-margin-top:var(--s3);
+  transition:border-color .2s,transform .2s;
+}
+.card.open{border-left-color:var(--lit);background:linear-gradient(90deg,rgba(229,169,63,.055),transparent 42%),var(--surface)}
+.card.flash{border-color:var(--lit);transform:translateX(2px)}
+.c-top{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.c-name{font-family:var(--display);font-weight:400;font-size:23px;line-height:1.1;margin:0;letter-spacing:-.015em}
+.c-price{font-family:var(--mono);font-size:15px;white-space:nowrap;color:var(--fg-dim)}
+.c-price.free{color:var(--good)}
+.c-where{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--fg-mute);margin:6px 0 var(--s3)}
+.pill{
+  display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.15em;
+  text-transform:uppercase;padding:4px 9px;border-radius:99px;margin-bottom:var(--s2);
+  border:1px solid currentColor;
+}
+.p-open{color:var(--lit);background:rgba(229,169,63,.1)}
+.p-shut{color:var(--fg-mute)}
+.p-book{color:var(--lit-soft);opacity:.85}
+.p-closed{color:var(--warn)}
+.c-hours{font-size:15px;margin:0 0 var(--s2);color:var(--fg-dim)}
+.c-hours .live{color:var(--lit);font-weight:500}
+.c-hours .soon{color:var(--warn);font-weight:500}
+.c-detail{font-size:13.5px;color:var(--fg-mute);margin:0 0 5px}
+.c-detail b{color:var(--fg-dim);font-weight:600}
+.c-note{
+  font-size:12.5px;line-height:1.5;margin:var(--s3) 0 0;padding:10px 12px;border-radius:3px;
+  background:rgba(196,106,78,.09);border-left:2px solid var(--warn);color:var(--fg-dim);
+}
+.c-note.ok{background:rgba(127,160,122,.09);border-left-color:var(--good)}
+.c-note.contact{background:rgba(229,169,63,.07);border-left-color:var(--lit)}
+.c-note.contact b{color:var(--lit)}
+.c-note .adv{display:block}
+.c-note .adv + .adv{margin-top:4px}
+.c-links a.chk::after{content:" ✓";color:var(--good)}
+.c-links a.mail{border-color:var(--lamp-700);color:var(--lit-soft)}
+.c-note b{
+  display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:4px;color:var(--warn);
+}
+.c-note.ok b{color:var(--good)}
+.c-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s3)}
+.c-links a{
+  font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-decoration:none;
+  padding:7px 11px;border:1px solid var(--line-strong);border-radius:99px;color:var(--fg-mute);transition:.16s;
+}
+.c-links a:hover{border-color:var(--lit);color:var(--lit-soft)}
+.c-links a:focus-visible{outline:2px solid var(--lit);outline-offset:2px}
+.c-src{
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg-mute);opacity:.75;margin:var(--s3) 0 0;padding-top:var(--s2);
+  border-top:1px dashed var(--line);
+}
+.c-src .b{color:var(--lamp-700)}
+.empty{
+  background:var(--surface);border:1px dashed var(--line-strong);border-radius:3px;
+  padding:var(--s6) var(--s4);text-align:center;color:var(--fg-mute);font-size:14px;
+}
+footer{margin-top:var(--s7);padding-top:var(--s4);border-top:1px solid var(--line);font-size:12.5px;color:var(--fg-mute);line-height:1.6}
+footer b{color:var(--fg-dim)}
+footer a{color:var(--lit-soft)}
+
+/* ============ entrance ============ */
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+header,.controls,.sec{animation:rise .6s cubic-bezier(.2,.7,.3,1) both}
+.controls{animation-delay:.07s} .sec:nth-of-type(1){animation-delay:.13s} .sec:nth-of-type(2){animation-delay:.19s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div class="sky" aria-hidden="true"><svg viewBox="0 0 900 210" preserveAspectRatio="xMidYMax meet">
+<g class="stars" fill="var(--lime-300)">
+<circle cx="52" cy="38" r="1"/><circle cx="130" cy="22" r=".7"/><circle cx="205" cy="55" r=".9"/>
+<circle cx="292" cy="18" r=".7"/><circle cx="388" cy="40" r="1"/><circle cx="472" cy="12" r=".8"/>
+<circle cx="548" cy="48" r=".7"/><circle cx="642" cy="26" r="1"/><circle cx="700" cy="60" r=".7"/>
+<circle cx="778" cy="20" r=".9"/><circle cx="868" cy="44" r=".8"/><circle cx="24" cy="90" r=".7"/>
+<circle cx="878" cy="96" r=".7"/><circle cx="340" cy="66" r=".6"/>
+</g>
+<g><circle cx="800" cy="54" r="15" fill="var(--lamp-300)" opacity=".85"/>
+<circle cx="808" cy="50" r="14" fill="var(--ink-900)"/></g>
+<g stroke="var(--lamp-700)" stroke-width="1.4" fill="none" stroke-linejoin="round" stroke-linecap="round">
+<!-- Tom Tower -->
+<path d="M60 190V126h10v-8h44v8h10v64"/>
+<path d="M70 118V96h44v22"/>
+<path d="M74 96 Q74 78 84 72 Q92 67 92 58 Q92 67 100 72 Q110 78 110 96"/>
+<path d="M92 58V46"/><circle cx="92" cy="43" r="2.6"/>
+<path d="M66 126h52"/>
+<!-- rooftops -->
+<path d="M124 190v-36l16-12 16 12v36"/><path d="M170 190v-26h22v26"/><path d="M178 164v-12h6v12"/>
+<!-- Radcliffe Camera -->
+<path d="M226 190v-32h116v32"/>
+<path d="M238 158v-34h92v34"/>
+<path d="M246 158v-30M262 158v-30M278 158v-30M294 158v-30M310 158v-30M322 158v-30"/>
+<path d="M238 124 Q238 84 284 78 Q330 84 330 124"/>
+<path d="M276 78v-12h16v12"/><path d="M280 66 Q280 58 284 56 Q288 58 288 66"/>
+<path d="M284 56v-8"/><circle cx="284" cy="45" r="2.2"/>
+<!-- low range -->
+<path d="M356 190v-24h30v24"/>
+<!-- St Mary's -->
+<path d="M408 190V98h40v92"/>
+<path d="M404 98h48"/>
+<path d="M408 98v-10M420 98v-14M436 98v-14M448 98v-10"/>
+<path d="M414 84 428 26 442 84"/>
+<path d="M428 26v-8"/>
+<!-- All Souls twin towers -->
+<path d="M492 190V104h26v86"/><path d="M534 190V104h26v86"/>
+<path d="M488 104h34M530 104h34"/>
+<path d="M494 104v-8h22v8M536 104v-8h22v8"/>
+<path d="M498 96 505 70 512 96M540 96 547 70 554 96"/>
+<path d="M505 70v-6M547 70v-6"/>
+<!-- connecting roofline -->
+<path d="M576 190v-20h44v20"/><path d="M588 170v-10h8v10"/>
+<!-- Magdalen Tower -->
+<path d="M648 190V72h44v118"/>
+<path d="M644 72h52"/>
+<path d="M648 72v-16M662 72v-20M678 72v-20M692 72v-16"/>
+<path d="M648 56l3-6 3 6M662 52l3-6 3 6M678 52l3-6 3 6M692 56l3-6 3 6"/>
+<!-- trailing roofs -->
+<path d="M712 190v-28l14-10 14 10v28"/><path d="M756 190v-18h26v18"/><path d="M840 190v-14h20v14"/>
+<path d="M20 190h860"/>
+</g>
+<g class="wins" fill="var(--lamp-500)">
+<rect x="86" y="132" width="5" height="8"/><rect x="103" y="132" width="5" height="8" opacity=".55"/>
+<rect x="268" y="166" width="5" height="8" opacity=".7"/><rect x="296" y="166" width="5" height="8"/>
+<rect x="420" y="120" width="5" height="9"/><rect x="432" y="150" width="5" height="9" opacity=".5"/>
+<rect x="502" y="126" width="5" height="8" opacity=".8"/><rect x="544" y="140" width="5" height="8"/>
+<rect x="658" y="96" width="5" height="9"/><rect x="680" y="120" width="5" height="9" opacity=".6"/>
+<rect x="666" y="150" width="5" height="9" opacity=".85"/>
+<rect x="138" y="162" width="4" height="7" opacity=".6"/><rect x="766" y="178" width="4" height="7" opacity=".7"/>
+</g>
+</svg></div>
+  <p class="eyebrow">39 colleges · 4 permanent private halls</p>
+  <h1>Which Oxford colleges are <em>lit</em> tonight?</h1>
+  <p class="standfirst">Every college sets its own rules. Some throw the quads open all afternoon for nothing, some sell timed tickets, some never open at all. Here's where each one stands, right now.</p>
+  <div class="meter">
+    <div><b id="mOpen">—</b><span>open now</span></div>
+    <div><b id="mFree" class="plain">—</b><span>free of those</span></div>
+    <div><b id="mTime" class="plain">—</b><span id="mTerm">in Oxford</span></div>
+  </div>
+</header>
+
+<div class="controls">
+  <input id="q" type="search" placeholder="Search a college, street or postcode" autocomplete="off" aria-label="Search colleges">
+  <div class="chips" role="group" aria-label="Filters">
+    <button class="chip" data-f="open" aria-pressed="false">Open now</button>
+    <button class="chip" data-f="free" aria-pressed="false">Free</button>
+    <button class="chip" data-f="walkin" aria-pressed="false">No booking</button>
+    <button class="chip" data-f="tour" aria-pressed="false">Virtual tour</button>
+    <button class="chip" data-f="check" aria-pressed="false">Needs checking</button>
+    <button class="chip" data-f="ring" aria-pressed="false">Ring first</button>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">I</span><div>
+  <p class="sec-h">The night plan</p>
+  <h2 class="sec-t">Where the gates are open</h2></div></div>
+  <p class="sec-sub">Streets, rivers and parks are real Oxford geometry from OpenStreetMap. Dotted rings mark five minutes' walk from Carfax. Tap any college to jump to it.</p>
+  <div class="panel">
+    <figure class="map">
+      <svg id="map" role="img" aria-label="Night plan of Oxford college locations with walking-distance rings"></svg>
+      <figcaption class="m-cap" id="mapcap">Lit points are open now. Tap one to see its details.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">II</span><div>
+  <p class="sec-h">Today's gates</p>
+  <h2 class="sec-t">Opening windows, hour by hour</h2></div></div>
+  <p class="sec-sub">Every college you can walk into today, set against the current hour.</p>
+  <div class="panel">
+    <div class="rb-axis" id="axis"></div>
+    <div id="ribbon"></div>
+    <div class="legend">
+      <span><span class="sw" style="background:linear-gradient(90deg,var(--lamp-700),var(--lamp-500))"></span>open now</span>
+      <span><span class="sw" style="background:var(--ink-500)"></span>open another hour today</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="margin-bottom:0">
+  <div class="sec-head"><span class="sec-num">III</span><div>
+  <p class="sec-h">The forty-three</p>
+  <h2 class="sec-t">Every college, and how to get in</h2>
+  <p class="sec-sub">Where the University's listing has proved reliable it is the source; where it hasn't, the college's own site is read directly. Each card says which.</p></div></div>
+</section>
+<main id="list"></main>
+
+<footer>
+  <p>Opening times, charges and telephone numbers begin from the University of Oxford's <a href="https://www.ox.ac.uk/about/visit-us/visiting-colleges">Visiting the colleges</a> page, checked 23 August 2026, then corrected against individual college websites. Colleges are working institutions and close at short notice for exams, services, conferences and building work — the number on each card is the porters' lodge, and a call before you set off is worth it.</p>
+  <p><b>How far this has been checked.</b> All 43 entries were reviewed against the University's separate alumni access directory, and 25 colleges checked further against their own websites.</p>
+  <p><b>Corrected here:</b> New College (the University understates the concession as £10 — it is £11 — and gives no separate winter Saturday hours), Christ Church (the University publishes neither times nor prices), and Magdalen (a partial closure was missing).</p>
+  <p><b>Confirmed accurate at source:</b> Balliol, Brasenose, Magdalen, Trinity and Wadham matched their own pages exactly. Keble, Kellogg, Lady Margaret Hall, St Anne's, St Edmund Hall, Oriel, Worcester and Nuffield agree across both University sources.</p>
+  <p><b>Disputed:</b> nine colleges where the University's two published sources contradict each other. They carry a warning on the card; filter for them with "Needs checking".</p>
+  <p><b>Contacting the college.</b> Where a college publishes a visitor email or tells visitors to check before arriving, that is shown on its card under "Before you go". A tick beside a phone number means the college's own page publishes that same lodge number — 10 are confirmed that way. Advice is summarised in consistent wording rather than quoted, and the wording of the original is on the college's page.</p>
+<p><b>Still unverified:</b> Jesus, Lincoln, Mansfield, St John's, St Peter's, Somerville and University College. Term dates used to switch between term and vacation hours are approximate. St Stephen's House publishes no visitor hours and is not listed.</p>
+</footer>
+
+</div>
+
+<script>
+/*__DATA__*/
+
+/* ---------------- time in Oxford ---------------- */
+function oxNow(){
+  const f=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',day:'numeric',
+    month:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
+  const p={}; f.formatToParts(new Date()).forEach(x=>p[x.type]=x.value);
+  const dowMap={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+  return {dow:dowMap[p.weekday],day:+p.day,month:+p.month,
+          mins:(+p.hour)*60+(+p.minute),label:`${p.hour}:${p.minute}`,wd:p.weekday};
+}
+function inTerm(m,d){const v=m*100+d;return (v>=1011&&v<=1205)||(v>=117&&v<=313)||(v>=425&&v<=619);}
+const toMin=s=>{const[a,b]=s.split(':');return +a*60+ +b};
+const fmt=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+const NOW=oxNow(), TERM=inTerm(NOW.month,NOW.day)?'term':'vac';
+
+function todayWindows(c){
+  if(!c.win) return [];
+  return c.win.filter(w=>(!w.days||w.days.includes(NOW.dow))&&(!w.months||w.months.includes(NOW.month))&&(!w.term||w.term===TERM))
+    .map(w=>({o:toMin(w.o),c:toMin(w.c),approx:w.approx})).sort((a,b)=>a.o-b.o);
+}
+function status(c){
+  const w=todayWindows(c);
+  if(!w.length) return {open:false,windows:w};
+  const live=w.find(x=>NOW.mins>=x.o&&NOW.mins<x.c), next=w.find(x=>NOW.mins<x.o);
+  return {open:!!live,live,next,windows:w};
+}
+const dur=m=>{const h=Math.floor(m/60),mm=m%60;return h?`${h}h ${mm}m`:`${mm}m`};
+const slug=n=>n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const isOpen=c=>status(c).open;
+
+/* ---------------- meters ---------------- */
+const openList=C.filter(isOpen);
+document.getElementById('mOpen').textContent=openList.length;
+document.getElementById('mFree').textContent=openList.filter(c=>c.price===0).length;
+document.getElementById('mTime').textContent=NOW.label;
+document.getElementById('mTerm').textContent=(TERM==='term'?'full term':'vacation')+' · '+NOW.wd;
+
+/* ================= MAP ================= */
+const CARFAX={lat:51.7520,lng:-1.2577};
+const GEO=/*__GEO__*/;
+(function map(){
+  const svg=document.getElementById('map');
+  const LATK=110570, LNGK=111320*Math.cos(51.756*Math.PI/180);
+  const mx=c=>(c.lng-CARFAX.lng)*LNGK, my=c=>-(c.lat-CARFAX.lat)*LATK;
+
+  /* frame the colleges, with margin for the river and the parks */
+  const xs=C.map(mx), ys=C.map(my), PADM=150;
+  const x0=Math.min(...xs)-PADM, x1=Math.max(...xs)+PADM;
+  const y0=Math.min(...ys)-PADM, y1=Math.max(...ys)+PADM;
+  const ML=40, MR=40, MT=12, MB=12, PW=300;
+  const mpp=(x1-x0)/PW, PH=(y1-y0)/mpp;
+  const W=PW+ML+MR, H=PH+MT+MB;
+  const X=m=>ML+(m-x0)/mpp, Y=m=>MT+(m-y0)/mpp;
+  svg.setAttribute('viewBox',`0 0 ${W.toFixed(1)} ${H.toFixed(1)}`);
+  const cx=X(0), cy=Y(0);
+  const d=pts=>pts.map((q,i)=>(i?'L':'M')+X(q[0]).toFixed(1)+' '+Y(q[1]).toFixed(1)).join('');
+
+  let g=`<defs><clipPath id="plot"><rect x="${ML}" y="${MT}" width="${PW}" height="${PH.toFixed(1)}" rx="3"/></clipPath>
+    <radialGradient id="lamp"><stop offset="0%" stop-color="var(--lamp-500)" stop-opacity=".55"/>
+    <stop offset="100%" stop-color="var(--lamp-500)" stop-opacity="0"/></radialGradient></defs>
+    <rect x="${ML}" y="${MT}" width="${PW}" height="${PH.toFixed(1)}" rx="3" fill="var(--ink-900)"/>
+    <g clip-path="url(#plot)">`;
+
+  /* --- parks --- */
+  GEO.green.forEach(p=>{ g+=`<path d="${d(p)}Z" fill="#14201A"/>`; });
+
+  /* --- water: the Cherwell and the Isis --- */
+  GEO.water.forEach(w=>{
+    if(w.w===0) g+=`<path d="${d(w.p)}Z" fill="#1B3E60"/>`;
+    else g+=`<path d="${d(w.p)}" fill="none" stroke="#1B3E60" stroke-width="${(w.w>=4?2.8:w.w>=2?1.6:0.9).toFixed(2)}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  });
+
+  /* --- streets, minor first so the arterials sit on top --- */
+  [...GEO.roads].sort((a,b)=>a.w-b.w).forEach(r=>{
+    const sw=Math.max(r.w*0.62,0.45);
+    g+=`<path d="${d(r.p)}" fill="none" stroke="${r.w>=2.2?'#39485C':'#262F3C'}" stroke-width="${sw.toFixed(2)}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  });
+
+  /* --- walking rings from Carfax --- */
+  const boxes=[];
+  const reserve=(x,y,w,h)=>boxes.push({x1:x,y1:y,x2:x+w,y2:y+h});
+  const dboxes=[], dtight=[];
+  const hit=(b,arr)=>arr.some(o=>!(b.x2<o.x1||b.x1>o.x2||b.y2<o.y1||b.y1>o.y2));
+  const fits=b=>!hit(b,boxes);                 // street names may pass under dots
+  const fitsAll=b=>!hit(b,boxes)&&!hit(b,dboxes);
+  for(let i=1;i<=6;i++){
+    const r=(i*400)/mpp;
+    g+=`<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="none" stroke="var(--lamp-700)" stroke-opacity=".22" stroke-width=".5" stroke-dasharray="2 4"/>`;
+  }
+  g+=`</g>`;
+
+  /* --- keep the compass and scale bar clear --- */
+  reserve(ML+PW-28, MT+2, 28, 30);
+  reserve(ML+2, MT+PH-20, 500/mpp+16, 20);
+
+  const pts=C.map((c,i)=>({c,i,x:X(mx(c)),y:Y(my(c)),on:isOpen(c)}));
+  pts.forEach(p=>{
+    const r=p.on?12:6, t=p.on?5:4;
+    dboxes.push({x1:p.x-r,y1:p.y-r,x2:p.x+r,y2:p.y+r});
+    dtight.push({x1:p.x-t,y1:p.y-t,x2:p.x+t,y2:p.y+t});
+  });
+  /* landmarks only need to clear the dot itself, not its whole glow */
+  const fitsLM=b=>!hit(b,boxes)&&!hit(b,dtight);
+  /* --- landmarks and park names: real coordinates, reserved first --- */
+  const LM=[
+   {n:"Ashmolean Museum", lat:51.75540, lng:-1.26010, icon:"museum"},
+   {n:"Radcliffe Camera", lat:51.75340, lng:-1.25400, icon:"dome"},
+   {n:"Bodleian Library", lat:51.75405, lng:-1.25440, icon:null},
+   {n:"Covered Market",   lat:51.75225, lng:-1.25700, icon:null}];
+  const PARKS=[{n:"University Parks", lat:51.76050, lng:-1.24950},
+               {n:"Christ Church Meadow", lat:51.74850, lng:-1.25250}];
+  reserve(cx-20, cy-12, 40, 30);                       // Carfax tower + label
+
+  PARKS.forEach(k=>{
+    const px=X((k.lng-CARFAX.lng)*LNGK), py=Y(-(k.lat-CARFAX.lat)*LATK);
+    if(px<ML+6||px>ML+PW-6||py<MT+8||py>MT+PH-8) return;
+    const w=k.n.length*3.3;
+    if(!fitsLM({x1:px-w/2,y1:py-5,x2:px+w/2,y2:py+5})) return;
+    g+=`<text class="m-park" x="${px.toFixed(1)}" y="${py.toFixed(1)}" text-anchor="middle">${k.n}</text>`;
+    reserve(px-w/2, py-5, w, 10);
+  });
+
+  LM.forEach(k=>{
+    const px=X((k.lng-CARFAX.lng)*LNGK), py=Y(-(k.lat-CARFAX.lat)*LATK);
+    if(px<ML+6||px>ML+PW-6||py<MT+8||py>MT+PH-8) return;
+    const w=k.n.length*3.6+10;
+    const right={x1:px-6,y1:py-6,x2:px+w,y2:py+6,tx:px+5.5,anchor:'start'};
+    const left ={x1:px-w,y1:py-6,x2:px+6,y2:py+6,tx:px-5.5,anchor:'end'};
+    const box=[right,left].find(fitsLM);
+    if(!box) return;
+    if(k.icon==="dome")
+      g+=`<g stroke="var(--lamp-700)" fill="none" stroke-width=".7"><path d="M${(px-3).toFixed(1)} ${(py+3).toFixed(1)}v-2.4a3 3 0 0 1 6 0v2.4z"/><path d="M${(px-3.6).toFixed(1)} ${(py+3).toFixed(1)}h7.2"/></g>`;
+    else if(k.icon==="museum")
+      g+=`<g stroke="var(--lamp-700)" fill="none" stroke-width=".7"><path d="M${(px-3.6).toFixed(1)} ${(py+3).toFixed(1)}h7.2M${(px-3).toFixed(1)} ${(py+3).toFixed(1)}v-3.4M${px.toFixed(1)} ${(py+3).toFixed(1)}v-3.4M${(px+3).toFixed(1)} ${(py+3).toFixed(1)}v-3.4M${(px-4).toFixed(1)} ${(py-0.6).toFixed(1)}l4-2.6 4 2.6z"/></g>`;
+    else
+      g+=`<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="1.5" fill="none" stroke="var(--lamp-700)" stroke-width=".7"/>`;
+    g+=`<text class="m-landmark" x="${box.tx.toFixed(1)}" y="${(py+2.2).toFixed(1)}" text-anchor="${box.anchor}" paint-order="stroke" stroke="var(--ink-900)" stroke-width="1.6" stroke-linejoin="round">${k.n}</text>`;
+    boxes.push(box);
+  });
+
+  /* --- street names, along the road, longest segment first --- */
+  const STREETS=["Woodstock Road","Banbury Road","Parks Road","St Giles'","High Street",
+                 "St Aldate's","Longwall Street","Walton Street","Beaumont Street",
+                 "South Parks Road","St Cross Road","Broad Street","Turl Street"];
+  const seen=new Set();
+  STREETS.forEach(nm=>{
+    const cand=GEO.roads.filter(r=>r.n===nm);
+    if(!cand.length||seen.has(nm)) return;
+    let best=null;
+    cand.forEach(r=>{
+      for(let i=0;i<r.p.length-1;i++){
+        const ax=X(r.p[i][0]),ay=Y(r.p[i][1]),bx=X(r.p[i+1][0]),by=Y(r.p[i+1][1]);
+        const len=Math.hypot(bx-ax,by-ay);
+        if(ax<ML||bx>ML+PW||ay<MT||by>MT+PH) continue;
+        if(!best||len>best.len) best={len,ax,ay,bx,by};
+      }
+    });
+    if(!best||best.len<20) return;
+    let ang=Math.atan2(best.by-best.ay,best.bx-best.ax)*180/Math.PI;
+    if(ang>90) ang-=180; if(ang<-90) ang+=180;
+    const mxp=(best.ax+best.bx)/2, myp=(best.ay+best.by)/2;
+    const tw=nm.length*3.5;
+    const box={x1:mxp-tw/2,y1:myp-5,x2:mxp+tw/2,y2:myp+5};
+    if(!fits(box)) return;
+    g+=`<text class="m-street" x="${mxp.toFixed(1)}" y="${myp.toFixed(1)}" text-anchor="middle" transform="rotate(${ang.toFixed(1)} ${mxp.toFixed(1)} ${myp.toFixed(1)})">${nm}</text>`;
+    boxes.push(box); seen.add(nm);
+  });
+
+  /* --- ring labels --- */
+  for(let i=1;i<=6;i++){
+    const r=(i*400)/mpp, t=`${i*5} min`, tw=t.length*4.1+4;
+    for(const deg of [0,-20,20,-40,40,-60,60,-80]){
+      const a=(deg-90)*Math.PI/180, lx=cx+r*Math.cos(a), ly=cy+r*Math.sin(a);
+      if(ly<MT+9||ly>MT+PH-6||lx-tw/2<ML+2||lx+tw/2>ML+PW-2) continue;
+      const box={x1:lx-tw/2,y1:ly-4.5,x2:lx+tw/2,y2:ly+4};
+      if(!fitsAll(box)) continue;
+      g+=`<rect x="${(lx-tw/2).toFixed(1)}" y="${(ly-4.2).toFixed(1)}" width="${tw.toFixed(1)}" height="8.4" rx="2" fill="var(--ink-900)" fill-opacity=".8"/>`
+       + `<text class="m-ring-lab" x="${lx.toFixed(1)}" y="${(ly+2.4).toFixed(1)}" text-anchor="middle">${t}</text>`;
+      boxes.push(box); break;
+    }
+  }
+
+  /* --- Carfax --- */
+  g+=`<g><circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="18" fill="url(#lamp)" opacity=".5"/>`
+   + `<path d="M${(cx-3.4).toFixed(1)} ${(cy+4).toFixed(1)}v-7l1.4-1.6h4l1.4 1.6v7z" fill="none" stroke="var(--lamp-500)" stroke-width=".9"/>`
+   + `<path d="M${(cx-3.4).toFixed(1)} ${(cy-4.6).toFixed(1)}h6.8" stroke="var(--lamp-500)" stroke-width=".9"/>`
+   + `<rect x="${(cx-16).toFixed(1)}" y="${(cy+6).toFixed(1)}" width="32" height="8.6" rx="2" fill="var(--ink-900)" fill-opacity=".85"/>`
+   + `<text class="m-ring-lab" x="${cx.toFixed(1)}" y="${(cy+12.6).toFixed(1)}" text-anchor="middle" fill="var(--lamp-500)">CARFAX</text></g>`;
+
+  /* --- colleges: reserve footprints, then draw --- */
+  pts.forEach(p=>{
+    const col=p.on?'var(--lamp-500)':(p.c.access==='closed'?'var(--rust-500)':'var(--ink-400)');
+    const dist=Math.hypot(p.x-cx,p.y-cy);
+    g+=`<g class="m-dot" tabindex="0" role="button" aria-label="${p.c.n}" data-i="${p.i}" style="animation-delay:${(0.25+dist*0.006).toFixed(2)}s">`;
+    if(p.on) g+=`<circle class="m-halo lit" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="13" fill="url(#lamp)"/>`
+             +`<circle class="m-halo lit" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6" fill="var(--lamp-500)" opacity=".32"/>`;
+    g+=`<circle class="m-core" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.on?3.3:2.4}" fill="${col}" stroke="var(--ink-900)" stroke-width=".7"/>`
+     + `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="12" fill="transparent"/></g>`;
+  });
+
+  /* --- college labels --- */
+  const short=n=>n.replace(/^The /,'').replace(/ College$/,'');
+  const order=[...pts].sort((a,b)=>(b.on-a.on)||(a.y-b.y));
+  let placed=0;
+  order.forEach(p=>{
+    if(placed>=26) return;
+    const t=short(p.c.n), w=t.length*4.2+2, off=p.on?13.5:7.5;
+    const right={x1:p.x+off,y1:p.y-4.6,x2:p.x+off+w,y2:p.y+3.8,anchor:'start',tx:p.x+off};
+    const left ={x1:p.x-off-w,y1:p.y-4.6,x2:p.x-off,y2:p.y+3.8,anchor:'end',tx:p.x-off};
+    for(const cand of (p.x<cx?[right,left]:[left,right])){
+      if(cand.x1<2||cand.x2>W-2) continue;
+      if(!fitsAll(cand)) continue;
+      g+=`<text class="m-lab${p.on?' on':''}" x="${cand.tx.toFixed(1)}" y="${(p.y+2.3).toFixed(1)}" text-anchor="${cand.anchor}" paint-order="stroke" stroke="var(--ink-900)" stroke-width="2" stroke-linejoin="round">${t}</text>`;
+      boxes.push(cand); placed++; break;
+    }
+  });
+
+  /* --- compass and scale --- */
+  const nx=ML+PW-16, ny=MT+16;
+  g+=`<g stroke="var(--lamp-700)" fill="none" stroke-width=".8">`
+   + `<circle cx="${nx}" cy="${ny}" r="8.5" stroke-opacity=".5"/>`
+   + `<path d="M${nx} ${ny-7.5}L${nx+2.6} ${ny}L${nx} ${ny+7.5}L${nx-2.6} ${ny}Z" fill="var(--lamp-500)" fill-opacity=".55" stroke="none"/></g>`
+   + `<text class="m-ring-lab" x="${nx}" y="${ny-10.5}" text-anchor="middle" fill="var(--lamp-500)">N</text>`;
+  const sb=500/mpp, sx=ML+6, sy=MT+PH-8;
+  g+=`<g stroke="var(--fg-mute)" stroke-width=".8" stroke-opacity=".7"><path d="M${sx} ${sy}h${sb.toFixed(1)}M${sx} ${(sy-3).toFixed(1)}v6M${(sx+sb).toFixed(1)} ${(sy-3).toFixed(1)}v6M${(sx+sb/2).toFixed(1)} ${(sy-2).toFixed(1)}v4"/></g>`
+   + `<text class="m-ring-lab" x="${sx}" y="${(sy-6.5).toFixed(1)}">0</text>`
+   + `<text class="m-ring-lab" x="${(sx+sb).toFixed(1)}" y="${(sy-6.5).toFixed(1)}" text-anchor="end">500 m</text>`;
+
+  svg.innerHTML=g;
+
+  const cap=document.getElementById('mapcap');
+  svg.querySelectorAll('.m-dot').forEach(gEl=>{
+    const c=C[+gEl.dataset.i], st=status(c);
+    const show=()=>{
+      svg.querySelectorAll('.m-dot.sel').forEach(e=>e.classList.remove('sel'));
+      gEl.classList.add('sel');
+      const when=st.open?`open now, closes ${fmt(st.live.c)}`
+        :(st.next?`opens ${fmt(st.next.o)} today`:c.hoursT.split('.')[0].toLowerCase());
+      const price=c.price===0?'free':(c.price?'£'+c.price:'');
+      cap.innerHTML=`<b>${c.n}</b> · ${c.st}, ${c.pc}<br>${when}${price?' · '+price:''}`;
+    };
+    gEl.addEventListener('mouseenter',show);
+    gEl.addEventListener('focus',show);
+    gEl.addEventListener('click',()=>{show();jump(c.n)});
+    gEl.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();jump(c.n)}});
+  });
+})();
+
+/* ================= RIBBON ================= */
+const RB_S=8*60, RB_E=19*60, RB_R=RB_E-RB_S;
+const pct=m=>((Math.min(Math.max(m,RB_S),RB_E)-RB_S)/RB_R)*100;
+(function ribbon(){
+  const ax=document.getElementById('axis');
+  const sp=document.createElement('div'); sp.style.cssText='width:112px;flex:0 0 112px';
+  const tr=document.createElement('div'); tr.style.cssText='position:relative;flex:1';
+  ax.appendChild(sp); ax.appendChild(tr);
+  for(let h=8;h<=19;h+=2){
+    const s=document.createElement('span'); s.textContent=String(h).padStart(2,'0');
+    s.style.left=pct(h*60)+'%'; tr.appendChild(s);
+  }
+  const host=document.getElementById('ribbon');
+  const rows=C.map(c=>({c,s:status(c)})).filter(x=>x.c.access==='walkin'&&x.s.windows.length)
+    .sort((a,b)=>(b.s.open-a.s.open)||a.s.windows[0].o-b.s.windows[0].o);
+  if(!rows.length){
+    host.innerHTML='<p style="padding:16px;margin:0;font-size:14px;color:var(--fg-mute)">No college is running published walk-in hours today. See the cards below for booked and appointment visits.</p>';
+    return;
+  }
+  rows.forEach(({c,s},idx)=>{
+    const b=document.createElement('button'); b.className='rb-row'; b.type='button';
+    b.setAttribute('aria-label',`${c.n}, ${s.windows.map(w=>fmt(w.o)+' to '+fmt(w.c)).join(' and ')}`);
+    const nm=document.createElement('span'); nm.className='rb-name';
+    nm.textContent=c.n.replace(/^The /,'').replace(/ College$/,'');
+    const tk=document.createElement('span'); tk.className='rb-track';
+    s.windows.forEach(w=>{
+      const bar=document.createElement('span');
+      bar.className='rb-bar'+(NOW.mins>=w.o&&NOW.mins<w.c?' live':'');
+      bar.style.left=pct(w.o)+'%'; bar.style.width=Math.max(pct(w.c)-pct(w.o),1.4)+'%';
+      bar.style.animationDelay=(0.15+idx*0.045).toFixed(2)+'s';
+      tk.appendChild(bar);
+    });
+    if(NOW.mins>=RB_S&&NOW.mins<=RB_E){
+      const n=document.createElement('span'); n.className='rb-now'; n.style.left=pct(NOW.mins)+'%'; tk.appendChild(n);
+    }
+    b.appendChild(nm); b.appendChild(tk);
+    b.addEventListener('click',()=>jump(c.n));
+    host.appendChild(b);
+  });
+})();
+
+/* ================= CARDS ================= */
+const GROUPS=[
+  {k:'walkin',t:'Walk in during opening hours',s:'Turn up at the lodge. Some charge at the gate.'},
+  {k:'book',t:'Book or arrange it first',s:'A ticket, a tour or a phone call stands between you and the quad.'},
+  {k:'restricted',t:'Members, alumni and applicants',s:'Open, but not to the general public.'},
+  {k:'appointment',t:'By appointment or invitation',s:'Write or call well ahead.'},
+  {k:'closed',t:'Closed to visitors',s:'Not admitting anyone at the moment.'}
+];
+const state={q:'',f:new Set()};
+
+function pillFor(c){
+  if(c.access==='closed') return ['p-closed','Closed'];
+  if(c.pill) return ['p-book',c.pill];
+  if(c.access==='book') return ['p-book','Book ahead'];
+  if(c.access==='appointment') return ['p-book','By appointment'];
+  if(c.access==='restricted') return ['p-shut','Restricted'];
+  return status(c).open?['p-open','Open now']:['p-shut','Closed now'];
+}
+function hoursLine(c){
+  const st=status(c);
+  if(c.access!=='walkin'||!c.win) return `<p class="c-hours">${c.hoursT}</p>`;
+  let today;
+  if(!st.windows.length) today='Not open to visitors today.';
+  else{
+    const list=st.windows.map(w=>fmt(w.o)+'–'+fmt(w.c)).join(' and ');
+    if(st.open){const left=st.live.c-NOW.mins;
+      today=`Today ${list} — <span class="${left<=45?'soon':'live'}">open, closes in ${dur(left)}</span>`;}
+    else if(st.next) today=`Today ${list} — opens in ${dur(st.next.o-NOW.mins)}`;
+    else today=`Today ${list} — closed for the day`;
+    if(st.windows.some(w=>w.approx)) today+=' <span style="opacity:.6">(daylight hours, approximate)</span>';
+  }
+  return `<p class="c-hours">${today}</p><p class="c-detail"><b>Usual hours</b> ${c.hoursT}</p>`;
+}
+function card(c){
+  const [pc,pt]=pillFor(c), st=status(c);
+  const price=c.price===0?'Free':(c.price?'£'+c.price:'—');
+  const links=[`<a href="${c.vis||c.web}" target="_blank" rel="noopener">Visitor info ↗</a>`,
+    `<a href="https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lng}" target="_blank" rel="noopener">Directions ↗</a>`,
+    `<a class="${c.telOK?'chk':''}" href="tel:${c.tel.replace(/\s/g,'')}"${c.telOK?' title="Number confirmed on the college\'s own page"':''}>${c.tel}</a>`];
+  if(c.email) links.push(`<a class="mail" href="mailto:${c.email}">${c.email}</a>`);
+  if(c.tour) links.push(`<a href="${c.tour}" target="_blank" rel="noopener">Virtual tour ↗</a>`);
+  return `<article class="card${st.open?' open':''}" id="${slug(c.n)}">
+    <span class="pill ${pc}">${pt}</span>
+    <div class="c-top"><h3 class="c-name">${c.n}</h3><span class="c-price ${c.price===0?'free':''}">${price}</span></div>
+    <p class="c-where">${c.st} · ${c.pc}${c.grad?' · graduate college':''}${c.hall?' · permanent private hall':''}</p>
+    ${hoursLine(c)}
+    <p class="c-detail"><b>Entry</b> ${c.priceT}</p>
+    ${c.note?`<p class="c-detail"><b>Worth knowing</b> ${c.note}</p>`:''}
+    ${c.advice?`<p class="c-note contact"><b>Before you go — the college's own advice</b>${c.advice.map(a=>`<span class="adv">${a}</span>`).join('')}</p>`:''}
+    ${c.ok?`<p class="c-note ok"><b>Checked against the college's own page</b>${c.ok}</p>`:''}
+    ${c.fix?`<p class="c-note ok"><b>Corrected against the college's own page</b>${c.fix}</p>`:''}
+    ${c.dispute?`<p class="c-note"><b>Sources disagree — phone the lodge</b>${c.dispute}</p>`:''}
+    <div class="c-links">${links.join('')}</div>
+    <p class="c-src">Source · ${c.src==='B'?'<span class="b">college website, read daily</span>':'university listing, audited weekly'} · checked 24 Aug 2026${c.telOK?' · lodge number confirmed':''}</p>
+  </article>`;
+}
+function matches(c){
+  const q=state.q.trim().toLowerCase();
+  if(q && !(`${c.n} ${c.st} ${c.pc}`.toLowerCase().includes(q))) return false;
+  if(state.f.has('open') && !isOpen(c)) return false;
+  if(state.f.has('free') && c.price!==0) return false;
+  if(state.f.has('walkin') && c.access!=='walkin') return false;
+  if(state.f.has('tour') && !c.tour) return false;
+  if(state.f.has('check') && !c.dispute) return false;
+  if(state.f.has('ring') && !c.advice) return false;
+  return true;
+}
+function render(){
+  const list=document.getElementById('list');
+  const shown=C.filter(matches);
+  if(!shown.length){list.innerHTML='<div class="empty">No colleges match. Clear a filter or search for something else.</div>';return;}
+  let html='';
+  GROUPS.forEach(g=>{
+    const set=shown.filter(c=>c.access===g.k).sort((a,b)=>a.n.localeCompare(b.n));
+    if(!set.length) return;
+    html+=`<h2 class="group-h">${g.t}</h2><p class="group-c">${set.length} ${set.length===1?'college':'colleges'} — ${g.s}</p>`+set.map(card).join('');
+  });
+  list.innerHTML=html;
+}
+function jump(name){
+  const id=slug(name);
+  if(!document.getElementById(id)){
+    state.q=''; state.f.clear();
+    document.getElementById('q').value='';
+    document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed','false'));
+    render();
+  }
+  const t=document.getElementById(id);
+  if(t){t.scrollIntoView({behavior:'smooth',block:'start'});
+    t.classList.add('flash'); setTimeout(()=>t.classList.remove('flash'),1500);}
+}
+document.getElementById('q').addEventListener('input',e=>{state.q=e.target.value;render()});
+document.querySelectorAll('.chip').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const f=b.dataset.f, on=b.getAttribute('aria-pressed')==='true';
+    b.setAttribute('aria-pressed',String(!on));
+    on?state.f.delete(f):state.f.add(f);
+    render();
+  });
+});
+render();
+</script>
+</body>
+</html>

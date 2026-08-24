@@ -1,0 +1,38 @@
+# .github/workflows/daily.yml — refresh college data every morning, redeploy on change
+name: daily-refresh
+on:
+  schedule:
+    - cron: "15 5 * * *"        # 05:15 UTC = 06:15 Oxford in summer
+  workflow_dispatch:
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests beautifulsoup4 lxml
+      - name: Scrape tier-B colleges and harvest contacts
+        working-directory: pipeline
+        run: |
+          python scrape.py || true          # exit 1 just means "something changed"
+          python contacts.py
+      - name: Rebuild the site with fresh data and today's date
+        run: |
+          python - <<'PY'
+          import datetime, pathlib
+          t = pathlib.Path("pipeline/site_template.html").read_text()
+          d = pathlib.Path("pipeline/data_block.js").read_text()
+          g = pathlib.Path("pipeline/geo.json").read_text()
+          today = datetime.date.today().strftime("%-d %b %Y")
+          out = (t.replace("/*__DATA__*/", d).replace("/*__GEO__*/", g)
+                  .replace("checked 24 Aug 2026", f"checked {today}"))
+          pathlib.Path("deploy/index.html").write_text(out)
+          PY
+      - name: Commit if anything moved (triggers Pages deploy)
+        run: |
+          git config user.name "oxfordquads-bot"
+          git config user.email "bot@oxfordquads.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "daily refresh $(date -u +%F)"
+          git push

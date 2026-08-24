@@ -1,0 +1,616 @@
+[
+ {
+  "name": "All Souls College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:00+00:00",
+  "url": "https://www.asc.ox.ac.uk/visit-the-college",
+  "status": "ok",
+  "strength": 2,
+  "lines": [
+   {
+    "text": "Admission is free and no booking required.",
+    "kind": "/price"
+   },
+   {
+    "text": "Monday-Friday 2.00pm to 4.00pm",
+    "kind": "hours"
+   },
+   {
+    "text": "Sunday 2.00pm to 4.00pm",
+    "kind": "hours"
+   },
+   {
+    "text": "Please note that the College is closed to the public over Easter, Christmas, and for the whole month of August. The College also reserves the right to close at short notice if necessary.",
+    "kind": "/closure"
+   },
+   {
+    "text": "The Library is not open to the public and is available only to registered readers. For further details, please visit the Library and Archives pages.",
+    "kind": "/closure"
+   }
+  ],
+  "closures": [],
+  "fp": "24a2f1db292a2f6c"
+ },
+ {
+  "name": "Balliol College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:02+00:00",
+  "url": "https://www.balliol.ox.ac.uk/visit-balliol",
+  "status": "ok",
+  "strength": 2,
+  "lines": [
+   {
+    "text": "Balliol College welcomes visitors who wish to tour our buildings and gardens. We are open as often as we can be, but from time to time there are College events that require the College to be closed. As part of admission, you will be able to visit the gardens, Chapel and Hall.",
+    "kind": "/closure"
+   },
+   {
+    "text": "We are open from 10 . 00 am until 5 . 00 pm (or dusk, whichever is sooner).",
+    "kind": "hours"
+   },
+   {
+    "text": "Entry fee: \u00a3 6 per adult, \u00a3 3 concessions and students, free to potential applicants.",
+    "kind": "/price"
+   },
+   {
+    "text": "Admission includes free map and guide.",
+    "kind": "/price"
+   },
+   {
+    "text": "Members of Oxford University and Oxford alumni are allowed free entry.",
+    "kind": "/price"
+   }
+  ],
+  "closures": [],
+  "fp": "f2257d41dd5b55a1"
+ },
+ {
+  "name": "Christ Church",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:05+00:00",
+  "url": "https://www.chch.ox.ac.uk/visit/tickets-and-information",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [
+   {
+    "text": "The Meadow is open free of charge throughout the year (except 25 December) offering a peaceful and beautiful space for everyone to enjoy.",
+    "kind": "/price"
+   }
+  ],
+  "closures": [],
+  "fp": "a1829caa3a021bcb"
+ },
+ {
+  "name": "Corpus Christi College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:09+00:00",
+  "url": "https://www.ccc.ox.ac.uk/about-corpus/contact-us/visitor-information",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "Corpus Christi College welcomes visitors daily from 2.00pm \u2013 5.00pm. We welcome groups subject to a maximum of 19 people. Occasionally during the year we will be closed for College events so it is always best to contact the Porters on 01865 276700 prior to planning a visit.",
+    "kind": "hours/closure"
+   }
+  ],
+  "closures": [],
+  "fp": "f41300a68f8438cd"
+ },
+ {
+  "name": "Exeter College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:12+00:00",
+  "url": "https://www.exeter.ox.ac.uk/contact-us/",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "The College Library is closed to visitors as it is a place of quiet study. If you wish to see the Library, you must make an appointment with the Development office .",
+    "kind": "/closure"
+   },
+   {
+    "text": "Bodleian Card holders and Oxford Alumni Card holders can visit for free, daily between 2 pm and 5 pm, provided they have their card with them and the College is not closed for a special event.",
+    "kind": "hours/price/closure"
+   },
+   {
+    "text": "Members of the public are welcome to visit outside of term time provided they are with a pre-booked tour group. Entrance costs \u00a34 per person.",
+    "kind": "/price/closure"
+   },
+   {
+    "text": "We suggest all visitors contact the Porters\u2019 Lodge on 01865 279600 to check the College is open (and any parts that may be closed) before visiting.",
+    "kind": "/closure"
+   }
+  ],
+  "closures": [],
+  "fp": "8aa257f7bb0e4f8c"
+ },
+ {
+  "name": "Harris Manchester College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:24+00:00",
+  "url": "https://www.hmc.ox.ac.uk/",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [],
+  "closures": [],
+  "fp": "e3b0c44298fc1c14"
+ },
+ {
+  "name": "Hertford College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:29+00:00",
+  "url": "https://www.hertford.ox.ac.uk/",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [],
+  "closures": [],
+  "fp": "e3b0c44298fc1c14"
+ },
+ {
+  "name": "Jesus College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:34+00:00",
+  "url": "https://www.jesus.ox.ac.uk/visit-us/",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [],
+  "closures": [],
+  "fp": "e3b0c44298fc1c14"
+ },
+ {
+  "name": "Lincoln College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:40+00:00",
+  "url": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "If you are a prospective student interested in attending Lincoln College, please do come and have a look round. We are open daily from 2pm to 5pm. If you would like a full tour of the College, please contact the Admissions Office to see if someone is available to show you round (Monday-Friday, 9am to 5pm).",
+    "kind": "hours"
+   },
+   {
+    "text": "If you are planning to drive into Oxford city centre, please be aware of additional travel restrictions. The High Street is closed to private vehicles between 7.30am and 6.30pm daily. There is also a rising bollard in operation on Turl Street.",
+    "kind": "hours/closure"
+   }
+  ],
+  "closures": [],
+  "fp": "d47dda554687769e"
+ },
+ {
+  "name": "Magdalen College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:44+00:00",
+  "url": "https://www.magd.ox.ac.uk/visiting-magdalen-college/",
+  "status": "ok",
+  "strength": 7,
+  "lines": [
+   {
+    "text": "Magdalen College is open every day from 5 January to 21 December between 10am and dusk or 5.00pm, whichever is the earlier, with the exception of July, August and September when the college will close at 6.30pm .",
+    "kind": "hours"
+   },
+   {
+    "text": "Magdalen College is open every day from 5 January to 21 December between 10am and dusk or 5.00pm, whichever is the earlier, with the exception of July, August and September when the college will close at 6.30pm",
+    "kind": "hours"
+   },
+   {
+    "text": "The college will be closed all day on Friday June 26th, 27th and 28th 2026",
+    "kind": "/closure"
+   },
+   {
+    "text": "The college will be open from 10am to 1pm only on Thursday September 24th 2026 .",
+    "kind": "hours"
+   },
+   {
+    "text": "The college will be open from 10am to 1pm only on Thursday September 24th 2026",
+    "kind": "hours"
+   },
+   {
+    "text": "The college will be closed all day on Friday September 25th and Sunday October 4th 2026.",
+    "kind": "/closure"
+   },
+   {
+    "text": "(These are subject to occasional change which will be advertised on this website, or our noticeboard outside the main entrance. The College will be closed to all visitors on 22 December \u2013 31 December, all dates inclusive, but see below for New Year\u2019s Day 2027) .",
+    "kind": "/closure"
+   },
+   {
+    "text": "(These are subject to occasional change which will be advertised on this website, or our noticeboard outside the main entrance. The College will be closed to all visitors on 22 December \u2013 31 December, all dates inclusive, but see below for New Year\u2019s Day 2027)",
+    "kind": "/closure"
+   },
+   {
+    "text": "Adults: \u00a310.00 Over 65s, children, students: \u00a39.00 Family ticket (2 adults and up to 3 children aged 7 or over): \u00a328",
+    "kind": "hours/price"
+   },
+   {
+    "text": "Free admission is available to:",
+    "kind": "/price"
+   },
+   {
+    "text": "Joint tickets for Magdalen and the Oxford Botanic Garden are available at either location for: Adults: \u00a317 Concessions: \u00a315 (family and group joint tickets not available). These tickets remain valid for one entry at each venue within 12 months of purchase.",
+    "kind": "/price"
+   },
+   {
+    "text": "Payment will be by card only, no cash. For details of charges and times for Guided Tours please see the section below on Summer Tours. Where applicable, prices include VAT. The last admission is 30 minutes before closing time.",
+    "kind": "/closure"
+   },
+   {
+    "text": "We welcome groups subject to a maximum of 20 people , larger groups may be split over consecutive time periods. Groups should book in advance using the group admission form . Please note, groups of under 21-year-olds must be accompanied by a responsible person throughout their visit at a ratio of 1:20",
+    "kind": "hours"
+   },
+   {
+    "text": "An illustrated short history of the College is available at the Porters\u2019 Lodge, price \u00a35.",
+    "kind": "/price"
+   },
+   {
+    "text": "Refreshments, including morning coffee and snacks, light lunches and afternoon teas are available in the Old Kitchen Bar and Riverside Terrace Monday-Saturday from 10am to 5.30pm (closed on Sunday). The Old Kitchen Bar will be closed over Easter 2026, Friday April 3rd to Monday April 6th inclusive.",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "New Year\u2019s Day : On 1st January the college will be open to the public from 10am to 3.30pm. There will be no admission charge. The Old Kitchen Snack Bar will not be open.",
+    "kind": "hours"
+   }
+  ],
+  "closures": [],
+  "fp": "50753e252f480dcb"
+ },
+ {
+  "name": "Mansfield College",
+  "tier": "B",
+  "checked": "2026-08-24T16:01:46+00:00",
+  "url": "https://www.mansfield.ox.ac.uk/",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [],
+  "closures": [],
+  "fp": "e3b0c44298fc1c14"
+ },
+ {
+  "name": "Merton College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:04+00:00",
+  "url": "https://www.merton.ox.ac.uk/visitor-information",
+  "status": "ok",
+  "strength": 4,
+  "lines": [
+   {
+    "text": "Monday to Friday: 2pm \u2013 5pm",
+    "kind": "hours"
+   },
+   {
+    "text": "Saturday: 10am \u2013 5pm",
+    "kind": "hours"
+   },
+   {
+    "text": "Sunday: noon \u2013 5pm",
+    "kind": "hours"
+   },
+   {
+    "text": "Last admission: 4.30pm.",
+    "kind": "hours"
+   },
+   {
+    "text": "The college is closed on the following days due to internal events taking place:",
+    "kind": "/closure"
+   },
+   {
+    "text": "Adults: \u00a35.00 Concessions: \u00a33.00 (ages 65+ and children aged 13-17)",
+    "kind": "hours/price"
+   },
+   {
+    "text": "Admission is free for:",
+    "kind": "/price"
+   },
+   {
+    "text": "Please note that the Hall, Fellows Garden, and residential areas are typically closed to all visitors, including alumni.",
+    "kind": "/closure"
+   }
+  ],
+  "closures": [],
+  "fp": "9ffc086b87fee946"
+ },
+ {
+  "name": "New College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:06+00:00",
+  "url": "https://www.new.ox.ac.uk/visiting-the-college",
+  "status": "ok",
+  "strength": 5,
+  "lines": [
+   {
+    "text": "For all tourism enquiries please email: tourism@new.ox.ac.uk or call: 01865 279544 (Monday to Sunday 10:00am to 4:00pm)",
+    "kind": "hours"
+   },
+   {
+    "text": "10.00 am-5.00 pm (7 days a week) - please note that last entry is 4:30pm.",
+    "kind": "hours"
+   },
+   {
+    "text": "Mondays \u2013 College closed entirely",
+    "kind": "/closure"
+   },
+   {
+    "text": "Tues, Weds, Thurs, Fri and Sun \u2013 1:30-4:30pm - please note last entry is 4:00pm (We kindly ask all guests to vacate the premises by 4:30pm).",
+    "kind": "hours"
+   },
+   {
+    "text": "Saturdays 10.00 am \u2013 4:30pm or dusk, whichever is earlier - please note that last entry is 4:0pm (We kindly ask all guests to vacate the premises by 4:30pm).",
+    "kind": "hours"
+   },
+   {
+    "text": "Concessions (seniors, under 16s and full time students): \u00a311",
+    "kind": "/price"
+   },
+   {
+    "text": "Family ticket (2 adults and up to 3 children aged 7 or over): \u00a332",
+    "kind": "/price"
+   },
+   {
+    "text": "Year round free admission is available to:",
+    "kind": "/price"
+   },
+   {
+    "text": "We offer free entry to companions or carers of visitors with disabilities. The visitor with disability pays the reduced concession admission fee upon entry (carer/companion free).",
+    "kind": "/price"
+   }
+  ],
+  "closures": [
+   {
+    "text": "The Hall will be closed daily from 11.45 am-2.00 pm, but timings may vary according to our catering commitments.",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Thursday 17th September - Chapel closed from 2:00pm to 3:45pm",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Friday 18th September - College closed all day (Open Day)",
+    "kind": "/closure"
+   },
+   {
+    "text": "Wednesday 23rd September - College closed all day",
+    "kind": "/closure"
+   },
+   {
+    "text": "Friday 25th September - College closed all day",
+    "kind": "/closure"
+   },
+   {
+    "text": "Saturday 26th September - College closed all day",
+    "kind": "/closure"
+   },
+   {
+    "text": "Saturday 7th November - Cloisters closed from 12:00 to 3:00pm",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Saturday 14th November - Cloisters closed from 12:00 to 3:00pm",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Saturday 12th December - College closed all day",
+    "kind": "/closure"
+   },
+   {
+    "text": "Christmas closure: 23rd December - 4th January",
+    "kind": "/closure"
+   },
+   {
+    "text": "Saturday 27th February - Cloisters closed from 12:00 to 3:00pm",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Saturday 20th March - College closed all day.",
+    "kind": "/closure"
+   }
+  ],
+  "fp": "46832d484d4eb377"
+ },
+ {
+  "name": "Oriel College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:10+00:00",
+  "url": "https://www.oriel.ox.ac.uk/visit-oriel/",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "On weekends, College is open between 2-5pm. Please let the Porters know that you are an Orielensis using your alumni card and you will be free to look around the quads, Hall and Chapel.",
+    "kind": "hours/price"
+   },
+   {
+    "text": "The College is generally open for visitors between 2pm and 5pm (or dusk, whichever is earlier) each day.",
+    "kind": "hours"
+   },
+   {
+    "text": "Adults: \u00a33 Concessions: \u00a32",
+    "kind": "/price"
+   }
+  ],
+  "closures": [],
+  "fp": "a450f95b220cc813"
+ },
+ {
+  "name": "St Catherine's College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:17+00:00",
+  "url": "https://www.stcatz.ox.ac.uk/",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [],
+  "closures": [],
+  "fp": "e3b0c44298fc1c14"
+ },
+ {
+  "name": "St Edmund Hall",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:23+00:00",
+  "url": "https://www.seh.ox.ac.uk/discover/explore-teddy-hall/visiting-the-college",
+  "status": "ok",
+  "strength": 2,
+  "lines": [
+   {
+    "text": "Open: Daily 10am-4pm (except during events and examination periods)",
+    "kind": "hours"
+   },
+   {
+    "text": "Charge: Seasonal summer charge: \u00a32. Under 14s free. St Edmund Hall welcomes visits from prospective students, alumni and other members of the University.",
+    "kind": "/price"
+   }
+  ],
+  "closures": [],
+  "fp": "b7dd1a9a657c7214"
+ },
+ {
+  "name": "St Hilda's College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:27+00:00",
+  "url": "https://www.st-hildas.ox.ac.uk/",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "Our exciting \u00a325 million fundraising campaign will keep St Hilda\u2019s at the heart of excellence. Giving all of our students the edge, so they can keep turning pioneering ideas into reality.",
+    "kind": "/price"
+   }
+  ],
+  "closures": [],
+  "fp": "d4807498a0716270"
+ },
+ {
+  "name": "St Hugh's College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:35+00:00",
+  "url": "https://www.st-hughs.ox.ac.uk/",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [],
+  "closures": [],
+  "fp": "e3b0c44298fc1c14"
+ },
+ {
+  "name": "St John's College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:41+00:00",
+  "url": "https://www.sjc.ox.ac.uk/discover/visit-us/",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "Please note that the College is currently closed to visitors until Friday 14 August.",
+    "kind": "/closure"
+   },
+   {
+    "text": "Otherwise, St John\u2019s is open to visitors daily between 2.00 \u2013 5.00pm (summer), or until 4.00pm (winter). The College is closed for University closure periods.",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Members of the public are welcome to visit the Gardens from 2.00 \u2013 5.00pm (summer), or 2.00 \u2013 4.00pm (winter)",
+    "kind": "hours"
+   },
+   {
+    "text": "The Great Lawn is currently closed to visitors as it has suffered so much this year, largely owing to some highly variable and very challenging weather patterns. As a matter of urgency, it needs to undergo mandatory rest and maintenance work. The Daisy Lawn remains open for your enjoyment.",
+    "kind": "/closure"
+   },
+   {
+    "text": "Chapel The Chapel is open Thursday to Tuesday from 1.30 to 5.00 pm, or until dusk in the winter. The Chapel is closed on Wednesdays.",
+    "kind": "hours/closure"
+   }
+  ],
+  "closures": [],
+  "fp": "f04cebb594b5b362"
+ },
+ {
+  "name": "St Peter's College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:44+00:00",
+  "url": "https://www.spc.ox.ac.uk/connect/visit-college",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "Charge: visiting St Peter's College is free, but donations are welcome",
+    "kind": "/price"
+   },
+   {
+    "text": "Hours: we are open for visitors from 10:00-17:00",
+    "kind": "hours"
+   }
+  ],
+  "closures": [],
+  "fp": "49963017fb896a68"
+ },
+ {
+  "name": "Somerville College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:49+00:00",
+  "url": "https://www.some.ox.ac.uk/about/visit-us/",
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "Walking up from the main train station is very convenient. Several regular bus services run virtually door to door in just under ten minutes, with a return costing around \u00a34. You can walk the same distance in around 15-20 minutes.",
+    "kind": "/price"
+   }
+  ],
+  "closures": [],
+  "fp": "ac6e34cda5aaf0d0"
+ },
+ {
+  "name": "Trinity College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:55+00:00",
+  "url": "https://www.trinity.ox.ac.uk/visiting",
+  "status": "ok",
+  "strength": 3,
+  "lines": [
+   {
+    "text": "During term time: 10am to 12pm & 2pm to 5pm.",
+    "kind": "hours"
+   },
+   {
+    "text": "Out of term: 10am to 12pm, &1pm until 5pm.",
+    "kind": "hours"
+   },
+   {
+    "text": "Adults: \u00a37 Concessions: \u00a35 Students: \u00a35 Groups: \u00a35 per person Under 12\u2019s: free of charge",
+    "kind": "/price"
+   }
+  ],
+  "closures": [],
+  "fp": "dd43b479af6de91c"
+ },
+ {
+  "name": "University College",
+  "tier": "B",
+  "checked": "2026-08-24T16:02:57+00:00",
+  "url": "https://www.univ.ox.ac.uk/",
+  "status": "no-visitor-hours",
+  "strength": 0,
+  "lines": [],
+  "closures": [],
+  "fp": "e3b0c44298fc1c14"
+ },
+ {
+  "name": "Wadham College",
+  "tier": "B",
+  "checked": "2026-08-24T16:03:09+00:00",
+  "url": "https://www.wadham.ox.ac.uk/visit-us",
+  "status": "ok",
+  "strength": 2,
+  "lines": [
+   {
+    "text": "In term time the College is open to visitors from 13.00 to 16.15.",
+    "kind": "hours"
+   },
+   {
+    "text": "Out of term we are open from 10.30 to 11.45 then 13.00 to 16.15.",
+    "kind": "hours"
+   },
+   {
+    "text": "Wadham will be closed on the following days in 2026:",
+    "kind": "/closure"
+   }
+  ],
+  "closures": [],
+  "fp": "ead017d49e790dad"
+ }
+]

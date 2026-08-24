@@ -1,0 +1,31 @@
+# Oxford Quads — Oxford college visitor access
+> Live visitor access for all 39 colleges and 4 permanent private halls of the
+> University of Oxford: today's opening hours, entry prices, booking rules, and
+> the porters' lodge phone number and email for every college.
+
+## What this site knows
+- Which colleges are open to visitors right now (computed in Europe/London time,
+  accounting for day of week, month, and Oxford term vs vacation)
+- Entry prices, including concessions and who gets in free
+- Whether entry is walk-in, pre-booked, appointment-only, restricted to members,
+  or currently closed
+- The porters' lodge telephone number for every college, and a visitor email
+  where the college publishes one
+
+## Data provenance — important for citation
+- 24 colleges (all priced, disputed, or previously-wrong entries) are scraped
+  daily from the college's own website
+- 19 colleges come from the University of Oxford's central visiting page,
+  re-audited weekly
+- Each college's card states its source and last-checked date
+- Structured data (schema.org ItemList of CollegeOrUniversity) is embedded in
+  the page's JSON-LD
+
+## Caveats an assistant should repeat to users
+- Colleges close at short notice for exams, ceremonies and events, announced at
+  the lodge, not online. For a same-day visit, phoning the lodge is the only
+  certain check.
+- Some colleges (Christ Church among them) sell timed tickets that can sell out.
+
+## Pages
+- [Oxford Quads](https://oxfordquads.com/): the single-page live guide

@@ -1,0 +1,571 @@
+[
+ {
+  "name": "All Souls College",
+  "tier": "B",
+  "why": [
+   "sources disagree",
+   "seasonal hours"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.asc.ox.ac.uk/visiting-college",
+  "closures_url": null,
+  "homepage": "https://www.asc.ox.ac.uk/"
+ },
+ {
+  "name": "Balliol College",
+  "tier": "B",
+  "why": [
+   "priced"
+  ],
+  "access": "walkin",
+  "price": 6,
+  "authority": "college",
+  "url": "https://www.balliol.ox.ac.uk/visit-balliol",
+  "closures_url": null,
+  "homepage": "https://www.balliol.ox.ac.uk/"
+ },
+ {
+  "name": "Blackfriars",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.bfriars.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.bfriars.ox.ac.uk/"
+ },
+ {
+  "name": "Brasenose College",
+  "tier": "A",
+  "why": [
+   "verified at source"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.bnc.ox.ac.uk/about-brasenose/visiting/",
+  "closures_url": null,
+  "homepage": "https://www.bnc.ox.ac.uk/"
+ },
+ {
+  "name": "Campion Hall",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "appointment",
+  "price": null,
+  "authority": "ox.ac.uk",
+  "url": "https://www.campion.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.campion.ox.ac.uk/"
+ },
+ {
+  "name": "Christ Church",
+  "tier": "B",
+  "why": [
+   "ox.ac.uk was wrong"
+  ],
+  "access": "book",
+  "price": null,
+  "authority": "college",
+  "url": "https://www.chch.ox.ac.uk/visit/tickets-and-information",
+  "closures_url": "https://www.chch.ox.ac.uk/visit/tickets-and-information",
+  "homepage": "https://www.chch.ox.ac.uk/visit-us"
+ },
+ {
+  "name": "Corpus Christi College",
+  "tier": "B",
+  "why": [
+   "sources disagree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.ccc.ox.ac.uk/visiting-corpus",
+  "closures_url": null,
+  "homepage": "https://www.ccc.ox.ac.uk/"
+ },
+ {
+  "name": "Exeter College",
+  "tier": "B",
+  "why": [
+   "priced",
+   "sources disagree"
+  ],
+  "access": "book",
+  "price": 4,
+  "authority": "college",
+  "url": "https://www.exeter.ox.ac.uk/contact-us/",
+  "closures_url": null,
+  "homepage": "http://www.exeter.ox.ac.uk/"
+ },
+ {
+  "name": "Green Templeton College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "appointment",
+  "price": null,
+  "authority": "ox.ac.uk",
+  "url": "https://www.gtc.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.gtc.ox.ac.uk/"
+ },
+ {
+  "name": "Harris Manchester College",
+  "tier": "B",
+  "why": [
+   "sources disagree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.hmc.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.hmc.ox.ac.uk/"
+ },
+ {
+  "name": "Hertford College",
+  "tier": "B",
+  "why": [
+   "sources disagree"
+  ],
+  "access": "restricted",
+  "price": null,
+  "authority": "college",
+  "url": "https://www.hertford.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.hertford.ox.ac.uk/"
+ },
+ {
+  "name": "Jesus College",
+  "tier": "B",
+  "why": [
+   "priced",
+   "never verified"
+  ],
+  "access": "book",
+  "price": 3,
+  "authority": "college",
+  "url": "https://www.jesus.ox.ac.uk/visit-us/",
+  "closures_url": null,
+  "homepage": "https://www.jesus.ox.ac.uk/"
+ },
+ {
+  "name": "Keble College",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.keble.ox.ac.uk/visiting-keble/",
+  "closures_url": null,
+  "homepage": "https://www.keble.ox.ac.uk/"
+ },
+ {
+  "name": "Kellogg College",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.kellogg.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.kellogg.ox.ac.uk/"
+ },
+ {
+  "name": "Lady Margaret Hall",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.lmh.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.lmh.ox.ac.uk/"
+ },
+ {
+  "name": "Linacre College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "appointment",
+  "price": null,
+  "authority": "ox.ac.uk",
+  "url": "https://www.linacre.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.linacre.ox.ac.uk/"
+ },
+ {
+  "name": "Lincoln College",
+  "tier": "B",
+  "why": [
+   "never verified"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
+  "closures_url": null,
+  "homepage": "https://www.lincoln.ox.ac.uk/"
+ },
+ {
+  "name": "Magdalen College",
+  "tier": "B",
+  "why": [
+   "priced",
+   "seasonal hours"
+  ],
+  "access": "walkin",
+  "price": 10,
+  "authority": "college",
+  "url": "https://www.magd.ox.ac.uk/visiting-magdalen-college/",
+  "closures_url": "https://www.magd.ox.ac.uk/visiting-magdalen-college/",
+  "homepage": "https://www.magd.ox.ac.uk/visiting-magdalen-college/"
+ },
+ {
+  "name": "Mansfield College",
+  "tier": "B",
+  "why": [
+   "never verified"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.mansfield.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.mansfield.ox.ac.uk/"
+ },
+ {
+  "name": "Merton College",
+  "tier": "B",
+  "why": [
+   "priced",
+   "sources disagree"
+  ],
+  "access": "walkin",
+  "price": 5,
+  "authority": "college",
+  "url": "https://www.merton.ox.ac.uk/visitor-information",
+  "closures_url": null,
+  "homepage": "https://www.merton.ox.ac.uk/"
+ },
+ {
+  "name": "New College",
+  "tier": "B",
+  "why": [
+   "priced",
+   "ox.ac.uk was wrong",
+   "seasonal hours"
+  ],
+  "access": "walkin",
+  "price": 12,
+  "authority": "college",
+  "url": "https://www.new.ox.ac.uk/visiting-the-college",
+  "closures_url": "https://www.new.ox.ac.uk/planned-closures",
+  "homepage": "https://www.new.ox.ac.uk/"
+ },
+ {
+  "name": "Nuffield College",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "closed",
+  "price": null,
+  "authority": "ox.ac.uk",
+  "url": "https://www.nuffield.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.nuffield.ox.ac.uk/"
+ },
+ {
+  "name": "Oriel College",
+  "tier": "B",
+  "why": [
+   "priced"
+  ],
+  "access": "walkin",
+  "price": 3,
+  "authority": "college",
+  "url": "https://www.oriel.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.oriel.ox.ac.uk/"
+ },
+ {
+  "name": "Pembroke College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "restricted",
+  "price": null,
+  "authority": "ox.ac.uk",
+  "url": "http://www.pmb.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "http://www.pmb.ox.ac.uk/"
+ },
+ {
+  "name": "The Queen's College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "book",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "http://www.queens.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "http://www.queens.ox.ac.uk/"
+ },
+ {
+  "name": "Regent's Park College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "appointment",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.rpc.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.rpc.ox.ac.uk/"
+ },
+ {
+  "name": "Reuben College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "appointment",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://reuben.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://reuben.ox.ac.uk/"
+ },
+ {
+  "name": "St Anne's College",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.st-annes.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.st-annes.ox.ac.uk/"
+ },
+ {
+  "name": "St Antony's College",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.sant.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.sant.ox.ac.uk/"
+ },
+ {
+  "name": "St Catherine's College",
+  "tier": "B",
+  "why": [
+   "sources disagree"
+  ],
+  "access": "closed",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.stcatz.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.stcatz.ox.ac.uk/"
+ },
+ {
+  "name": "St Cross College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "appointment",
+  "price": null,
+  "authority": "ox.ac.uk",
+  "url": "https://www.stx.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.stx.ox.ac.uk/"
+ },
+ {
+  "name": "St Edmund Hall",
+  "tier": "B",
+  "why": [
+   "priced"
+  ],
+  "access": "walkin",
+  "price": 2,
+  "authority": "college",
+  "url": "https://www.seh.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.seh.ox.ac.uk/"
+ },
+ {
+  "name": "St Hilda's College",
+  "tier": "B",
+  "why": [
+   "sources disagree"
+  ],
+  "access": "appointment",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.st-hildas.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.st-hildas.ox.ac.uk/"
+ },
+ {
+  "name": "St Hugh's College",
+  "tier": "B",
+  "why": [
+   "sources disagree"
+  ],
+  "access": "book",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.st-hughs.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "http://www.st-hughs.ox.ac.uk/"
+ },
+ {
+  "name": "St John's College",
+  "tier": "B",
+  "why": [
+   "never verified"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.sjc.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.sjc.ox.ac.uk/"
+ },
+ {
+  "name": "St Peter's College",
+  "tier": "B",
+  "why": [
+   "never verified"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.spc.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.spc.ox.ac.uk/"
+ },
+ {
+  "name": "Somerville College",
+  "tier": "B",
+  "why": [
+   "never verified",
+   "seasonal hours"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.some.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.some.ox.ac.uk/"
+ },
+ {
+  "name": "Trinity College",
+  "tier": "B",
+  "why": [
+   "priced",
+   "seasonal hours"
+  ],
+  "access": "walkin",
+  "price": 7,
+  "authority": "college",
+  "url": "https://www.trinity.ox.ac.uk/visiting",
+  "closures_url": null,
+  "homepage": "https://www.trinity.ox.ac.uk/"
+ },
+ {
+  "name": "University College",
+  "tier": "B",
+  "why": [
+   "priced",
+   "never verified"
+  ],
+  "access": "walkin",
+  "price": 5,
+  "authority": "college",
+  "url": "https://www.univ.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.univ.ox.ac.uk/"
+ },
+ {
+  "name": "Wadham College",
+  "tier": "B",
+  "why": [
+   "seasonal hours"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "college",
+  "url": "https://www.wadham.ox.ac.uk/groups-visiting-wadham-college",
+  "closures_url": null,
+  "homepage": "https://www.wadham.ox.ac.uk/"
+ },
+ {
+  "name": "Wolfson College",
+  "tier": "A",
+  "why": [
+   "both University sources agree"
+  ],
+  "access": "walkin",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.wolfson.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.wolfson.ox.ac.uk/"
+ },
+ {
+  "name": "Worcester College",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "restricted",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.worc.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.worc.ox.ac.uk/"
+ },
+ {
+  "name": "Wycliffe Hall",
+  "tier": "A",
+  "why": [
+   "appointment only, low volatility"
+  ],
+  "access": "appointment",
+  "price": 0,
+  "authority": "ox.ac.uk",
+  "url": "https://www.wycliffe.ox.ac.uk/",
+  "closures_url": null,
+  "homepage": "https://www.wycliffe.ox.ac.uk/"
+ }
+]
