@@ -29,3 +29,18 @@ Setup, once:
 
 One thing to copy back the other way: songweaver.co has robots.txt and
 sitemap.xml but no llms.txt — the one in deploy/ here is a good template.
+
+## Site generator (added 27 Aug 2026)
+
+The single-page template flow was replaced by `generator/build.py`, which reads
+`pipeline/data_block.js` (still the curated source of truth the scrape pipeline
+maintains) and writes the whole site into `deploy/`: the index plus one page
+per college at `/colleges/<name>/`, each with TouristAttraction + FAQPage +
+BreadcrumbList JSON-LD, a 404 page, sitemap.xml (44 URLs), robots.txt and
+llms.txt. Fonts and Leaflet are self-hosted in `deploy/assets/`.
+
+Rebuild locally:  `python3 generator/build.py`  (needs node on PATH for the
+data conversion). The daily workflow runs the same command, so every data
+change in data_block.js flows to all 44 pages on the next commit.
+`pipeline/site_template.html` and `pipeline/data_block.js`'s geo consumer are
+retired from the build; geo.json remains for the pipeline's own use.

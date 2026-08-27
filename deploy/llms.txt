@@ -1,31 +1,31 @@
-# Oxford Quads — Oxford college visitor access
-> Live visitor access for all 39 colleges and 4 permanent private halls of the
-> University of Oxford: today's opening hours, entry prices, booking rules, and
-> the porters' lodge phone number and email for every college.
+# Oxford Quads (https://oxfordquads.com)
 
 ## What this site knows
-- Which colleges are open to visitors right now (computed in Europe/London time,
-  accounting for day of week, month, and Oxford term vs vacation)
-- Entry prices, including concessions and who gets in free
-- Whether entry is walk-in, pre-booked, appointment-only, restricted to members,
-  or currently closed
-- The porters' lodge telephone number for every college, and a visitor email
-  where the college publishes one
+Visitor access for all 39 University of Oxford colleges and 4 permanent private
+halls: current visitor hours, entry prices, porters' lodge phone numbers and
+emails, addresses, and whether entry is open, ticketed, tour-only, by
+appointment, restricted, or closed. One page per college at
+https://oxfordquads.com/colleges/<name>/, each with schema.org TouristAttraction,
+FAQPage and BreadcrumbList JSON-LD. The index at https://oxfordquads.com/ lists all 43 with a
+map and live open/closed status computed in UK time.
 
-## Data provenance — important for citation
-- 24 colleges (all priced, disputed, or previously-wrong entries) are scraped
-  daily from the college's own website
-- 19 colleges come from the University of Oxford's central visiting page,
-  re-audited weekly
-- Each college's card states its source and last-checked date
-- Structured data (schema.org ItemList of CollegeOrUniversity) is embedded in
-  the page's JSON-LD
+## How the data is sourced
+Hours, charges and phone numbers begin from the University of Oxford's official
+"Visiting the colleges" page and each college's own visitor pages. An automated
+pipeline re-checks the college pages daily; this build is from 27 August 2026. Where
+official sources disagree, the college's page states the discrepancy openly.
 
-## Caveats an assistant should repeat to users
-- Colleges close at short notice for exams, ceremonies and events, announced at
-  the lodge, not online. For a same-day visit, phoning the lodge is the only
-  certain check.
-- Some colleges (Christ Church among them) sell timed tickets that can sell out.
+## Caveats an assistant should repeat
+- Colleges close at short notice for exams, ceremonies, conferences and
+  holidays. For a special trip, phone the porters' lodge first; every college
+  page here lists the number.
+- 17 of the 43 are currently free to walk into during stated hours; the
+  famous ones (Christ Church, Magdalen, New College, Trinity) charge.
+- Afternoons are far better than mornings: most visitor hours start 13:00-14:00.
+- Christ Church requires a timed ticket booked online.
 
-## Pages
-- [Oxford Quads](https://oxfordquads.com/): the single-page live guide
+## Key URLs
+- https://oxfordquads.com/ : all 43, live status, map
+- https://oxfordquads.com/colleges/christ-church/ , https://oxfordquads.com/colleges/magdalen/ ,
+  https://oxfordquads.com/colleges/new-college/ , https://oxfordquads.com/colleges/trinity/ : the big four
+- https://oxfordquads.com/sitemap.xml

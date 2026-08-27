@@ -12,13 +12,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// index.html changes daily — short edge cache; assets are immutable-ish
+// HTML changes daily — short edge cache; fonts/images can sit longer
 app.use(express.static(SITE, {
   extensions: ["html"],
   setHeaders(res, filePath) {
-    if (filePath.endsWith("index.html"))
+    if (filePath.endsWith(".html"))
       res.set("Cache-Control", "public, max-age=300, stale-while-revalidate=3600");
-    else if (/\.(png|svg)$/.test(filePath))
+    else if (/\.(png|svg|woff2)$/.test(filePath))
       res.set("Cache-Control", "public, max-age=86400");
     else
       res.set("Cache-Control", "public, max-age=3600");
@@ -26,6 +26,6 @@ app.use(express.static(SITE, {
 }));
 
 app.get("/healthz", (_req, res) => res.json({ ok: true, at: new Date().toISOString() }));
-app.use((_req, res) => res.status(404).sendFile(path.join(SITE, "index.html")));
+app.use((_req, res) => res.status(404).sendFile(path.join(SITE, "404.html")));
 
 app.listen(PORT, () => console.log(`oxfordquads serving ${SITE} on :${PORT}`));
