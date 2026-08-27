@@ -70,6 +70,14 @@ header.top{border-bottom:3px double var(--line-strong);background:var(--paper)}
 .chip.mute{color:var(--mute);background:var(--mute-bg)}
 .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line-strong);border-radius:6px;padding:2px 8px;vertical-align:middle}
 
+.plan{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);max-width:640px}
+.plan-label{font-weight:700;color:var(--oxblue);font-size:.95rem}
+.plan input{font:inherit;font-size:.92rem;padding:8px 10px;border:1.5px solid var(--line-strong);border-radius:8px;background:var(--paper);color:var(--ink)}
+.plan button{font:inherit;font-size:.92rem;font-weight:700;padding:9px 14px;border-radius:8px;border:none;background:var(--oxblue);color:#fff;cursor:pointer}
+.plan button.ghost{background:transparent;color:var(--oxblue);border:1.5px solid var(--oxblue)}
+.plan-note{margin-top:10px;font-size:.88rem;color:var(--warn);background:var(--warn-bg);border-radius:8px;padding:8px 12px;max-width:620px}
+#q{font:inherit;font-size:.92rem;padding:9px 14px;border:1.5px solid var(--line-strong);border-radius:999px;background:var(--card);color:var(--ink);min-width:220px}
+#q:focus{outline:2px solid var(--stone);outline-offset:1px}
 .filters{display:flex;gap:10px;flex-wrap:wrap;padding:18px 0;position:sticky;top:0;background:linear-gradient(var(--paper) 88%,transparent);z-index:20}
 .filters button{font:inherit;font-size:.92rem;font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink-soft);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--oxblue);border-color:var(--oxblue);color:#fff}
@@ -147,10 +155,19 @@ footer.bottom a{color:var(--ink-soft)}
 <h1>Which Oxford colleges are open today?</h1>
 <p class="lede">Oxford's 39 colleges and 4 permanent private halls each set their own visiting rules, and most gates are shut more often than open. This page shows live opening status, visitor hours, entry prices and porters' lodge contacts for all 43, so you can plan a walking route that actually gets you inside.</p>
 <p class="datestamp" id="uk-clock"></p>
+<div class="plan">
+<span class="plan-label">Planning ahead?</span>
+<input type="date" id="plan-date" aria-label="Date of your visit">
+<input type="time" id="plan-time" value="14:00" aria-label="Time of your visit, Oxford time">
+<button id="plan-go">Check that moment</button>
+<button id="plan-now" class="ghost" hidden>Back to now</button>
+</div>
+<p class="plan-note" id="plan-note" hidden>Expected status from published hours, in Oxford time. Colleges close at short notice for exams and events, so check again nearer the day.</p>
 </div>
 <div id="map" aria-label="Map of Oxford colleges, coloured by current opening status"></div>
 <p class="map-note">Pin colours show live status: green open, red closed, amber tours or appointment, grey restricted. Use each college page for turn-by-turn directions.</p>
 <div class="filters" role="group" aria-label="Filter colleges">
+<input type="search" id="q" placeholder="Find a college… try Teddy Hall" aria-label="Search colleges by name">
 <button data-f="all" aria-pressed="true">All 43</button>
 <button data-f="open-now" aria-pressed="false">Open right now</button>
 <button data-f="free" aria-pressed="false">Free entry</button>
@@ -158,221 +175,221 @@ footer.bottom a{color:var(--ink-soft)}
 <button data-f="arrange" aria-pressed="false">Tours &amp; appointment</button>
 <span class="count-note" id="count-note"></span>
 </div>
-<div class="grid" id="grid"><article class="card" data-slug="all-souls" data-tags="all free">
+<div class="grid" id="grid"><article class="card" data-slug="all-souls" data-tags="all free" data-search="all souls college allsouls">
 <h3><a href="/colleges/all-souls/">All Souls College</a></h3>
 <p class="addr">High Street, Oxford OX1 4AL</p>
 <dl><dt>Hours</dt><dd>14:00–16:00, Mon–Fri and Sun. Closed all August, and over Easter and Christmas.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="balliol" data-tags="all ticketed">
+</article><article class="card" data-slug="balliol" data-tags="all ticketed" data-search="balliol college">
 <h3><a href="/colleges/balliol/">Balliol College</a></h3>
 <p class="addr">Broad Street, Oxford OX1 3BJ</p>
 <dl><dt>Hours</dt><dd>10:00–17:00 daily, or dusk if earlier.</dd><dt>Entry</dt><dd>Adults £6 · concessions and students £3 · free for applicants, Oxford members and alumni</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £6</span></div>
-</article><article class="card" data-slug="blackfriars" data-tags="all free">
+</article><article class="card" data-slug="blackfriars" data-tags="all free" data-search="blackfriars">
 <h3><a href="/colleges/blackfriars/">Blackfriars</a></h3>
 <p class="addr">St Giles, Oxford OX1 3LY</p>
 <dl><dt>Hours</dt><dd>Church open daily in daylight hours.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="brasenose" data-tags="all free">
+</article><article class="card" data-slug="brasenose" data-tags="all free" data-search="brasenose college bnc">
 <h3><a href="/colleges/brasenose/">Brasenose College</a></h3>
 <p class="addr">Radcliffe Square, Oxford OX1 4AJ</p>
 <dl><dt>Hours</dt><dd>Mon–Fri 10:00–11:30 and 14:00–16:30 · Sat–Sun 13:00–16:30.</dd><dt>Entry</dt><dd>Free, donations welcome</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="campion-hall" data-tags="all arrange">
+</article><article class="card" data-slug="campion-hall" data-tags="all arrange" data-search="campion hall">
 <h3><a href="/colleges/campion-hall/">Campion Hall</a></h3>
 <p class="addr">Brewer Street, Oxford OX1 1QS</p>
 <dl><dt>Hours</dt><dd>By appointment only.</dd><dt>Entry</dt><dd>—</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="christ-church" data-tags="all arrange">
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
+</article><article class="card" data-slug="christ-church" data-tags="all arrange" data-search="christ church the house christchurch christ church college">
 <h3><a href="/colleges/christ-church/">Christ Church</a></h3>
 <p class="addr">St Aldate&#x27;s, Oxford OX1 1DP</p>
 <dl><dt>Hours</dt><dd>Mon–Sat 10:00–17:00, Sun 14:00–17:00, last entry 16:15. Timed ticket, booked online; tickets released weekly.</dd><dt>Entry</dt><dd>Timed ticket — adults around £20, roughly £2 less booked online, with a reduced rate 25 June–1 September 2026. Concessions available. Check the college site for the exact rate.</dd></dl>
 <div class="foot"><span class="chip mute js-status">Pre-booked tours</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="corpus-christi" data-tags="all free">
+</article><article class="card" data-slug="corpus-christi" data-tags="all free" data-search="corpus christi college corpus ccc">
 <h3><a href="/colleges/corpus-christi/">Corpus Christi College</a></h3>
 <p class="addr">Merton Street, Oxford OX1 4JF</p>
 <dl><dt>Hours</dt><dd>13:30–16:30 daily, subject to college events and exams.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="exeter" data-tags="all ticketed arrange">
+</article><article class="card" data-slug="exeter" data-tags="all ticketed arrange" data-search="exeter college">
 <h3><a href="/colleges/exeter/">Exeter College</a></h3>
 <p class="addr">Turl Street, Oxford OX1 3DP</p>
 <dl><dt>Hours</dt><dd>General visitors only outside term time and only with a pre-booked tour group. Applicants and Exeter alumni: free, daily 09:00–17:00.</dd><dt>Entry</dt><dd>£4 · under-12s free · Bodleian and Oxford alumni card holders free, 14:00–17:00</dd></dl>
 <div class="foot"><span class="chip mute js-status">Pre-booked tours</span><span class="price-tag">From £4</span></div>
-</article><article class="card" data-slug="green-templeton" data-tags="all arrange">
+</article><article class="card" data-slug="green-templeton" data-tags="all arrange" data-search="green templeton college">
 <h3><a href="/colleges/green-templeton/">Green Templeton College</a></h3>
 <p class="addr">Woodstock Road, Oxford OX2 6HG</p>
 <dl><dt>Hours</dt><dd>By appointment only.</dd><dt>Entry</dt><dd>—</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="harris-manchester" data-tags="all free">
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
+</article><article class="card" data-slug="harris-manchester" data-tags="all free" data-search="harris manchester college">
 <h3><a href="/colleges/harris-manchester/">Harris Manchester College</a></h3>
 <p class="addr">Mansfield Road, Oxford OX1 3TD</p>
 <dl><dt>Hours</dt><dd>Chapel only, when available. Mon–Fri 10:00–17:30 · Sat 08:30–20:00.</dd><dt>Entry</dt><dd>Free, donations welcome</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="hertford" data-tags="all">
+</article><article class="card" data-slug="hertford" data-tags="all" data-search="hertford college">
 <h3><a href="/colleges/hertford/">Hertford College</a></h3>
 <p class="addr">Catte Street, Oxford OX1 3BW</p>
 <dl><dt>Hours</dt><dd>Applicants and alumni may visit the main quad. All other visitors by appointment.</dd><dt>Entry</dt><dd>—</dd></dl>
-<div class="foot"><span class="chip mute js-status">Restricted entry</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="jesus" data-tags="all ticketed arrange">
+<div class="foot"><span class="chip mute js-status">Restricted entry</span></div>
+</article><article class="card" data-slug="jesus" data-tags="all ticketed arrange" data-search="jesus college">
 <h3><a href="/colleges/jesus/">Jesus College</a></h3>
 <p class="addr">Turl Street, Oxford OX1 3DW</p>
 <dl><dt>Hours</dt><dd>Pre-booked guided tours only, 14:00–16:30 daily.</dd><dt>Entry</dt><dd>Adults £3 · seniors and children over 5 £2</dd></dl>
 <div class="foot"><span class="chip mute js-status">Pre-booked tours</span><span class="price-tag">From £3</span></div>
-</article><article class="card" data-slug="keble" data-tags="all free">
+</article><article class="card" data-slug="keble" data-tags="all free" data-search="keble college">
 <h3><a href="/colleges/keble/">Keble College</a></h3>
 <p class="addr">Parks Road, Oxford OX1 3PG</p>
 <dl><dt>Hours</dt><dd>14:00–17:00 daily.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="kellogg" data-tags="all free">
+</article><article class="card" data-slug="kellogg" data-tags="all free" data-search="kellogg college">
 <h3><a href="/colleges/kellogg/">Kellogg College</a></h3>
 <p class="addr">60–62 Banbury Road, Oxford OX2 6PN</p>
 <dl><dt>Hours</dt><dd>Mon–Fri 09:00–17:00.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="lady-margaret-hall" data-tags="all free">
+</article><article class="card" data-slug="lady-margaret-hall" data-tags="all free" data-search="lady margaret hall lmh">
 <h3><a href="/colleges/lady-margaret-hall/">Lady Margaret Hall</a></h3>
 <p class="addr">Norham Gardens, Oxford OX2 6QA</p>
 <dl><dt>Hours</dt><dd>10:00–17:00 daily.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="linacre" data-tags="all arrange">
+</article><article class="card" data-slug="linacre" data-tags="all arrange" data-search="linacre college">
 <h3><a href="/colleges/linacre/">Linacre College</a></h3>
 <p class="addr">St Cross Road, Oxford OX1 3JA</p>
 <dl><dt>Hours</dt><dd>By appointment only.</dd><dt>Entry</dt><dd>—</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="lincoln" data-tags="all free">
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
+</article><article class="card" data-slug="lincoln" data-tags="all free" data-search="lincoln college">
 <h3><a href="/colleges/lincoln/">Lincoln College</a></h3>
 <p class="addr">Turl Street, Oxford OX1 3DR</p>
 <dl><dt>Hours</dt><dd>14:00–17:00 daily.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="magdalen" data-tags="all ticketed">
+</article><article class="card" data-slug="magdalen" data-tags="all ticketed" data-search="magdalen college">
 <h3><a href="/colleges/magdalen/">Magdalen College</a></h3>
 <p class="addr">High Street, Oxford OX1 4AU</p>
 <dl><dt>Hours</dt><dd>10:00 to dusk or 17:00, whichever is earlier. July, August and September: closes 18:30.</dd><dt>Entry</dt><dd>Adults £10 · over-65s, children and students £9 · family £28</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £10</span></div>
-</article><article class="card" data-slug="mansfield" data-tags="all free">
+</article><article class="card" data-slug="mansfield" data-tags="all free" data-search="mansfield college">
 <h3><a href="/colleges/mansfield/">Mansfield College</a></h3>
 <p class="addr">Mansfield Road, Oxford OX1 3TF</p>
 <dl><dt>Hours</dt><dd>Mon–Fri 09:00–17:00.</dd><dt>Entry</dt><dd>Free, donations welcome</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="merton" data-tags="all ticketed">
+</article><article class="card" data-slug="merton" data-tags="all ticketed" data-search="merton college">
 <h3><a href="/colleges/merton/">Merton College</a></h3>
 <p class="addr">Merton Street, Oxford OX1 4JD</p>
 <dl><dt>Hours</dt><dd>Mon–Fri 14:00–17:00 · Sat 10:00–17:00 · Sun 12:00–17:00. Last entry 16:30.</dd><dt>Entry</dt><dd>Adults £5 · ages 13–17 and 65+ £3 · under-13s, Oxford members and alumni free · guided tour with the medieval library £10 (summer)</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £5</span></div>
-</article><article class="card" data-slug="new-college" data-tags="all ticketed">
+</article><article class="card" data-slug="new-college" data-tags="all ticketed" data-search="new college new">
 <h3><a href="/colleges/new-college/">New College</a></h3>
 <p class="addr">New College Lane, Oxford OX1 3BN</p>
 <dl><dt>Hours</dt><dd>10 March–31 October: 10:00–17:00 daily, last entry 16:30. 1 November–9 March: closed Mondays; Tue–Fri and Sun 13:30–16:30; Sat 10:00–16:30.</dd><dt>Entry</dt><dd>Adults £12 · concessions (seniors, under-16s, students) £11 · family £32 · free: under-7s, Oxford city residents, old members, applicants, and Bodleian or alumni card holders plus two guests</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £12</span></div>
-</article><article class="card" data-slug="nuffield" data-tags="all">
+</article><article class="card" data-slug="nuffield" data-tags="all" data-search="nuffield college">
 <h3><a href="/colleges/nuffield/">Nuffield College</a></h3>
 <p class="addr">New Road, Oxford OX1 1NF</p>
 <dl><dt>Hours</dt><dd>Currently closed to visitors.</dd><dt>Entry</dt><dd>—</dd></dl>
-<div class="foot"><span class="chip mute js-status">Closed to visitors</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="oriel" data-tags="all ticketed">
+<div class="foot"><span class="chip mute js-status">Closed to visitors</span></div>
+</article><article class="card" data-slug="oriel" data-tags="all ticketed" data-search="oriel college">
 <h3><a href="/colleges/oriel/">Oriel College</a></h3>
 <p class="addr">Oriel Square, Oxford OX1 4EW</p>
 <dl><dt>Hours</dt><dd>14:00–17:00 daily, or dusk if earlier.</dd><dt>Entry</dt><dd>Adults £3 · concessions £2</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £3</span></div>
-</article><article class="card" data-slug="pembroke" data-tags="all">
+</article><article class="card" data-slug="pembroke" data-tags="all" data-search="pembroke college">
 <h3><a href="/colleges/pembroke/">Pembroke College</a></h3>
 <p class="addr">Pembroke Square, St Aldate&#x27;s, Oxford OX1 1DW</p>
 <dl><dt>Hours</dt><dd>Not open to the public.</dd><dt>Entry</dt><dd>—</dd></dl>
-<div class="foot"><span class="chip mute js-status">Restricted entry</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="queens" data-tags="all free arrange">
+<div class="foot"><span class="chip mute js-status">Restricted entry</span></div>
+</article><article class="card" data-slug="queens" data-tags="all free arrange" data-search="the queen&#x27;s college queen&#x27;s the queens college">
 <h3><a href="/colleges/queens/">The Queen&#x27;s College</a></h3>
 <p class="addr">High Street, Oxford OX1 4AW</p>
 <dl><dt>Hours</dt><dd>Pre-arranged tours only.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Pre-booked tours</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="regents-park" data-tags="all free arrange">
+</article><article class="card" data-slug="regents-park" data-tags="all free arrange" data-search="regent&#x27;s park college regents">
 <h3><a href="/colleges/regents-park/">Regent&#x27;s Park College</a></h3>
 <p class="addr">Pusey Street, Oxford OX1 2LB</p>
 <dl><dt>Hours</dt><dd>By appointment.</dd><dt>Entry</dt><dd>Free, £2 donation suggested</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="reuben" data-tags="all free arrange">
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
+</article><article class="card" data-slug="reuben" data-tags="all free arrange" data-search="reuben college">
 <h3><a href="/colleges/reuben/">Reuben College</a></h3>
 <p class="addr">Parks Road, Oxford OX1 3QP</p>
 <dl><dt>Hours</dt><dd>By invitation only, except 13:00–14:00 daily when University members may lunch in the Dining Hall.</dd><dt>Entry</dt><dd>Free</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="st-annes" data-tags="all free">
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
+</article><article class="card" data-slug="st-annes" data-tags="all free" data-search="st anne&#x27;s college">
 <h3><a href="/colleges/st-annes/">St Anne&#x27;s College</a></h3>
 <p class="addr">Woodstock Road, Oxford OX2 6HS</p>
 <dl><dt>Hours</dt><dd>09:00–17:00 daily.</dd><dt>Entry</dt><dd>Free, donations welcome</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="st-antonys" data-tags="all free">
+</article><article class="card" data-slug="st-antonys" data-tags="all free" data-search="st antony&#x27;s college antonys">
 <h3><a href="/colleges/st-antonys/">St Antony&#x27;s College</a></h3>
 <p class="addr">Woodstock Road, Oxford OX2 6JF</p>
 <dl><dt>Hours</dt><dd>08:00–17:00 daily.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="st-catherines" data-tags="all free">
+</article><article class="card" data-slug="st-catherines" data-tags="all free" data-search="st catherine&#x27;s college catz st catz catherines">
 <h3><a href="/colleges/st-catherines/">St Catherine&#x27;s College</a></h3>
 <p class="addr">Manor Road, Oxford OX1 3UJ</p>
 <dl><dt>Hours</dt><dd>No tours during the final phases of restoration work.</dd><dt>Entry</dt><dd>Free</dd></dl>
-<div class="foot"><span class="chip mute js-status">Closed to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="st-cross" data-tags="all arrange">
+<div class="foot"><span class="chip mute js-status">Closed to visitors</span></div>
+</article><article class="card" data-slug="st-cross" data-tags="all arrange" data-search="st cross college">
 <h3><a href="/colleges/st-cross/">St Cross College</a></h3>
 <p class="addr">St Giles, Oxford OX1 3LZ</p>
 <dl><dt>Hours</dt><dd>By appointment only.</dd><dt>Entry</dt><dd>—</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Ticketed</span></div>
-</article><article class="card" data-slug="st-edmund-hall" data-tags="all ticketed">
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
+</article><article class="card" data-slug="st-edmund-hall" data-tags="all ticketed" data-search="st edmund hall teddy hall seh">
 <h3><a href="/colleges/st-edmund-hall/">St Edmund Hall</a></h3>
 <p class="addr">Queen&#x27;s Lane, Oxford OX1 4AR</p>
 <dl><dt>Hours</dt><dd>10:00–16:00 daily, except during events and exams.</dd><dt>Entry</dt><dd>Summer charge £2 · under-14s free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £2</span></div>
-</article><article class="card" data-slug="st-hildas" data-tags="all free arrange">
+</article><article class="card" data-slug="st-hildas" data-tags="all free arrange" data-search="st hilda&#x27;s college">
 <h3><a href="/colleges/st-hildas/">St Hilda&#x27;s College</a></h3>
 <p class="addr">Cowley Place, Oxford OX4 1DY</p>
 <dl><dt>Hours</dt><dd>By appointment only.</dd><dt>Entry</dt><dd>Free</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="st-hughs" data-tags="all free arrange">
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
+</article><article class="card" data-slug="st-hughs" data-tags="all free arrange" data-search="st hugh&#x27;s college">
 <h3><a href="/colleges/st-hughs/">St Hugh&#x27;s College</a></h3>
 <p class="addr">St Margaret&#x27;s Road, Oxford OX2 6LE</p>
 <dl><dt>Hours</dt><dd>Visitors are welcome, but check in advance by phone or email.</dd><dt>Entry</dt><dd>Free, donations welcome</dd></dl>
 <div class="foot"><span class="chip mute js-status">Call first</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="st-johns" data-tags="all free">
+</article><article class="card" data-slug="st-johns" data-tags="all free" data-search="st john&#x27;s college">
 <h3><a href="/colleges/st-johns/">St John&#x27;s College</a></h3>
 <p class="addr">St Giles&#x27;, Oxford OX1 3JP</p>
 <dl><dt>Hours</dt><dd>13:00–17:00, or dusk if earlier. Chapel from 13:30, closed Wednesdays.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="st-peters" data-tags="all free">
+</article><article class="card" data-slug="st-peters" data-tags="all free" data-search="st peter&#x27;s college">
 <h3><a href="/colleges/st-peters/">St Peter&#x27;s College</a></h3>
 <p class="addr">New Inn Hall Street, Oxford OX1 2DL</p>
 <dl><dt>Hours</dt><dd>10:00–17:00, though hours vary — call to check.</dd><dt>Entry</dt><dd>Free, donations welcome</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="somerville" data-tags="all free">
+</article><article class="card" data-slug="somerville" data-tags="all free" data-search="somerville college">
 <h3><a href="/colleges/somerville/">Somerville College</a></h3>
 <p class="addr">Woodstock Road, Oxford OX2 6HD</p>
 <dl><dt>Hours</dt><dd>Term time only: 09:00–12:00 and 14:00–16:00. Out of term, University members and alumni card holders only.</dd><dt>Entry</dt><dd>Free, donations welcome</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="trinity" data-tags="all ticketed">
+</article><article class="card" data-slug="trinity" data-tags="all ticketed" data-search="trinity college">
 <h3><a href="/colleges/trinity/">Trinity College</a></h3>
 <p class="addr">Broad Street, Oxford OX1 3BH</p>
 <dl><dt>Hours</dt><dd>Term: 10:00–12:00 and 14:00–17:00. Out of term: 10:00–12:00 and 13:00–17:00.</dd><dt>Entry</dt><dd>Adults £7 · concessions and students £5 · groups £5 each · under-12s free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £7</span></div>
-</article><article class="card" data-slug="university-college" data-tags="all ticketed">
+</article><article class="card" data-slug="university-college" data-tags="all ticketed" data-search="university college univ">
 <h3><a href="/colleges/university-college/">University College</a></h3>
 <p class="addr">High Street, Oxford OX1 4BH</p>
 <dl><dt>Hours</dt><dd>10:00–12:00 and 14:00–16:00, seven days a week. Closed for events.</dd><dt>Entry</dt><dd>Adults £5 · concessions £3 · free for Bodleian card holders, Univ alumni, applicants and under-8s</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">From £5</span></div>
-</article><article class="card" data-slug="wadham" data-tags="all free">
+</article><article class="card" data-slug="wadham" data-tags="all free" data-search="wadham college">
 <h3><a href="/colleges/wadham/">Wadham College</a></h3>
 <p class="addr">Parks Road, Oxford OX1 3PN</p>
 <dl><dt>Hours</dt><dd>Term: 13:00–16:15. Out of term: 10:30–11:45 and 13:00–16:15.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="wolfson" data-tags="all free">
+</article><article class="card" data-slug="wolfson" data-tags="all free" data-search="wolfson college">
 <h3><a href="/colleges/wolfson/">Wolfson College</a></h3>
 <p class="addr">Linton Road, Oxford OX2 6UD</p>
 <dl><dt>Hours</dt><dd>Daylight hours.</dd><dt>Entry</dt><dd>Free</dd></dl>
 <div class="foot"><span class="chip mute js-status">Open to visitors</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="worcester" data-tags="all free">
+</article><article class="card" data-slug="worcester" data-tags="all free" data-search="worcester college">
 <h3><a href="/colleges/worcester/">Worcester College</a></h3>
 <p class="addr">Walton Street, Oxford OX1 2HB</p>
 <dl><dt>Hours</dt><dd>12:30–16:00 daily for University members, alumni, applicants and residents of OX1 and OX2.</dd><dt>Entry</dt><dd>Free</dd></dl>
-<div class="foot"><span class="chip mute js-status">Restricted entry</span><span class="price-tag">Free</span></div>
-</article><article class="card" data-slug="wycliffe-hall" data-tags="all free arrange">
+<div class="foot"><span class="chip mute js-status">Restricted entry</span></div>
+</article><article class="card" data-slug="wycliffe-hall" data-tags="all free arrange" data-search="wycliffe hall wycliffe">
 <h3><a href="/colleges/wycliffe-hall/">Wycliffe Hall</a></h3>
 <p class="addr">Banbury Road, Oxford OX2 6PW</p>
 <dl><dt>Hours</dt><dd>By appointment.</dd><dt>Entry</dt><dd>Free</dd></dl>
-<div class="foot"><span class="chip mute js-status">By appointment</span><span class="price-tag">Free</span></div>
+<div class="foot"><span class="chip mute js-status">By appointment</span></div>
 </article></div>
 <section class="band"><h2>Oxford college visitor opening times, explained</h2>
 <p>Every college is a private, working institution: students live behind those gates, and tutors teach in the quads you want to photograph. That is why visitor access is patchy and why it changes with exams, ceremonies and conferences. As a rule of thumb, afternoons beat mornings, out of term beats term time for the famous colleges, and the porters' lodge phone number answers questions no website can.</p>
@@ -391,10 +408,17 @@ function ukParts(){
   var days = {Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6,Sun:7};
   return {dow:days[o.weekday], hm:parseInt(o.hour,10)*60+parseInt(o.minute,10), month:parseInt(o.month,10)};
 }
+function dateParts(dstr, tstr){
+  var p = dstr.split('-'); var y=+p[0], mo=+p[1], d=+p[2];
+  var dow = new Date(Date.UTC(y, mo-1, d)).getUTCDay(); if(dow===0) dow=7;
+  var hm = 0;
+  if(tstr){ var a=tstr.split(':'); hm=(+a[0])*60+(+a[1]); }
+  return {dow:dow, hm:hm, month:mo};
+}
 function mins(t){ var a=t.split(':'); return parseInt(a[0],10)*60+parseInt(a[1],10); }
 function fmt(m){ var h=Math.floor(m/60), mm=m%60; return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm; }
-function collegeStatus(c){
-  var now = ukParts();
+function collegeStatus(c, when){
+  var now = when || ukParts();
   var A = c.access;
   if(A==='closed') return {cls:'shut', label:c.pill||'Closed to visitors'};
   if(A==='appointment') return {cls:'warn', label:c.pill||'By appointment'};
@@ -422,51 +446,94 @@ function collegeStatus(c){
   }
   return {cls:'shut', label:'Closed for today'};
 }
-function applyStatus(el, c){
-  var s = collegeStatus(c);
-  el.className = 'chip ' + s.cls;
+function applyStatus(el, c, when){
+  var s = collegeStatus(c, when);
+  el.classList.remove('open','shut','warn','mute');
+  el.classList.add('chip', s.cls);
   el.textContent = s.label;
   return s;
 }
 
 var COLLEGES = [{"name": "All Souls College", "slug": "all-souls", "lat": 51.753308, "lng": -1.252904, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5], "months": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12], "open": "14:00", "close": "16:00", "approx": false}], "pill": null}, {"name": "Balliol College", "slug": "balliol", "lat": 51.754951, "lng": -1.257892, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "Blackfriars", "slug": "blackfriars", "lat": 51.756124, "lng": -1.260469, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "09:00", "close": "17:00", "approx": true}], "pill": null}, {"name": "Brasenose College", "slug": "brasenose", "lat": 51.752972, "lng": -1.254747, "access": "open", "rules": [{"days": [1, 2, 3, 4, 5], "months": null, "open": "10:00", "close": "11:30", "approx": false}, {"days": [1, 2, 3, 4, 5], "months": null, "open": "14:00", "close": "16:30", "approx": false}, {"days": [7, 6], "months": null, "open": "13:00", "close": "16:30", "approx": false}], "pill": null}, {"name": "Campion Hall", "slug": "campion-hall", "lat": 51.74959, "lng": -1.258323, "access": "appointment", "rules": [], "pill": null}, {"name": "Christ Church", "slug": "christ-church", "lat": 51.750412, "lng": -1.254967, "access": "tours", "rules": [], "pill": null}, {"name": "Corpus Christi College", "slug": "corpus-christi", "lat": 51.750599, "lng": -1.253584, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "13:30", "close": "16:30", "approx": false}], "pill": null}, {"name": "Exeter College", "slug": "exeter", "lat": 51.753875, "lng": -1.255508, "access": "tours", "rules": [], "pill": null}, {"name": "Green Templeton College", "slug": "green-templeton", "lat": 51.761253, "lng": -1.263395, "access": "appointment", "rules": [], "pill": null}, {"name": "Harris Manchester College", "slug": "harris-manchester", "lat": 51.7556, "lng": -1.252395, "access": "open", "rules": [{"days": [1, 2, 3, 4, 5], "months": null, "open": "10:00", "close": "17:30", "approx": false}, {"days": [6], "months": null, "open": "08:30", "close": "20:00", "approx": false}], "pill": null}, {"name": "Hertford College", "slug": "hertford", "lat": 51.754421, "lng": -1.253595, "access": "restricted", "rules": [], "pill": null}, {"name": "Jesus College", "slug": "jesus", "lat": 51.753452, "lng": -1.257304, "access": "tours", "rules": [], "pill": null}, {"name": "Keble College", "slug": "keble", "lat": 51.758713, "lng": -1.257998, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "Kellogg College", "slug": "kellogg", "lat": 51.764356, "lng": -1.259701, "access": "open", "rules": [{"days": [1, 2, 3, 4, 5], "months": null, "open": "09:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "Lady Margaret Hall", "slug": "lady-margaret-hall", "lat": 51.765793, "lng": -1.252851, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "Linacre College", "slug": "linacre", "lat": 51.759332, "lng": -1.249699, "access": "appointment", "rules": [], "pill": null}, {"name": "Lincoln College", "slug": "lincoln", "lat": 51.752894, "lng": -1.255641, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "Magdalen College", "slug": "magdalen", "lat": 51.753348, "lng": -1.244472, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": [1, 2, 3, 4, 5, 6, 10, 11, 12], "open": "10:00", "close": "17:00", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": [7, 8, 9], "open": "10:00", "close": "18:30", "approx": false}], "pill": null}, {"name": "Mansfield College", "slug": "mansfield", "lat": 51.757347, "lng": -1.25297, "access": "open", "rules": [{"days": [1, 2, 3, 4, 5], "months": null, "open": "09:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "Merton College", "slug": "merton", "lat": 51.751099, "lng": -1.250699, "access": "open", "rules": [{"days": [1, 2, 3, 4, 5], "months": null, "open": "14:00", "close": "17:00", "approx": false}, {"days": [6], "months": null, "open": "10:00", "close": "17:00", "approx": false}, {"days": [7], "months": null, "open": "12:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "New College", "slug": "new-college", "lat": 51.754044, "lng": -1.251088, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": [4, 5, 6, 7, 8, 9, 10], "open": "10:00", "close": "17:00", "approx": false}, {"days": [7, 2, 3, 4, 5], "months": [11, 12, 1, 2, 3], "open": "13:30", "close": "16:30", "approx": false}, {"days": [6], "months": [11, 12, 1, 2, 3], "open": "10:00", "close": "16:30", "approx": false}], "pill": null}, {"name": "Nuffield College", "slug": "nuffield", "lat": 51.752729, "lng": -1.262658, "access": "closed", "rules": [], "pill": null}, {"name": "Oriel College", "slug": "oriel", "lat": 51.751826, "lng": -1.253843, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "Pembroke College", "slug": "pembroke", "lat": 51.750226, "lng": -1.258115, "access": "restricted", "rules": [], "pill": null}, {"name": "The Queen's College", "slug": "queens", "lat": 51.753276, "lng": -1.251414, "access": "tours", "rules": [], "pill": null}, {"name": "Regent's Park College", "slug": "regents-park", "lat": 51.756866, "lng": -1.260903, "access": "appointment", "rules": [], "pill": null}, {"name": "Reuben College", "slug": "reuben", "lat": 51.75801, "lng": -1.255788, "access": "appointment", "rules": [], "pill": null}, {"name": "St Anne's College", "slug": "st-annes", "lat": 51.762006, "lng": -1.261758, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "09:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "St Antony's College", "slug": "st-antonys", "lat": 51.763282, "lng": -1.262824, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "08:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "St Catherine's College", "slug": "st-catherines", "lat": 51.756559, "lng": -1.244929, "access": "closed", "rules": [], "pill": null}, {"name": "St Cross College", "slug": "st-cross", "lat": 51.756444, "lng": -1.260708, "access": "appointment", "rules": [], "pill": null}, {"name": "St Edmund Hall", "slug": "st-edmund-hall", "lat": 51.753129, "lng": -1.249765, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:00", "close": "16:00", "approx": false}], "pill": null}, {"name": "St Hilda's College", "slug": "st-hildas", "lat": 51.748435, "lng": -1.24603, "access": "appointment", "rules": [], "pill": null}, {"name": "St Hugh's College", "slug": "st-hughs", "lat": 51.766367, "lng": -1.26321, "access": "tours", "rules": [], "pill": "Call first"}, {"name": "St John's College", "slug": "st-johns", "lat": 51.757198, "lng": -1.257652, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "13:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "St Peter's College", "slug": "st-peters", "lat": 51.752485, "lng": -1.261023, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:00", "close": "17:00", "approx": true}], "pill": null}, {"name": "Somerville College", "slug": "somerville", "lat": 51.759, "lng": -1.262845, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "09:00", "close": "12:00", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "16:00", "approx": false}], "pill": null}, {"name": "Trinity College", "slug": "trinity", "lat": 51.755377, "lng": -1.25689, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:00", "close": "12:00", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:00", "close": "12:00", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "13:00", "close": "17:00", "approx": false}], "pill": null}, {"name": "University College", "slug": "university-college", "lat": 51.752078, "lng": -1.251371, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:00", "close": "12:00", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "16:00", "approx": false}], "pill": null}, {"name": "Wadham College", "slug": "wadham", "lat": 51.756222, "lng": -1.2541, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "13:00", "close": "16:15", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "10:30", "close": "11:45", "approx": false}, {"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "13:00", "close": "16:15", "approx": false}], "pill": null}, {"name": "Wolfson College", "slug": "wolfson", "lat": 51.771822, "lng": -1.254572, "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "09:00", "close": "17:00", "approx": true}], "pill": null}, {"name": "Worcester College", "slug": "worcester", "lat": 51.755396, "lng": -1.266569, "access": "restricted", "rules": [], "pill": null}, {"name": "Wycliffe Hall", "slug": "wycliffe-hall", "lat": 51.762645, "lng": -1.259745, "access": "appointment", "rules": [], "pill": null}];
-var statusBySlug = {};
-document.querySelectorAll('.card').forEach(function(card){
-  var c = COLLEGES.find(function(x){return x.slug===card.dataset.slug});
-  statusBySlug[c.slug] = applyStatus(card.querySelector('.js-status'), c);
-});
+var CURRENT = null;   // null = live now; otherwise parts from the planner
+var statusBySlug = {}, markerBySlug = {};
 var clock = document.getElementById('uk-clock');
-var ukTime = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'long',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
-var openCount = Object.keys(statusBySlug).filter(function(s){return statusBySlug[s].cls==='open'}).length;
-clock.innerHTML = 'In Oxford it is <strong>'+ukTime+'</strong> and <strong>'+openCount+' of 43</strong> are open to walk into right now.';
+var note = document.getElementById('count-note');
+var activeFilter = 'all', q = '';
+
 var map = L.map('map', {scrollWheelZoom:false}).setView([51.7565,-1.2570], 14);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
 COLLEGES.forEach(function(c){
-  var s = statusBySlug[c.slug];
-  var icon = L.divIcon({className:'', html:'<div class="pin '+s.cls+'"></div>', iconSize:[16,16], iconAnchor:[8,8]});
-  L.marker([c.lat, c.lng], {icon:icon, title:c.name}).addTo(map)
-   .bindPopup('<a href="/colleges/'+c.slug+'/">'+c.name+'</a><br>'+s.label);
+  markerBySlug[c.slug] = L.marker([c.lat, c.lng], {icon:L.divIcon({className:'', html:'<div class="pin mute"></div>', iconSize:[16,16], iconAnchor:[8,8]}), title:c.name}).addTo(map).bindPopup('');
 });
-var note = document.getElementById('count-note');
-function applyFilter(f){
+
+function applyFilter(){
   var shown = 0;
   document.querySelectorAll('.card').forEach(function(card){
     var ok;
-    if(f==='open-now') ok = statusBySlug[card.dataset.slug].cls==='open';
-    else ok = card.dataset.tags.split(' ').indexOf(f)!==-1;
+    if(activeFilter==='open-now') ok = statusBySlug[card.dataset.slug].cls==='open';
+    else ok = card.dataset.tags.split(' ').indexOf(activeFilter)!==-1;
+    if(ok && q) ok = card.dataset.search.indexOf(q)!==-1;
     card.classList.toggle('hidden', !ok);
     if(ok) shown++;
   });
   note.textContent = 'Showing '+shown+' of 43';
 }
+
+function refreshAll(){
+  document.querySelectorAll('.card').forEach(function(card){
+    var c = COLLEGES.find(function(x){return x.slug===card.dataset.slug});
+    var s = applyStatus(card.querySelector('.js-status'), c, CURRENT);
+    if(CURRENT){
+      var el = card.querySelector('.js-status');
+      el.textContent = el.textContent
+        .replace('Open now until','Open until').replace('Likely open until','Likely open until')
+        .replace(/Opens (~?[0-9:]+) today/,'Opens $1 that day').replace(/Likely opens (~?[0-9:]+)/,'Likely opens $1')
+        .replace('Closed for today','Closed by then').replace('Closed today','Closed that day');
+      s.label = el.textContent;
+    }
+    statusBySlug[c.slug] = s;
+  });
+  COLLEGES.forEach(function(c){
+    var s = statusBySlug[c.slug], m = markerBySlug[c.slug];
+    m.setIcon(L.divIcon({className:'', html:'<div class="pin '+s.cls+'"></div>', iconSize:[16,16], iconAnchor:[8,8]}));
+    m.setPopupContent('<a href="/colleges/'+c.slug+'/">'+c.name+'</a><br>'+s.label);
+  });
+  var openCount = Object.keys(statusBySlug).filter(function(s){return statusBySlug[s].cls==='open'}).length;
+  var verb = openCount===1 ? 'is' : 'are';
+  if(!CURRENT){
+    var ukTime = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'long',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+    clock.innerHTML = 'In Oxford it is <strong>'+ukTime+'</strong> and <strong>'+openCount+' of 43</strong> '+verb+' open to walk into right now.';
+  } else {
+    clock.innerHTML = 'At that moment, <strong>'+openCount+' of 43</strong> '+verb+' expected to be open to walk into.';
+  }
+  applyFilter();
+}
+
 document.querySelectorAll('.filters button').forEach(function(b){
   b.addEventListener('click', function(){
     document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed','false')});
     b.setAttribute('aria-pressed','true');
-    applyFilter(b.dataset.f);
+    activeFilter = b.dataset.f;
+    applyFilter();
   });
 });
-applyFilter('all');
+document.getElementById('q').addEventListener('input', function(){ q = this.value.toLowerCase().trim(); applyFilter(); });
+
+var planDate = document.getElementById('plan-date'), planTime = document.getElementById('plan-time');
+var planNote = document.getElementById('plan-note'), planNow = document.getElementById('plan-now');
+planDate.min = new Date().toISOString().slice(0,10);
+document.getElementById('plan-go').addEventListener('click', function(){
+  if(!planDate.value) { planDate.focus(); return; }
+  CURRENT = dateParts(planDate.value, planTime.value || '12:00');
+  planNote.hidden = false; planNow.hidden = false;
+  refreshAll();
+});
+planNow.addEventListener('click', function(){
+  CURRENT = null; planNote.hidden = true; planNow.hidden = true;
+  refreshAll();
+});
+refreshAll();
 </script>
 </body>
 </html>

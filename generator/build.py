@@ -93,6 +93,30 @@ def transform(raw):
 C = transform(load_raw())
 BY_SLUG = {c["slug"]: c for c in C}
 
+# search aliases: how people actually refer to colleges
+ALIASES = {
+    "st-edmund-hall": ["teddy hall", "seh"],
+    "university-college": ["univ"],
+    "lady-margaret-hall": ["lmh"],
+    "brasenose": ["bnc"],
+    "corpus-christi": ["corpus", "ccc"],
+    "st-catherines": ["catz", "st catz", "catherines"],
+    "christ-church": ["the house", "christchurch", "christ church college"],
+    "regents-park": ["regents"],
+    "queens": ["queen's", "the queens college"],
+    "new-college": ["new"],
+    "wycliffe-hall": ["wycliffe"],
+    "st-antonys": ["antonys"],
+    "all-souls": ["allsouls"],
+}
+
+def search_blob(c):
+    return " ".join([c["name"].lower()] + ALIASES.get(c["slug"], []))
+
+def show_price_chip(c):
+    """Price chips only where a member of the public can actually pay or walk in."""
+    return c["access"] in ("open", "tours") and c.get("entry_text")
+
 def esc(s):
     return html.escape(s, quote=True) if s else ""
 
@@ -276,6 +300,14 @@ header.top{border-bottom:3px double var(--line-strong);background:var(--paper)}
 .chip.mute{color:var(--mute);background:var(--mute-bg)}
 .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line-strong);border-radius:6px;padding:2px 8px;vertical-align:middle}
 
+.plan{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);max-width:640px}
+.plan-label{font-weight:700;color:var(--oxblue);font-size:.95rem}
+.plan input{font:inherit;font-size:.92rem;padding:8px 10px;border:1.5px solid var(--line-strong);border-radius:8px;background:var(--paper);color:var(--ink)}
+.plan button{font:inherit;font-size:.92rem;font-weight:700;padding:9px 14px;border-radius:8px;border:none;background:var(--oxblue);color:#fff;cursor:pointer}
+.plan button.ghost{background:transparent;color:var(--oxblue);border:1.5px solid var(--oxblue)}
+.plan-note{margin-top:10px;font-size:.88rem;color:var(--warn);background:var(--warn-bg);border-radius:8px;padding:8px 12px;max-width:620px}
+#q{font:inherit;font-size:.92rem;padding:9px 14px;border:1.5px solid var(--line-strong);border-radius:999px;background:var(--card);color:var(--ink);min-width:220px}
+#q:focus{outline:2px solid var(--stone);outline-offset:1px}
 .filters{display:flex;gap:10px;flex-wrap:wrap;padding:18px 0;position:sticky;top:0;background:linear-gradient(var(--paper) 88%,transparent);z-index:20}
 .filters button{font:inherit;font-size:.92rem;font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink-soft);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--oxblue);border-color:var(--oxblue);color:#fff}
@@ -348,10 +380,17 @@ function ukParts(){
   var days = {Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6,Sun:7};
   return {dow:days[o.weekday], hm:parseInt(o.hour,10)*60+parseInt(o.minute,10), month:parseInt(o.month,10)};
 }
+function dateParts(dstr, tstr){
+  var p = dstr.split('-'); var y=+p[0], mo=+p[1], d=+p[2];
+  var dow = new Date(Date.UTC(y, mo-1, d)).getUTCDay(); if(dow===0) dow=7;
+  var hm = 0;
+  if(tstr){ var a=tstr.split(':'); hm=(+a[0])*60+(+a[1]); }
+  return {dow:dow, hm:hm, month:mo};
+}
 function mins(t){ var a=t.split(':'); return parseInt(a[0],10)*60+parseInt(a[1],10); }
 function fmt(m){ var h=Math.floor(m/60), mm=m%60; return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm; }
-function collegeStatus(c){
-  var now = ukParts();
+function collegeStatus(c, when){
+  var now = when || ukParts();
   var A = c.access;
   if(A==='closed') return {cls:'shut', label:c.pill||'Closed to visitors'};
   if(A==='appointment') return {cls:'warn', label:c.pill||'By appointment'};
@@ -379,9 +418,10 @@ function collegeStatus(c){
   }
   return {cls:'shut', label:'Closed for today'};
 }
-function applyStatus(el, c){
-  var s = collegeStatus(c);
-  el.className = 'chip ' + s.cls;
+function applyStatus(el, c, when){
+  var s = collegeStatus(c, when);
+  el.classList.remove('open','shut','warn','mute');
+  el.classList.add('chip', s.cls);
   el.textContent = s.label;
   return s;
 }
@@ -442,11 +482,16 @@ def college_page(c):
     pairs = faq_pairs(c)
     jsonld = [college_jsonld(c), breadcrumb_jsonld(c), faq_jsonld(pairs)]
     extra = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
-    cjson = json.dumps({k: c.get(k) for k in ("access", "rules", "pill")}, ensure_ascii=False)
+    near = nearby(c)
+    cjson = json.dumps({
+        "me": {k: c.get(k) for k in ("access", "rules", "pill")},
+        "near": [{k: o.get(k) for k in ("slug", "access", "rules", "pill")} for o in near],
+    }, ensure_ascii=False)
     near_html = "".join(
         f'<a href="/colleges/{o["slug"]}/"><span class="n">{esc(o["name"])}</span><br>'
-        f'<span class="d">{esc(o["street"])} · {esc(status_chip_label(o))}</span></a>'
-        for o in nearby(c))
+        f'<span class="d">{esc(o["street"])}</span><br>'
+        f'<span class="chip mute js-near" data-slug="{o["slug"]}">{esc(status_chip_label(o))}</span></a>'
+        for o in near)
     email_html = f'<p><a href="mailto:{c["email"]}">{c["email"]}</a></p>' if c.get("email") else ""
     note_html = f'<p class="small">{esc(c["note"])}</p>' if c.get("note") else ""
     entry = esc(c["entry_text"]) if c.get("entry_text") else "Not published. Ask when arranging your visit."
@@ -471,7 +516,7 @@ def college_page(c):
 <span class="kicker">Oxford college visitor guide</span>
 <h1>Visiting {esc(c['name'])}{tag_html}</h1>
 <p class="sub">{esc(c['name'])} on {esc(c['street'])}: current visitor hours, entry prices and how to reach the porters' lodge, so you know before you walk there.</p>
-<div class="status-line"><span class="chip mute" id="live-status">{esc(status_chip_label(c))}</span><span class="chip mute">{esc(price_short(c))}</span></div>
+<div class="status-line"><span class="chip mute" id="live-status">{esc(status_chip_label(c))}</span>{f'<span class="chip mute">{esc(price_short(c))}</span>' if show_price_chip(c) else ''}</div>
 {dispute_html}
 </div>
 <div class="facts">
@@ -487,8 +532,12 @@ def college_page(c):
 </main>
 {footer()}
 <script>{STATUS_JS}
-var C = {cjson};
-applyStatus(document.getElementById('live-status'), C);
+var D = {cjson};
+applyStatus(document.getElementById('live-status'), D.me);
+document.querySelectorAll('.js-near').forEach(function(el){{
+  var n = D.near.find(function(x){{return x.slug===el.dataset.slug}});
+  if(n) applyStatus(el, n);
+}});
 </script>
 </body>
 </html>"""
@@ -531,11 +580,12 @@ def index_page():
         if is_free(c): tags.append("free")
         if c.get("price_low") not in (None, 0): tags.append("ticketed")
         if c["access"] in ("appointment", "tours"): tags.append("arrange")
-        cards.append(f"""<article class="card" data-slug="{c['slug']}" data-tags="{' '.join(tags)}">
+        price_html = f'<span class="price-tag">{esc(price_short(c))}</span>' if show_price_chip(c) else ''
+        cards.append(f"""<article class="card" data-slug="{c['slug']}" data-tags="{' '.join(tags)}" data-search="{esc(search_blob(c))}">
 <h3><a href="/colleges/{c['slug']}/">{esc(c['name'])}</a></h3>
 <p class="addr">{esc(c['address'])}</p>
 <dl><dt>Hours</dt><dd>{esc(c['hours_text'])}</dd><dt>Entry</dt><dd>{esc(c['entry_text'] or 'Ask when arranging your visit')}</dd></dl>
-<div class="foot"><span class="chip mute js-status">{esc(status_chip_label(c))}</span><span class="price-tag">{esc(price_short(c))}</span></div>
+<div class="foot"><span class="chip mute js-status">{esc(status_chip_label(c))}</span>{price_html}</div>
 </article>""")
     data_js = json.dumps(
         [{k: c.get(k) for k in ("name", "slug", "lat", "lng", "access", "rules", "pill")} for c in C],
@@ -550,10 +600,19 @@ def index_page():
 <h1>Which Oxford colleges are open today?</h1>
 <p class="lede">Oxford's 39 colleges and 4 permanent private halls each set their own visiting rules, and most gates are shut more often than open. This page shows live opening status, visitor hours, entry prices and porters' lodge contacts for all 43, so you can plan a walking route that actually gets you inside.</p>
 <p class="datestamp" id="uk-clock"></p>
+<div class="plan">
+<span class="plan-label">Planning ahead?</span>
+<input type="date" id="plan-date" aria-label="Date of your visit">
+<input type="time" id="plan-time" value="14:00" aria-label="Time of your visit, Oxford time">
+<button id="plan-go">Check that moment</button>
+<button id="plan-now" class="ghost" hidden>Back to now</button>
+</div>
+<p class="plan-note" id="plan-note" hidden>Expected status from published hours, in Oxford time. Colleges close at short notice for exams and events, so check again nearer the day.</p>
 </div>
 <div id="map" aria-label="Map of Oxford colleges, coloured by current opening status"></div>
 <p class="map-note">Pin colours show live status: green open, red closed, amber tours or appointment, grey restricted. Use each college page for turn-by-turn directions.</p>
 <div class="filters" role="group" aria-label="Filter colleges">
+<input type="search" id="q" placeholder="Find a college… try Teddy Hall" aria-label="Search colleges by name">
 <button data-f="all" aria-pressed="true">All 43</button>
 <button data-f="open-now" aria-pressed="false">Open right now</button>
 <button data-f="free" aria-pressed="false">Free entry</button>
@@ -571,43 +630,85 @@ def index_page():
 <script src="/assets/leaflet.js"></script>
 <script>{STATUS_JS}
 var COLLEGES = {data_js};
-var statusBySlug = {{}};
-document.querySelectorAll('.card').forEach(function(card){{
-  var c = COLLEGES.find(function(x){{return x.slug===card.dataset.slug}});
-  statusBySlug[c.slug] = applyStatus(card.querySelector('.js-status'), c);
-}});
+var CURRENT = null;   // null = live now; otherwise parts from the planner
+var statusBySlug = {{}}, markerBySlug = {{}};
 var clock = document.getElementById('uk-clock');
-var ukTime = new Intl.DateTimeFormat('en-GB',{{timeZone:'Europe/London',weekday:'long',hour:'2-digit',minute:'2-digit',hour12:false}}).format(new Date());
-var openCount = Object.keys(statusBySlug).filter(function(s){{return statusBySlug[s].cls==='open'}}).length;
-clock.innerHTML = 'In Oxford it is <strong>'+ukTime+'</strong> and <strong>'+openCount+' of 43</strong> are open to walk into right now.';
+var note = document.getElementById('count-note');
+var activeFilter = 'all', q = '';
+
 var map = L.map('map', {{scrollWheelZoom:false}}).setView([51.7565,-1.2570], 14);
 L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{maxZoom:19, attribution:'&copy; OpenStreetMap contributors'}}).addTo(map);
 COLLEGES.forEach(function(c){{
-  var s = statusBySlug[c.slug];
-  var icon = L.divIcon({{className:'', html:'<div class="pin '+s.cls+'"></div>', iconSize:[16,16], iconAnchor:[8,8]}});
-  L.marker([c.lat, c.lng], {{icon:icon, title:c.name}}).addTo(map)
-   .bindPopup('<a href="/colleges/'+c.slug+'/">'+c.name+'</a><br>'+s.label);
+  markerBySlug[c.slug] = L.marker([c.lat, c.lng], {{icon:L.divIcon({{className:'', html:'<div class="pin mute"></div>', iconSize:[16,16], iconAnchor:[8,8]}}), title:c.name}}).addTo(map).bindPopup('');
 }});
-var note = document.getElementById('count-note');
-function applyFilter(f){{
+
+function applyFilter(){{
   var shown = 0;
   document.querySelectorAll('.card').forEach(function(card){{
     var ok;
-    if(f==='open-now') ok = statusBySlug[card.dataset.slug].cls==='open';
-    else ok = card.dataset.tags.split(' ').indexOf(f)!==-1;
+    if(activeFilter==='open-now') ok = statusBySlug[card.dataset.slug].cls==='open';
+    else ok = card.dataset.tags.split(' ').indexOf(activeFilter)!==-1;
+    if(ok && q) ok = card.dataset.search.indexOf(q)!==-1;
     card.classList.toggle('hidden', !ok);
     if(ok) shown++;
   }});
   note.textContent = 'Showing '+shown+' of 43';
 }}
+
+function refreshAll(){{
+  document.querySelectorAll('.card').forEach(function(card){{
+    var c = COLLEGES.find(function(x){{return x.slug===card.dataset.slug}});
+    var s = applyStatus(card.querySelector('.js-status'), c, CURRENT);
+    if(CURRENT){{
+      var el = card.querySelector('.js-status');
+      el.textContent = el.textContent
+        .replace('Open now until','Open until').replace('Likely open until','Likely open until')
+        .replace(/Opens (~?[0-9:]+) today/,'Opens $1 that day').replace(/Likely opens (~?[0-9:]+)/,'Likely opens $1')
+        .replace('Closed for today','Closed by then').replace('Closed today','Closed that day');
+      s.label = el.textContent;
+    }}
+    statusBySlug[c.slug] = s;
+  }});
+  COLLEGES.forEach(function(c){{
+    var s = statusBySlug[c.slug], m = markerBySlug[c.slug];
+    m.setIcon(L.divIcon({{className:'', html:'<div class="pin '+s.cls+'"></div>', iconSize:[16,16], iconAnchor:[8,8]}}));
+    m.setPopupContent('<a href="/colleges/'+c.slug+'/">'+c.name+'</a><br>'+s.label);
+  }});
+  var openCount = Object.keys(statusBySlug).filter(function(s){{return statusBySlug[s].cls==='open'}}).length;
+  var verb = openCount===1 ? 'is' : 'are';
+  if(!CURRENT){{
+    var ukTime = new Intl.DateTimeFormat('en-GB',{{timeZone:'Europe/London',weekday:'long',hour:'2-digit',minute:'2-digit',hour12:false}}).format(new Date());
+    clock.innerHTML = 'In Oxford it is <strong>'+ukTime+'</strong> and <strong>'+openCount+' of 43</strong> '+verb+' open to walk into right now.';
+  }} else {{
+    clock.innerHTML = 'At that moment, <strong>'+openCount+' of 43</strong> '+verb+' expected to be open to walk into.';
+  }}
+  applyFilter();
+}}
+
 document.querySelectorAll('.filters button').forEach(function(b){{
   b.addEventListener('click', function(){{
     document.querySelectorAll('.filters button').forEach(function(x){{x.setAttribute('aria-pressed','false')}});
     b.setAttribute('aria-pressed','true');
-    applyFilter(b.dataset.f);
+    activeFilter = b.dataset.f;
+    applyFilter();
   }});
 }});
-applyFilter('all');
+document.getElementById('q').addEventListener('input', function(){{ q = this.value.toLowerCase().trim(); applyFilter(); }});
+
+var planDate = document.getElementById('plan-date'), planTime = document.getElementById('plan-time');
+var planNote = document.getElementById('plan-note'), planNow = document.getElementById('plan-now');
+planDate.min = new Date().toISOString().slice(0,10);
+document.getElementById('plan-go').addEventListener('click', function(){{
+  if(!planDate.value) {{ planDate.focus(); return; }}
+  CURRENT = dateParts(planDate.value, planTime.value || '12:00');
+  planNote.hidden = false; planNow.hidden = false;
+  refreshAll();
+}});
+planNow.addEventListener('click', function(){{
+  CURRENT = null; planNote.hidden = true; planNow.hidden = true;
+  refreshAll();
+}});
+refreshAll();
 </script>
 </body>
 </html>"""

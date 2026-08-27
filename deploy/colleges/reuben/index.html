@@ -70,6 +70,14 @@ header.top{border-bottom:3px double var(--line-strong);background:var(--paper)}
 .chip.mute{color:var(--mute);background:var(--mute-bg)}
 .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line-strong);border-radius:6px;padding:2px 8px;vertical-align:middle}
 
+.plan{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);max-width:640px}
+.plan-label{font-weight:700;color:var(--oxblue);font-size:.95rem}
+.plan input{font:inherit;font-size:.92rem;padding:8px 10px;border:1.5px solid var(--line-strong);border-radius:8px;background:var(--paper);color:var(--ink)}
+.plan button{font:inherit;font-size:.92rem;font-weight:700;padding:9px 14px;border-radius:8px;border:none;background:var(--oxblue);color:#fff;cursor:pointer}
+.plan button.ghost{background:transparent;color:var(--oxblue);border:1.5px solid var(--oxblue)}
+.plan-note{margin-top:10px;font-size:.88rem;color:var(--warn);background:var(--warn-bg);border-radius:8px;padding:8px 12px;max-width:620px}
+#q{font:inherit;font-size:.92rem;padding:9px 14px;border:1.5px solid var(--line-strong);border-radius:999px;background:var(--card);color:var(--ink);min-width:220px}
+#q:focus{outline:2px solid var(--stone);outline-offset:1px}
 .filters{display:flex;gap:10px;flex-wrap:wrap;padding:18px 0;position:sticky;top:0;background:linear-gradient(var(--paper) 88%,transparent);z-index:20}
 .filters button{font:inherit;font-size:.92rem;font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink-soft);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--oxblue);border-color:var(--oxblue);color:#fff}
@@ -146,7 +154,7 @@ footer.bottom a{color:var(--ink-soft)}
 <span class="kicker">Oxford college visitor guide</span>
 <h1>Visiting Reuben College <span class="tag">Graduate college</span></h1>
 <p class="sub">Reuben College on Parks Road: current visitor hours, entry prices and how to reach the porters' lodge, so you know before you walk there.</p>
-<div class="status-line"><span class="chip mute" id="live-status">By appointment</span><span class="chip mute">Free</span></div>
+<div class="status-line"><span class="chip mute" id="live-status">By appointment</span></div>
 
 </div>
 <div class="facts">
@@ -157,7 +165,7 @@ footer.bottom a{color:var(--ink-soft)}
 </div>
 
 <section class="band faq"><h2>Quick answers</h2><details><summary>Can you visit Reuben College?</summary><div class="a">Only by appointment. Contact the porters&#x27; lodge on 01865 616477 to arrange a visit. Graduate college.</div></details><details><summary>How much does it cost to visit Reuben College?</summary><div class="a">Free.</div></details><details><summary>Where is Reuben College and how do I get there?</summary><div class="a">Reuben College is at Parks Road, Oxford OX1 3QP, in central Oxford, a short walk from Carfax. Oxford&#x27;s centre is compact and walkable; use the map link on this page for turn-by-turn directions.</div></details></section>
-<section class="band"><h2>While you're nearby</h2><p>These are the closest colleges to Reuben College, in case its gates are shut when you arrive.</p><div class="nearby"><a href="/colleges/st-johns/"><span class="n">St John&#x27;s College</span><br><span class="d">St Giles&#x27; · Open to visitors</span></a><a href="/colleges/keble/"><span class="n">Keble College</span><br><span class="d">Parks Road · Open to visitors</span></a><a href="/colleges/mansfield/"><span class="n">Mansfield College</span><br><span class="d">Mansfield Road · Open to visitors</span></a></div>
+<section class="band"><h2>While you're nearby</h2><p>These are the closest colleges to Reuben College, in case its gates are shut when you arrive.</p><div class="nearby"><a href="/colleges/st-johns/"><span class="n">St John&#x27;s College</span><br><span class="d">St Giles&#x27;</span><br><span class="chip mute js-near" data-slug="st-johns">Open to visitors</span></a><a href="/colleges/keble/"><span class="n">Keble College</span><br><span class="d">Parks Road</span><br><span class="chip mute js-near" data-slug="keble">Open to visitors</span></a><a href="/colleges/mansfield/"><span class="n">Mansfield College</span><br><span class="d">Mansfield Road</span><br><span class="chip mute js-near" data-slug="mansfield">Open to visitors</span></a></div>
 <a class="backlink" href="/">&larr; See which of all 43 colleges are open right now</a></section>
 </main>
 <footer class="bottom"><div class="wrap">
@@ -171,10 +179,17 @@ function ukParts(){
   var days = {Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6,Sun:7};
   return {dow:days[o.weekday], hm:parseInt(o.hour,10)*60+parseInt(o.minute,10), month:parseInt(o.month,10)};
 }
+function dateParts(dstr, tstr){
+  var p = dstr.split('-'); var y=+p[0], mo=+p[1], d=+p[2];
+  var dow = new Date(Date.UTC(y, mo-1, d)).getUTCDay(); if(dow===0) dow=7;
+  var hm = 0;
+  if(tstr){ var a=tstr.split(':'); hm=(+a[0])*60+(+a[1]); }
+  return {dow:dow, hm:hm, month:mo};
+}
 function mins(t){ var a=t.split(':'); return parseInt(a[0],10)*60+parseInt(a[1],10); }
 function fmt(m){ var h=Math.floor(m/60), mm=m%60; return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm; }
-function collegeStatus(c){
-  var now = ukParts();
+function collegeStatus(c, when){
+  var now = when || ukParts();
   var A = c.access;
   if(A==='closed') return {cls:'shut', label:c.pill||'Closed to visitors'};
   if(A==='appointment') return {cls:'warn', label:c.pill||'By appointment'};
@@ -202,15 +217,20 @@ function collegeStatus(c){
   }
   return {cls:'shut', label:'Closed for today'};
 }
-function applyStatus(el, c){
-  var s = collegeStatus(c);
-  el.className = 'chip ' + s.cls;
+function applyStatus(el, c, when){
+  var s = collegeStatus(c, when);
+  el.classList.remove('open','shut','warn','mute');
+  el.classList.add('chip', s.cls);
   el.textContent = s.label;
   return s;
 }
 
-var C = {"access": "appointment", "rules": [], "pill": null};
-applyStatus(document.getElementById('live-status'), C);
+var D = {"me": {"access": "appointment", "rules": [], "pill": null}, "near": [{"slug": "st-johns", "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "13:00", "close": "17:00", "approx": false}], "pill": null}, {"slug": "keble", "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}], "pill": null}, {"slug": "mansfield", "access": "open", "rules": [{"days": [1, 2, 3, 4, 5], "months": null, "open": "09:00", "close": "17:00", "approx": false}], "pill": null}]};
+applyStatus(document.getElementById('live-status'), D.me);
+document.querySelectorAll('.js-near').forEach(function(el){
+  var n = D.near.find(function(x){return x.slug===el.dataset.slug});
+  if(n) applyStatus(el, n);
+});
 </script>
 </body>
 </html>

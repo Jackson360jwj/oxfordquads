@@ -70,6 +70,14 @@ header.top{border-bottom:3px double var(--line-strong);background:var(--paper)}
 .chip.mute{color:var(--mute);background:var(--mute-bg)}
 .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line-strong);border-radius:6px;padding:2px 8px;vertical-align:middle}
 
+.plan{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);max-width:640px}
+.plan-label{font-weight:700;color:var(--oxblue);font-size:.95rem}
+.plan input{font:inherit;font-size:.92rem;padding:8px 10px;border:1.5px solid var(--line-strong);border-radius:8px;background:var(--paper);color:var(--ink)}
+.plan button{font:inherit;font-size:.92rem;font-weight:700;padding:9px 14px;border-radius:8px;border:none;background:var(--oxblue);color:#fff;cursor:pointer}
+.plan button.ghost{background:transparent;color:var(--oxblue);border:1.5px solid var(--oxblue)}
+.plan-note{margin-top:10px;font-size:.88rem;color:var(--warn);background:var(--warn-bg);border-radius:8px;padding:8px 12px;max-width:620px}
+#q{font:inherit;font-size:.92rem;padding:9px 14px;border:1.5px solid var(--line-strong);border-radius:999px;background:var(--card);color:var(--ink);min-width:220px}
+#q:focus{outline:2px solid var(--stone);outline-offset:1px}
 .filters{display:flex;gap:10px;flex-wrap:wrap;padding:18px 0;position:sticky;top:0;background:linear-gradient(var(--paper) 88%,transparent);z-index:20}
 .filters button{font:inherit;font-size:.92rem;font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line-strong);background:var(--card);color:var(--ink-soft);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--oxblue);border-color:var(--oxblue);color:#fff}
