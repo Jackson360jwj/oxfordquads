@@ -1,5 +1,7 @@
 # .github/workflows/daily.yml — refresh college data every morning, redeploy on change
 name: daily-refresh
+permissions:
+  contents: write
 on:
   schedule:
     - cron: "15 5 * * *"        # 05:15 UTC = 06:15 Oxford in summer
