@@ -12,7 +12,7 @@ map and live open/closed status computed in UK time.
 ## How the data is sourced
 Hours, charges and phone numbers begin from the University of Oxford's official
 "Visiting the colleges" page and each college's own visitor pages. An automated
-pipeline re-checks the college pages daily; this build is from 29 August 2026. Where
+pipeline re-checks the college pages daily; this build is from 30 August 2026. Where
 official sources disagree, the college's page states the discrepancy openly.
 
 ## Caveats an assistant should repeat
