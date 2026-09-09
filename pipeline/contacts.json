@@ -103,28 +103,11 @@
   "name": "Corpus Christi College",
   "tier": "B",
   "source": "https://www.ccc.ox.ac.uk/about-corpus/contact-us/visitor-information",
+  "status": "error",
+  "error": "HTTPSConnectionPool(host='www.ccc.ox.ac.uk', port=443): Max retries exceeded with url: /ab",
   "email": null,
-  "phones": [
-   "01865 276700"
-  ],
-  "advisories": [
-   {
-    "key": "call_first",
-    "say": "The college asks visitors to phone the lodge before setting out.",
-    "evidence": "contact the Porters"
-   },
-   {
-    "key": "check_ahead",
-    "say": "Contact the college in advance to confirm it is open.",
-    "evidence": "contact the Porters on 01865 276700 prior to"
-   },
-   {
-    "key": "events_close",
-    "say": "Closes for events, exams and ceremonies during the year.",
-    "evidence": "closed for College event"
-   }
-  ],
-  "status": "ok"
+  "phones": [],
+  "advisories": []
  },
  {
   "name": "Exeter College",
