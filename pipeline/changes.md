@@ -1,12 +1,11 @@
-# Visitor-hours check — 2026-09-09
+# Visitor-hours check — 2026-09-10
 
 24 colleges read · 1 changed · 8 unreachable
 
 ## Changed since last run
 
-### St Hilda's College
-- **now says:** 10am-10:50am
-- **now says:** 11am-11:50am
+### Wadham College
+- **now says:** (Garden Closed) Tuesday 8 September - Tuesday 15 September inclusive
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
