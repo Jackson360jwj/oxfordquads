@@ -1,11 +1,6 @@
-# Visitor-hours check — 2026-09-10
+# Visitor-hours check — 2026-09-11
 
-24 colleges read · 1 changed · 8 unreachable
-
-## Changed since last run
-
-### Wadham College
-- **now says:** (Garden Closed) Tuesday 8 September - Tuesday 15 September inclusive
+24 colleges read · 0 changed · 8 unreachable
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
