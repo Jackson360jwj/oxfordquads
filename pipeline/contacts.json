@@ -361,11 +361,10 @@
   "name": "Pembroke College",
   "tier": "A",
   "source": "http://www.pmb.ox.ac.uk/",
-  "status": "error",
-  "error": "403 Client Error: Forbidden for url: http://www.pmb.ox.ac.uk/",
   "email": null,
   "phones": [],
-  "advisories": []
+  "advisories": [],
+  "status": "ok"
  },
  {
   "name": "The Queen's College",
