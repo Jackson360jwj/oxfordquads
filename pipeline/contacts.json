@@ -103,11 +103,10 @@
   "name": "Corpus Christi College",
   "tier": "B",
   "source": "https://www.ccc.ox.ac.uk/visiting-corpus",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.ccc.ox.ac.uk', port=443): Max retries exceeded with url: /vi",
   "email": null,
   "phones": [],
-  "advisories": []
+  "advisories": [],
+  "status": "ok"
  },
  {
   "name": "Exeter College",
@@ -223,17 +222,9 @@
   "name": "Lincoln College",
   "tier": "B",
   "source": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
-  "email": "info@lincoln.ox.ac.uk",
-  "phones": [
-   "01865 279800"
-  ],
-  "advisories": [
-   {
-    "key": "check_ahead",
-    "say": "Contact the college in advance to confirm it is open.",
-    "evidence": "contact the\u00c2 Development Office \u00c2 in advance"
-   }
-  ],
+  "email": null,
+  "phones": [],
+  "advisories": [],
   "status": "ok"
  },
  {
