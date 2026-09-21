@@ -225,7 +225,7 @@ function applyStatus(el, c, when){
   return s;
 }
 
-var D = {"me": {"access": "tours", "rules": [], "pill": null}, "near": [{"slug": "corpus-christi", "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "13:30", "close": "16:30", "approx": false}], "pill": null}, {"slug": "oriel", "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}], "pill": null}, {"slug": "pembroke", "access": "restricted", "rules": [], "pill": null}]};
+var D = {"me": {"access": "tours", "rules": [], "pill": null}, "near": [{"slug": "corpus-christi", "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}], "pill": null}, {"slug": "oriel", "access": "open", "rules": [{"days": [7, 1, 2, 3, 4, 5, 6], "months": null, "open": "14:00", "close": "17:00", "approx": false}], "pill": null}, {"slug": "pembroke", "access": "restricted", "rules": [], "pill": null}]};
 applyStatus(document.getElementById('live-status'), D.me);
 document.querySelectorAll('.js-near').forEach(function(el){
   var n = D.near.find(function(x){return x.slug===el.dataset.slug});

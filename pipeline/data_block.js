@@ -29,9 +29,9 @@ const C = [
  note:"Book online to guarantee entry; groups of 12 or more must book. The Hall and Cathedral occasionally close without notice — check the known closures page. Tickets also sold at the Visitor Centre in Christ Church Meadow.",tour:"https://www.ox.ac.uk/node/748#where-youll-find-us",advice:["Closes for events, exams and ceremonies during the year."],src:"B"},
 
 {n:"Corpus Christi College",st:"Merton Street",pc:"OX1 4JF",tel:"01865 276700",web:"https://www.ccc.ox.ac.uk/",lat:51.750599,lng:-1.253584,access:"walkin",price:0,
- priceT:"Free",hoursT:"13:30–16:30 daily, subject to college events and exams.",
- note:"Groups of up to 20 must book ahead and be accompanied by a Blue Badge Guide.",tour:"https://www.ox.ac.uk/node/749#where-youll-find-us",
- win:[{days:D_ALL,o:"13:30",c:"16:30"}],dispute:"The University lists 13:30-16:30 and groups of 20; its alumni pages say 14:00-17:00 and groups of 19.",advice:["The college asks visitors to phone the lodge before setting out.","Contact the college in advance to confirm it is open.","Closes for events, exams and ceremonies during the year."],telOK:1,src:"B"},
+ priceT:"Free",hoursT:"14:00–17:00 daily, subject to college events and exams.",
+ note:"General visiting groups are capped at 19 and must book ahead. A separately organised University Blue Badge Guide tour allows groups of up to 20 on its own schedule.",tour:"https://www.ox.ac.uk/node/749#where-youll-find-us",
+ win:[{days:D_ALL,o:"14:00",c:"17:00"}],dispute:"The college's own visitor page confirms 14:00-17:00 daily with groups up to 19 (checked 7, 14 and 21 Sep 2026); the University's tour listing shows 13:30-16:30 with groups of 20, which may describe its separately organised Blue Badge Guide tours rather than general walk-in visiting.",advice:["The college asks visitors to phone the lodge before setting out.","Contact the college in advance to confirm it is open.","Closes for events, exams and ceremonies during the year."],telOK:1,src:"B"},
 
 {n:"Exeter College",st:"Turl Street",pc:"OX1 3DP",tel:"01865 279600",web:"http://www.exeter.ox.ac.uk/",vis:"https://www.exeter.ox.ac.uk/tour/",lat:51.753875,lng:-1.255508,access:"book",price:4,
  priceT:"£4 · under-12s free · Bodleian and Oxford alumni card holders free, 14:00–17:00",
