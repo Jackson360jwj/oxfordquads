@@ -1,6 +1,12 @@
-# Visitor-hours check — 2026-09-25
+# Visitor-hours check — 2026-09-26
 
-24 colleges read · 0 changed · 7 unreachable
+24 colleges read · 1 changed · 7 unreachable
+
+## Changed since last run
+
+### New College
+- **now says:** Saturday 20th March - College closed all day.
+- ~~was:~~ Wednesday 23rd September - College closed all day
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
