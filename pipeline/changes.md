@@ -1,15 +1,13 @@
-# Visitor-hours check — 2026-09-28
+# Visitor-hours check — 2026-09-29
 
-24 colleges read · 2 changed · 7 unreachable
+24 colleges read · 1 changed · 7 unreachable
 
 ## Changed since last run
 
-### Corpus Christi College
-- **now says:** Corpus Christi College welcomes visitors daily from 2.00pm – 5.00pm. We welcome groups subject to a maximum of 19 people. Occasionally during the year we will be closed for College events so it is always best to contact the Porters on 01865 276700 prior to planning a visit.
-
-### Lincoln College
-- **now says:** If you are a prospective student interested in attending Lincoln College, please do come and have a look round. We are open daily from 2pm to 5pm. If you would like a full tour of the College, please contact the Admissions Office to see if someone is available to show you round (Monday-Friday, 9am to 5pm).
-- **now says:** If you are planning to drive into Oxford city centre, please be aware of additional travel restrictions. The High Street is closed to private vehicles between 7.30am and 6.30pm daily. There is also a rising bollard in operation on Turl Street.
+### St John's College
+- **now says:** Please note that the College will be closed from Sunday 5 October - Tuesday 7 October while undergraduate students move in.
+- **now says:** Please note that the Great Lawn is currently closed to visitors as it has suffered so much this year, largely owing to some highly variable and very challenging weather patterns. As a matter of urgency, it needs to undergo mandatory rest and maintenance work. The Daisy Lawn remains open for your enjoyment.
+- ~~was:~~ The Great Lawn is currently closed to visitors as it has suffered so much this year, largely owing to some highly variable and very challenging weather patterns. As a matter of urgency, it needs to undergo mandatory rest and maintenance work. The Daisy Lawn remains open for your enjoyment.
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
