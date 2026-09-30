@@ -1,13 +1,6 @@
-# Visitor-hours check — 2026-09-29
+# Visitor-hours check — 2026-09-30
 
-24 colleges read · 1 changed · 7 unreachable
-
-## Changed since last run
-
-### St John's College
-- **now says:** Please note that the College will be closed from Sunday 5 October - Tuesday 7 October while undergraduate students move in.
-- **now says:** Please note that the Great Lawn is currently closed to visitors as it has suffered so much this year, largely owing to some highly variable and very challenging weather patterns. As a matter of urgency, it needs to undergo mandatory rest and maintenance work. The Daisy Lawn remains open for your enjoyment.
-- ~~was:~~ The Great Lawn is currently closed to visitors as it has suffered so much this year, largely owing to some highly variable and very challenging weather patterns. As a matter of urgency, it needs to undergo mandatory rest and maintenance work. The Daisy Lawn remains open for your enjoyment.
+24 colleges read · 0 changed · 7 unreachable
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
