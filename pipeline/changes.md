@@ -1,4 +1,4 @@
-# Visitor-hours check — 2026-10-02
+# Visitor-hours check — 2026-10-03
 
 24 colleges read · 0 changed · 7 unreachable
 
@@ -9,4 +9,4 @@
 - **Jesus College** — no-visitor-hours: no visitor content found
 - **St Catherine's College** — no-visitor-hours: no visitor content found
 - **St Hugh's College** — no-visitor-hours: no visitor content found
-- **University College** — unreachable: HTTPSConnectionPool(host='www.univ.ox.ac.uk', port=443): Read timed out. (read timeout=25)
+- **University College** — no-visitor-hours: no visitor content found
