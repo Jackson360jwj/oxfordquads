@@ -512,10 +512,11 @@
   "name": "University College",
   "tier": "B",
   "source": "https://www.univ.ox.ac.uk/",
-  "email": "lodge@univ.ox.ac.uk",
+  "status": "error",
+  "error": "HTTPSConnectionPool(host='www.univ.ox.ac.uk', port=443): Read timed out. (read timeout=25)",
+  "email": null,
   "phones": [],
-  "advisories": [],
-  "status": "ok"
+  "advisories": []
  },
  {
   "name": "Wadham College",
