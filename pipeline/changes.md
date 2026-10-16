@@ -1,25 +1,16 @@
-# Visitor-hours check — 2026-10-15
+# Visitor-hours check — 2026-10-16
 
 24 colleges read · 2 changed · 7 unreachable
 
 ## Changed since last run
 
-### Corpus Christi College
-- **now says:** Corpus Christi College welcomes visitors daily from 2.00pm – 5.00pm. We welcome groups subject to a maximum of 19 people. Occasionally during the year we will be closed for College events so it is always best to contact the Porters on 01865 276700 prior to planning a visit.
+### Merton College
+- **now says:** Saturday 17 October, 10am - 12pm, opening from 12pm
+- ~~was:~~ Saturday 10 October, 10am - 1pm, opening from 1pm
 
 ### New College
-- **now says:** Friday 13th November - Chapel closed from 1pm to 2pm
-- **now says:** Friday 16th October - Chapel closed from 2pm to 4:15pm
-- **now says:** Friday 20th November - Chapel closed from 1pm to 2pm
-- **now says:** Friday 23rd October - Chapel closed from 1pm to 2pm
-- **now says:** Friday 27th November - Chapel closed from 1pm to 2pm
-- **now says:** Friday 30th October - Chapel closed from 1pm to 2pm
-- ~~was:~~ Christmas closure: 23rd December - 4th January
-- ~~was:~~ Saturday 12th December - College closed all day
-- ~~was:~~ Saturday 20th March - College closed all day.
-- ~~was:~~ Saturday 22nd May - College closed all day.
-- ~~was:~~ Saturday 26th June - College closed all day.
-- ~~was:~~ Saturday 27th February - Cloisters closed from 12:00 to 3:00pm
+- **now says:** Thursday 15th October - Cloisters closed from 3pm, College closed from 4pm
+- ~~was:~~ Friday 4th December - Chapel closed from 1pm to 2pm
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
