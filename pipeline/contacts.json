@@ -213,7 +213,7 @@
   "name": "Kellogg College",
   "tier": "A",
   "source": "https://www.kellogg.ox.ac.uk/",
-  "email": null,
+  "email": "enquiries@kellogg.ox.ac.uk",
   "phones": [],
   "advisories": [],
   "status": "ok"
@@ -470,12 +470,17 @@
  {
   "name": "St Peter's College",
   "tier": "B",
-  "source": "https://www.spc.ox.ac.uk/",
-  "status": "error",
-  "error": "522 Server Error: <none> for url: https://www.spc.ox.ac.uk/",
-  "email": null,
+  "source": "https://www.spc.ox.ac.uk/connect/visit-college",
+  "email": "porters.lodge@spc.ox.ac.uk",
   "phones": [],
-  "advisories": []
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "phone the Porters' Lodge"
+   }
+  ],
+  "status": "ok"
  },
  {
   "name": "Somerville College",
