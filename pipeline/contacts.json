@@ -23,11 +23,18 @@
   "name": "Balliol College",
   "tier": "B",
   "source": "https://www.balliol.ox.ac.uk/visit-balliol",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.balliol.ox.ac.uk', port=443): Max retries exceeded with url:",
   "email": null,
-  "phones": [],
-  "advisories": []
+  "phones": [
+   "01865 277777"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "telephone the Lodge"
+   }
+  ],
+  "status": "ok"
  },
  {
   "name": "Blackfriars",
@@ -307,11 +314,18 @@
   "name": "New College",
   "tier": "B",
   "source": "https://www.new.ox.ac.uk/visiting-the-college",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.new.ox.ac.uk', port=443): Max retries exceeded with url: /vi",
-  "email": null,
-  "phones": [],
-  "advisories": []
+  "email": "tourism@new.ox.ac.uk",
+  "phones": [
+   "01865 279544"
+  ],
+  "advisories": [
+   {
+    "key": "check_ahead",
+    "say": "Contact the college in advance to confirm it is open.",
+    "evidence": "check our Planned closures page before your visit"
+   }
+  ],
+  "status": "ok"
  },
  {
   "name": "Nuffield College",
@@ -482,21 +496,27 @@
   "name": "Trinity College",
   "tier": "B",
   "source": "https://www.trinity.ox.ac.uk/visiting",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.trinity.ox.ac.uk', port=443): Max retries exceeded with url:",
   "email": null,
-  "phones": [],
-  "advisories": []
+  "phones": [
+   "01865 279900"
+  ],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "call the Porter"
+   }
+  ],
+  "status": "ok"
  },
  {
   "name": "University College",
   "tier": "B",
   "source": "https://www.univ.ox.ac.uk/",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.univ.ox.ac.uk', port=443): Max retries exceeded with url: / ",
-  "email": null,
+  "email": "lodge@univ.ox.ac.uk",
   "phones": [],
-  "advisories": []
+  "advisories": [],
+  "status": "ok"
  },
  {
   "name": "Wadham College",
