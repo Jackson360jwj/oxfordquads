@@ -40,11 +40,10 @@
   "name": "Blackfriars",
   "tier": "A",
   "source": "https://www.bfriars.ox.ac.uk/",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.bfriars.ox.ac.uk', port=443): Max retries exceeded with url:",
   "email": null,
   "phones": [],
-  "advisories": []
+  "advisories": [],
+  "status": "ok"
  },
  {
   "name": "Brasenose College",
