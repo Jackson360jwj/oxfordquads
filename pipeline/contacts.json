@@ -496,16 +496,8 @@
   "tier": "B",
   "source": "https://www.trinity.ox.ac.uk/visiting",
   "email": null,
-  "phones": [
-   "01865 279900"
-  ],
-  "advisories": [
-   {
-    "key": "call_first",
-    "say": "The college asks visitors to phone the lodge before setting out.",
-    "evidence": "call the Porter"
-   }
-  ],
+  "phones": [],
+  "advisories": [],
   "status": "ok"
  },
  {
