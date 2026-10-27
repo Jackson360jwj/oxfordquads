@@ -388,10 +388,11 @@
   "name": "Reuben College",
   "tier": "A",
   "source": "https://reuben.ox.ac.uk/",
+  "status": "error",
+  "error": "HTTPSConnectionPool(host='reuben.ox.ac.uk', port=443): Read timed out. (read timeout=25)",
   "email": null,
   "phones": [],
-  "advisories": [],
-  "status": "ok"
+  "advisories": []
  },
  {
   "name": "St Anne's College",

@@ -1,13 +1,6 @@
-# Visitor-hours check — 2026-10-26
+# Visitor-hours check — 2026-10-27
 
-24 colleges read · 1 changed · 7 unreachable
-
-## Changed since last run
-
-### Trinity College
-- **now says:** Adults: £7 Concessions: £5 Students: £5 Groups: £5 per person Under 12’s: free of charge
-- **now says:** During term time: 10am to 12pm & 2pm to 5pm.
-- **now says:** Out of term: 10am to 12pm, &1pm until 5pm.
+24 colleges read · 0 changed · 7 unreachable
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
