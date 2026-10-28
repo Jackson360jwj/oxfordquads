@@ -1,6 +1,11 @@
-# Visitor-hours check — 2026-10-27
+# Visitor-hours check — 2026-10-28
 
-24 colleges read · 0 changed · 7 unreachable
+24 colleges read · 1 changed · 7 unreachable
+
+## Changed since last run
+
+### St Hilda's College
+- **now says:** 1:15pm-1:45pm
 
 ## Needs a human
 - **Christ Church** — no-visitor-hours: no visitor content found
