@@ -512,11 +512,10 @@
   "name": "University College",
   "tier": "B",
   "source": "https://www.univ.ox.ac.uk/",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.univ.ox.ac.uk', port=443): Max retries exceeded with url: / ",
-  "email": null,
+  "email": "lodge@univ.ox.ac.uk",
   "phones": [],
-  "advisories": []
+  "advisories": [],
+  "status": "ok"
  },
  {
   "name": "Wadham College",
