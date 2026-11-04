@@ -2,7 +2,7 @@
  {
   "name": "All Souls College",
   "tier": "B",
-  "checked": "2026-11-03T12:49:29+00:00",
+  "checked": "2026-11-04T13:00:20+00:00",
   "url": "https://www.asc.ox.ac.uk/visit-the-college",
   "status": "ok",
   "strength": 2,
@@ -34,7 +34,7 @@
  {
   "name": "Balliol College",
   "tier": "B",
-  "checked": "2026-11-03T12:49:32+00:00",
+  "checked": "2026-11-04T13:00:25+00:00",
   "url": "https://www.balliol.ox.ac.uk/visit-balliol",
   "status": "ok",
   "strength": 2,
@@ -66,7 +66,7 @@
  {
   "name": "Christ Church",
   "tier": "B",
-  "checked": "2026-11-03T12:49:34+00:00",
+  "checked": "2026-11-04T13:00:27+00:00",
   "url": "https://www.chch.ox.ac.uk/visit/tickets-and-information",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -82,7 +82,7 @@
  {
   "name": "Corpus Christi College",
   "tier": "B",
-  "checked": "2026-11-03T12:49:38+00:00",
+  "checked": "2026-11-04T13:00:33+00:00",
   "url": "https://www.ccc.ox.ac.uk/about-corpus/contact-us/visitor-information",
   "status": "weak",
   "strength": 1,
@@ -98,7 +98,7 @@
  {
   "name": "Exeter College",
   "tier": "B",
-  "checked": "2026-11-03T12:49:41+00:00",
+  "checked": "2026-11-04T13:00:36+00:00",
   "url": "https://www.exeter.ox.ac.uk/contact-us/",
   "status": "weak",
   "strength": 1,
@@ -126,7 +126,7 @@
  {
   "name": "Harris Manchester College",
   "tier": "B",
-  "checked": "2026-11-03T12:49:49+00:00",
+  "checked": "2026-11-04T13:00:46+00:00",
   "url": "https://www.hmc.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -137,7 +137,7 @@
  {
   "name": "Hertford College",
   "tier": "B",
-  "checked": "2026-11-03T12:49:58+00:00",
+  "checked": "2026-11-04T13:00:59+00:00",
   "url": "https://www.hertford.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -148,7 +148,7 @@
  {
   "name": "Jesus College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:03+00:00",
+  "checked": "2026-11-04T13:01:05+00:00",
   "url": "https://www.jesus.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -159,7 +159,7 @@
  {
   "name": "Lincoln College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:07+00:00",
+  "checked": "2026-11-04T13:01:10+00:00",
   "url": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
   "status": "weak",
   "strength": 1,
@@ -179,7 +179,7 @@
  {
   "name": "Magdalen College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:11+00:00",
+  "checked": "2026-11-04T13:01:16+00:00",
   "url": "https://www.magd.ox.ac.uk/visiting-magdalen-college/",
   "status": "ok",
   "strength": 7,
@@ -255,7 +255,7 @@
  {
   "name": "Mansfield College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:14+00:00",
+  "checked": "2026-11-04T13:01:19+00:00",
   "url": "https://www.mansfield.ox.ac.uk/",
   "status": "weak",
   "strength": 1,
@@ -271,7 +271,7 @@
  {
   "name": "Merton College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:41+00:00",
+  "checked": "2026-11-04T13:01:47+00:00",
   "url": "https://www.merton.ox.ac.uk/visitor-information",
   "status": "ok",
   "strength": 5,
@@ -319,7 +319,7 @@
  {
   "name": "New College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:43+00:00",
+  "checked": "2026-11-04T13:01:49+00:00",
   "url": "https://www.new.ox.ac.uk/visiting-the-college",
   "status": "ok",
   "strength": 6,
@@ -367,18 +367,6 @@
     "kind": "hours/closure"
    },
    {
-    "text": "Friday 23rd October - Chapel closed from 1pm to 2pm",
-    "kind": "hours/closure"
-   },
-   {
-    "text": "Friday 30th October - Chapel closed from 1pm to 2pm",
-    "kind": "hours/closure"
-   },
-   {
-    "text": "Saturday 31st October - College closed until 1pm",
-    "kind": "hours/closure"
-   },
-   {
     "text": "Friday 6th November - Chapel closed from 1pm to 2pm",
     "kind": "hours/closure"
    },
@@ -391,12 +379,12 @@
     "kind": "hours/closure"
    },
    {
-    "text": "Tuesday 10 th November - Only Antechapel open from 12.45pm",
-    "kind": "hours"
+    "text": "Tuesday 10 th November - Chapel partially closed. Only Antechapel open from 12.45pm",
+    "kind": "hours/closure"
    },
    {
-    "text": "November - Only Antechapel open from 12.45pm",
-    "kind": "hours"
+    "text": "November - Chapel partially closed. Only Antechapel open from 12.45pm",
+    "kind": "hours/closure"
    },
    {
     "text": "Wednesday 11th November - Chapel closed for brief Act of Remembrance from 10.45-11.15am",
@@ -409,14 +397,26 @@
    {
     "text": "Saturday 14th November - Cloisters closed from 12:00 to 3:00pm",
     "kind": "hours/closure"
+   },
+   {
+    "text": "Friday 20th November - Chapel closed from 1pm to 2pm",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Friday 27th November - Chapel closed from 1pm to 2pm",
+    "kind": "hours/closure"
+   },
+   {
+    "text": "Friday 4th December - Chapel closed from 1pm to 2pm",
+    "kind": "hours/closure"
    }
   ],
-  "fp": "20e416a03d3ae712"
+  "fp": "3612aa8f01f7919b"
  },
  {
   "name": "Oriel College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:47+00:00",
+  "checked": "2026-11-04T13:01:54+00:00",
   "url": "https://www.oriel.ox.ac.uk/visit-oriel/",
   "status": "weak",
   "strength": 1,
@@ -440,7 +440,7 @@
  {
   "name": "St Catherine's College",
   "tier": "B",
-  "checked": "2026-11-03T12:50:54+00:00",
+  "checked": "2026-11-04T13:02:01+00:00",
   "url": "https://www.stcatz.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -451,7 +451,7 @@
  {
   "name": "St Edmund Hall",
   "tier": "B",
-  "checked": "2026-11-03T12:50:59+00:00",
+  "checked": "2026-11-04T13:02:23+00:00",
   "url": "https://www.seh.ox.ac.uk/discover/explore-teddy-hall/visiting-the-college",
   "status": "ok",
   "strength": 2,
@@ -471,7 +471,7 @@
  {
   "name": "St Hilda's College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:03+00:00",
+  "checked": "2026-11-04T13:02:31+00:00",
   "url": "https://www.st-hildas.ox.ac.uk/",
   "status": "ok",
   "strength": 2,
@@ -491,7 +491,7 @@
  {
   "name": "St Hugh's College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:05+00:00",
+  "checked": "2026-11-04T13:02:33+00:00",
   "url": "https://www.st-hughs.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -502,7 +502,7 @@
  {
   "name": "St John's College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:10+00:00",
+  "checked": "2026-11-04T13:02:40+00:00",
   "url": "https://www.sjc.ox.ac.uk/discover/visit-us/",
   "status": "weak",
   "strength": 1,
@@ -534,7 +534,7 @@
  {
   "name": "St Peter's College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:15+00:00",
+  "checked": "2026-11-04T13:02:47+00:00",
   "url": "https://www.spc.ox.ac.uk/connect/visit-college",
   "status": "weak",
   "strength": 1,
@@ -554,23 +554,23 @@
  {
   "name": "Somerville College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:19+00:00",
+  "checked": "2026-11-04T13:02:52+00:00",
   "url": "https://www.some.ox.ac.uk/about/visit-us/",
   "status": "weak",
   "strength": 1,
   "lines": [
    {
-    "text": "Walking up from the main train station is very convenient. Several regular bus services run virtually door to door in just under ten minutes, with a return costing around \u00a34. You can walk the same distance in around 15-20 minutes.",
+    "text": "Walking up from the main train station is very convenient. Several regular bus services run virtually door to door in just under ten minutes, with a return costing around \u00a34. You can walk the same distance in around 10-15 minutes.",
     "kind": "/price"
    }
   ],
   "closures": [],
-  "fp": "ac6e34cda5aaf0d0"
+  "fp": "910d7860ca36c954"
  },
  {
   "name": "Trinity College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:24+00:00",
+  "checked": "2026-11-04T13:02:57+00:00",
   "url": "https://www.trinity.ox.ac.uk/visiting",
   "status": "ok",
   "strength": 3,
@@ -594,7 +594,7 @@
  {
   "name": "University College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:26+00:00",
+  "checked": "2026-11-04T13:03:00+00:00",
   "url": "https://www.univ.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -605,7 +605,7 @@
  {
   "name": "Wadham College",
   "tier": "B",
-  "checked": "2026-11-03T12:51:41+00:00",
+  "checked": "2026-11-04T13:03:17+00:00",
   "url": "https://www.wadham.ox.ac.uk/visit-us",
   "status": "ok",
   "strength": 2,
