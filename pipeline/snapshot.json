@@ -2,7 +2,7 @@
  {
   "name": "All Souls College",
   "tier": "B",
-  "checked": "2026-11-05T13:13:48+00:00",
+  "checked": "2026-11-06T12:58:16+00:00",
   "url": "https://www.asc.ox.ac.uk/visit-the-college",
   "status": "ok",
   "strength": 2,
@@ -34,7 +34,7 @@
  {
   "name": "Balliol College",
   "tier": "B",
-  "checked": "2026-11-05T13:13:53+00:00",
+  "checked": "2026-11-06T12:58:20+00:00",
   "url": "https://www.balliol.ox.ac.uk/visit-balliol",
   "status": "ok",
   "strength": 2,
@@ -66,7 +66,7 @@
  {
   "name": "Christ Church",
   "tier": "B",
-  "checked": "2026-11-05T13:13:55+00:00",
+  "checked": "2026-11-06T12:58:22+00:00",
   "url": "https://www.chch.ox.ac.uk/visit/tickets-and-information",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -82,18 +82,23 @@
  {
   "name": "Corpus Christi College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:01+00:00",
+  "checked": "2026-11-06T12:58:28+00:00",
   "url": "https://www.ccc.ox.ac.uk/about-corpus/contact-us/visitor-information",
-  "status": "no-visitor-hours",
-  "strength": 0,
-  "lines": [],
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "Corpus Christi College welcomes visitors daily from 2.00pm \u2013 5.00pm. We welcome groups subject to a maximum of 19 people. Occasionally during the year we will be closed for College events so it is always best to contact the Porters on 01865 276700 prior to planning a visit.",
+    "kind": "hours/closure"
+   }
+  ],
   "closures": [],
-  "fp": "e3b0c44298fc1c14"
+  "fp": "f41300a68f8438cd"
  },
  {
   "name": "Exeter College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:12+00:00",
+  "checked": "2026-11-06T12:58:31+00:00",
   "url": "https://www.exeter.ox.ac.uk/contact-us/",
   "status": "weak",
   "strength": 1,
@@ -121,7 +126,7 @@
  {
   "name": "Harris Manchester College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:24+00:00",
+  "checked": "2026-11-06T12:58:45+00:00",
   "url": "https://www.hmc.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -132,7 +137,7 @@
  {
   "name": "Hertford College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:36+00:00",
+  "checked": "2026-11-06T12:58:56+00:00",
   "url": "https://www.hertford.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -143,7 +148,7 @@
  {
   "name": "Jesus College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:42+00:00",
+  "checked": "2026-11-06T12:59:04+00:00",
   "url": "https://www.jesus.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -154,18 +159,27 @@
  {
   "name": "Lincoln College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:47+00:00",
+  "checked": "2026-11-06T12:59:09+00:00",
   "url": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
-  "status": "no-visitor-hours",
-  "strength": 0,
-  "lines": [],
+  "status": "weak",
+  "strength": 1,
+  "lines": [
+   {
+    "text": "If you are a prospective student interested in attending Lincoln College, please do come and have a look round. We are open daily from 2pm to 5pm. If you would like a full tour of the College, please contact the Admissions Office to see if someone is available to show you round (Monday-Friday, 9am to 5pm).",
+    "kind": "hours"
+   },
+   {
+    "text": "If you are planning to drive into Oxford city centre, please be aware of additional travel restrictions. The High Street is closed to private vehicles between 7.30am and 6.30pm daily. There is also a rising bollard in operation on Turl Street.",
+    "kind": "hours/closure"
+   }
+  ],
   "closures": [],
-  "fp": "e3b0c44298fc1c14"
+  "fp": "d47dda554687769e"
  },
  {
   "name": "Magdalen College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:57+00:00",
+  "checked": "2026-11-06T12:59:14+00:00",
   "url": "https://www.magd.ox.ac.uk/visiting-magdalen-college/",
   "status": "ok",
   "strength": 7,
@@ -241,7 +255,7 @@
  {
   "name": "Mansfield College",
   "tier": "B",
-  "checked": "2026-11-05T13:14:59+00:00",
+  "checked": "2026-11-06T12:59:17+00:00",
   "url": "https://www.mansfield.ox.ac.uk/",
   "status": "weak",
   "strength": 1,
@@ -257,7 +271,7 @@
  {
   "name": "Merton College",
   "tier": "B",
-  "checked": "2026-11-05T13:15:34+00:00",
+  "checked": "2026-11-06T12:59:46+00:00",
   "url": "https://www.merton.ox.ac.uk/visitor-information",
   "status": "ok",
   "strength": 5,
@@ -305,7 +319,7 @@
  {
   "name": "New College",
   "tier": "B",
-  "checked": "2026-11-05T13:15:36+00:00",
+  "checked": "2026-11-06T12:59:48+00:00",
   "url": "https://www.new.ox.ac.uk/visiting-the-college",
   "status": "ok",
   "strength": 6,
@@ -402,7 +416,7 @@
  {
   "name": "Oriel College",
   "tier": "B",
-  "checked": "2026-11-05T13:15:41+00:00",
+  "checked": "2026-11-06T12:59:52+00:00",
   "url": "https://www.oriel.ox.ac.uk/visit-oriel/",
   "status": "weak",
   "strength": 1,
@@ -426,7 +440,7 @@
  {
   "name": "St Catherine's College",
   "tier": "B",
-  "checked": "2026-11-05T13:15:48+00:00",
+  "checked": "2026-11-06T13:00:00+00:00",
   "url": "https://www.stcatz.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -437,7 +451,7 @@
  {
   "name": "St Edmund Hall",
   "tier": "B",
-  "checked": "2026-11-05T13:15:55+00:00",
+  "checked": "2026-11-06T13:00:06+00:00",
   "url": "https://www.seh.ox.ac.uk/discover/explore-teddy-hall/visiting-the-college",
   "status": "ok",
   "strength": 2,
@@ -457,27 +471,23 @@
  {
   "name": "St Hilda's College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:04+00:00",
+  "checked": "2026-11-06T13:00:17+00:00",
   "url": "https://www.st-hildas.ox.ac.uk/",
-  "status": "ok",
-  "strength": 2,
+  "status": "weak",
+  "strength": 1,
   "lines": [
    {
     "text": "Our exciting \u00a325 million fundraising campaign will keep St Hilda\u2019s at the heart of excellence. Giving all of our students the edge, so they can keep turning pioneering ideas into reality.",
     "kind": "/price"
-   },
-   {
-    "text": "1:15pm-1:45pm",
-    "kind": "hours"
    }
   ],
   "closures": [],
-  "fp": "2b40b200a4cf1070"
+  "fp": "d4807498a0716270"
  },
  {
   "name": "St Hugh's College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:06+00:00",
+  "checked": "2026-11-06T13:00:28+00:00",
   "url": "https://www.st-hughs.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -488,7 +498,7 @@
  {
   "name": "St John's College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:11+00:00",
+  "checked": "2026-11-06T13:00:34+00:00",
   "url": "https://www.sjc.ox.ac.uk/discover/visit-us/",
   "status": "weak",
   "strength": 1,
@@ -520,27 +530,23 @@
  {
   "name": "St Peter's College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:17+00:00",
-  "url": "https://www.spc.ox.ac.uk/connect/visit-college",
+  "checked": "2026-11-06T13:00:41+00:00",
+  "url": "https://www.spc.ox.ac.uk/",
   "status": "weak",
   "strength": 1,
   "lines": [
    {
-    "text": "Charge: visiting St Peter's College is free, but donations are welcome",
-    "kind": "/price"
-   },
-   {
-    "text": "Hours: we are open for visitors from 10:00-17:00",
+    "text": "10:45am-11:05am",
     "kind": "hours"
    }
   ],
   "closures": [],
-  "fp": "49963017fb896a68"
+  "fp": "630ba5772c966093"
  },
  {
   "name": "Somerville College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:21+00:00",
+  "checked": "2026-11-06T13:00:46+00:00",
   "url": "https://www.some.ox.ac.uk/about/visit-us/",
   "status": "weak",
   "strength": 1,
@@ -556,7 +562,7 @@
  {
   "name": "Trinity College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:26+00:00",
+  "checked": "2026-11-06T13:00:52+00:00",
   "url": "https://www.trinity.ox.ac.uk/visiting",
   "status": "ok",
   "strength": 3,
@@ -580,7 +586,7 @@
  {
   "name": "University College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:28+00:00",
+  "checked": "2026-11-06T13:01:01+00:00",
   "url": "https://www.univ.ox.ac.uk/",
   "status": "no-visitor-hours",
   "strength": 0,
@@ -591,7 +597,7 @@
  {
   "name": "Wadham College",
   "tier": "B",
-  "checked": "2026-11-05T13:16:44+00:00",
+  "checked": "2026-11-06T13:01:18+00:00",
   "url": "https://www.wadham.ox.ac.uk/visit-us",
   "status": "ok",
   "strength": 2,
