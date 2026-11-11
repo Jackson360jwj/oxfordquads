@@ -470,10 +470,16 @@
  {
   "name": "St Peter's College",
   "tier": "B",
-  "source": "https://www.spc.ox.ac.uk/",
-  "email": null,
+  "source": "https://www.spc.ox.ac.uk/connect/visit-college",
+  "email": "porters.lodge@spc.ox.ac.uk",
   "phones": [],
-  "advisories": [],
+  "advisories": [
+   {
+    "key": "call_first",
+    "say": "The college asks visitors to phone the lodge before setting out.",
+    "evidence": "phone the Porters' Lodge"
+   }
+  ],
   "status": "ok"
  },
  {
