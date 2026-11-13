@@ -279,11 +279,10 @@
   "name": "Mansfield College",
   "tier": "B",
   "source": "https://www.mansfield.ox.ac.uk/",
-  "status": "error",
-  "error": "HTTPSConnectionPool(host='www.mansfield.ox.ac.uk', port=443): Read timed out. (read timeou",
-  "email": null,
+  "email": "porter@mansfield.ox.ac.uk",
   "phones": [],
-  "advisories": []
+  "advisories": [],
+  "status": "ok"
  },
  {
   "name": "Merton College",
