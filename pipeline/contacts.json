@@ -2,12 +2,22 @@
  {
   "name": "All Souls College",
   "tier": "B",
-  "source": "https://www.asc.ox.ac.uk/visiting-college",
-  "status": "error",
-  "error": "403 Client Error: Forbidden for url: https://www.asc.ox.ac.uk/visiting-college",
+  "source": "https://www.asc.ox.ac.uk/visit-the-college",
   "email": null,
   "phones": [],
-  "advisories": []
+  "advisories": [
+   {
+    "key": "short_notice",
+    "say": "The college reserves the right to close at short notice.",
+    "evidence": "reserves the right to close"
+   },
+   {
+    "key": "groups_book",
+    "say": "Groups must book ahead rather than turning up.",
+    "evidence": "groups: Larger group visits must be arrange"
+   }
+  ],
+  "status": "ok"
  },
  {
   "name": "Balliol College",
@@ -230,17 +240,9 @@
   "name": "Lincoln College",
   "tier": "B",
   "source": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
-  "email": "info@lincoln.ox.ac.uk",
-  "phones": [
-   "01865 279800"
-  ],
-  "advisories": [
-   {
-    "key": "check_ahead",
-    "say": "Contact the college in advance to confirm it is open.",
-    "evidence": "contact the\u00c2 Development Office \u00c2 in advance"
-   }
-  ],
+  "email": null,
+  "phones": [],
+  "advisories": [],
   "status": "ok"
  },
  {
@@ -387,11 +389,10 @@
   "name": "St Anne's College",
   "tier": "A",
   "source": "https://www.st-annes.ox.ac.uk/",
-  "status": "error",
-  "error": "500 Server Error: Internal Server Error for url: https://www.st-annes.ox.ac.uk/",
   "email": null,
   "phones": [],
-  "advisories": []
+  "advisories": [],
+  "status": "ok"
  },
  {
   "name": "St Antony's College",
