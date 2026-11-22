@@ -415,10 +415,11 @@
   "name": "St Catherine's College",
   "tier": "B",
   "source": "https://www.stcatz.ox.ac.uk/",
-  "email": "lodge@stcatz.ox.ac.uk",
+  "status": "error",
+  "error": "HTTPSConnectionPool(host='www.stcatz.ox.ac.uk', port=443): Max retries exceeded with url: ",
+  "email": null,
   "phones": [],
-  "advisories": [],
-  "status": "ok"
+  "advisories": []
  },
  {
   "name": "St Cross College",
