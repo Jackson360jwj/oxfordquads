@@ -1,4 +1,4 @@
-# Visitor-hours check — 2026-11-22
+# Visitor-hours check — 2026-11-23
 
 24 colleges read · 0 changed · 7 unreachable
 
@@ -7,6 +7,6 @@
 - **Harris Manchester College** — no-visitor-hours: no visitor content found
 - **Hertford College** — no-visitor-hours: no visitor content found
 - **Jesus College** — no-visitor-hours: no visitor content found
-- **St Catherine's College** — unreachable: HTTPSConnectionPool(host='www.stcatz.ox.ac.uk', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertV
+- **St Catherine's College** — no-visitor-hours: no visitor content found
 - **St Hugh's College** — no-visitor-hours: no visitor content found
 - **University College** — no-visitor-hours: no visitor content found
