@@ -1,8 +1,9 @@
-# Visitor-hours check — 2026-11-23
+# Visitor-hours check — 2026-11-24
 
-24 colleges read · 0 changed · 7 unreachable
+24 colleges read · 0 changed · 8 unreachable
 
 ## Needs a human
+- **All Souls College** — unreachable: 403 Client Error: Forbidden for url: https://www.asc.ox.ac.uk/visiting-college
 - **Christ Church** — no-visitor-hours: no visitor content found
 - **Harris Manchester College** — no-visitor-hours: no visitor content found
 - **Hertford College** — no-visitor-hours: no visitor content found
