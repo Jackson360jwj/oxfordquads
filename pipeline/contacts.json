@@ -240,17 +240,9 @@
   "name": "Lincoln College",
   "tier": "B",
   "source": "https://www.lincoln.ox.ac.uk/discover/the-college/visiting-lincoln/",
-  "email": "info@lincoln.ox.ac.uk",
-  "phones": [
-   "01865 279800"
-  ],
-  "advisories": [
-   {
-    "key": "check_ahead",
-    "say": "Contact the college in advance to confirm it is open.",
-    "evidence": "contact the\u00c2 Development Office \u00c2 in advance"
-   }
-  ],
+  "email": null,
+  "phones": [],
+  "advisories": [],
   "status": "ok"
  },
  {
